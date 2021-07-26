@@ -1,5 +1,29 @@
-.navbar {
-  width: 100%;
-  height: 80px;
-  background-color: aqua;
+.navContainer {
+  background-color: whitesmoke;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 2px 50px grey;
+  overflow: scroll;
+  transform: translateX(-100%);
+  transition: all 0.5s ease;
+  opacity: 0;
+  .navButtons {
+    cursor: pointer;
+    padding: 10px;
+    img {
+      border-radius: 200px;
+      width: 95%;
+      @include breakpoint(desktop) {
+        width: 45%;
+      }
+    }
+    &:hover {
+      background: ghostwhite;
+    }
+  }
 }

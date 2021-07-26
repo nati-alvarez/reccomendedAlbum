@@ -11,12 +11,12 @@ export const labelReleases = (labelId, pageNumber) =>
   `${base_url}labels/${labelId}/releases?page=${pageNumber}&per_page=100&key=${process.env.REACT_APP_DISCOGS_API_KEY}&secret=${process.env.REACT_APP_DISCOGS_API_SECRET}`;
 
 //RELEASE DETAILS
-export const releaseDetailsURL = (releaseId) =>
+export const releaseDetails = (releaseId) =>
   `${base_url}releases/${releaseId}?key=${process.env.REACT_APP_DISCOGS_API_KEY}&secret=${process.env.REACT_APP_DISCOGS_API_SECRET}`;
 
 //FORMAT DETAILS
 
-export const formatDetailsURL = (masterId) =>
+export const formatDetails = (masterId) =>
 `${base_url}masters/${masterId}?key=${process.env.REACT_APP_DISCOGS_API_KEY}&secret=${process.env.REACT_APP_DISCOGS_API_SECRET}`;
 //SEARCHED TITLE
 
