@@ -11,7 +11,7 @@ import thunk from "redux-thunk";
 import logger from 'redux-logger'
 import rootReducer from "./Redux/Reducers/RootReducer";
 import {Provider} from "react-redux";
-import {loadLabels} from '../src/Redux/Actions/LabelDispatch'
+// import {loadLabels} from '../src/Redux/Actions/LabelDispatch'
 
 
 const composeEnhancer =
@@ -21,7 +21,7 @@ const store = createStore(rootReducer, composeEnhancer(applyMiddleware(thunk, lo
 
 //dispatch to populate reducer before root component renders
 
-store.dispatch(loadLabels())
+// store.dispatch(loadLabels())
 
 ReactDOM.render(
   <React.StrictMode>

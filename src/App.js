@@ -1,12 +1,12 @@
 // import Begin from "./components/Begin";
 import Navigator from "./components/Navigation/";
-import SideNavLabels from "./components/Navigation/SideNavLabel";
+import SideNav from "./components/Navigation/SideNavLabel";
 
 function App() {
   return (
     <div className="appContainer">
       <Navigator/>
-      <SideNavLabels />
+      <SideNav />
       {/* <Begin /> */}
     </div>
   );
