@@ -4,10 +4,10 @@
 // database. 
 
 
-import {DataDiviner} from "../../utils/utils";
-import {label} from "../../API/APIcall";
-import {artist} from "../../API/APIcall";
-import genreImg from '../../assets/genre.png'
+// import {DataDiviner} from "../../utils/utils";
+// import {label} from "../../API/APIcall";
+// import {artist} from "../../API/APIcall";
+// import genreImg from '../../assets/genre.png'
 
 
 export const assetSelector = (nav) => async (dispatch) => {

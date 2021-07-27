@@ -1,16 +1,24 @@
 .navContainer {
+
   background-color: whitesmoke;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  // align-items: center;
+  // position: fixed;
+  top: 0;
+  left: 0;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // // align-items: center;
   box-shadow: 2px 2px 50px grey;
   overflow: scroll;
   transform: translateX(-100%);
   transition: all 0.5s ease;
   opacity: 0;
   .navButtons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     padding: 10px;
     img {

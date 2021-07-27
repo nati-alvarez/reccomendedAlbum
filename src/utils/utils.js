@@ -1,8 +1,9 @@
 import axios from "axios";
 
-
-
-// const labelCodes = [90336, 157803, 165219, 389319, 153824, 88949];
+//Data diviner is the first step in the journey piping in data from the 
+//Discogs API. 
+// When called with a url passed into it, axios is used to get data and an array is 
+// returned that houses that data. 
 
 export const DataDiviner = async (url) => {
   const allData = [];
@@ -11,21 +12,3 @@ export const DataDiviner = async (url) => {
   return allData;
 };
 
-// export const DataDivinerLabel = (url) => {
-//     const allData = [];
-//     const loadData = async () => {
-//       for (let i = 0; i < code.length; i++) {
-//         let dataContainer = await axios.get(url(code[i]));
-//         allData.push(dataContainer);
-//       }
-//       return allData
-//     };
-//     loadData();
-// }
-
-export const DataDivinerReleases = async (url) => {
-    const allData = [];
-    let dataContainer = await axios.get(url);
-    allData.push(dataContainer.data);
-    return allData;
-};

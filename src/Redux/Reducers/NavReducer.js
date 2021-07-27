@@ -10,7 +10,7 @@ const navReducer = (state = initialState, action) => {
     case "NAV_SELECTOR":
       return {...state, show: true, current: action.payload.all};
     case "ASSET_SELECTOR":
-      return {...state, show: false, loading: true};
+      return {show: false, loading: true, current: ""};
     case "NAV_SELECTOR_SUCCESS":
       return {...state, info: action.payload.all, loading: false};
     default:
