@@ -19,8 +19,7 @@ export const loadReleases = (id) => async (dispatch) => {
   let releasesData = [].concat.apply([], allData);
 
   const labelData = await axios.get(label(id));
-  console.log(releasesData)
-  console.log(labelData)
+
   //creates dictionary to store all unique records
   const releasesByTitle = {};
   const releases = [];

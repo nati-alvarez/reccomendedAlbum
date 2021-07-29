@@ -1,12 +1,12 @@
 import navReducer from "./NavReducer";
-import labelReducer from "./LabelReducer";
+import assetReducer from "./AssetReducer";
 import releasesReducer from "./ReleasesReducer";
 import {combineReducers} from "redux";
 import releaseReducer from "./ReleaseReducer";
 
 const allReducers = combineReducers({
   nav: navReducer,
-  label: labelReducer,
+  asset: assetReducer,
   releaseInfo: releasesReducer,
   individualRelease: releaseReducer,
 });

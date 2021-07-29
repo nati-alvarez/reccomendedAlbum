@@ -5,14 +5,15 @@ const initialState = {
 };
 
 const navReducer = (state = initialState, action) => {
-  console.log(action.type.payload);
   switch (action.type) {
     case "NAV_SELECTOR":
       return {...state, show: true, current: action.payload.all};
-    case "ASSET_SELECTOR":
-      return {show: false, loading: true, current: ""};
     case "NAV_SELECTOR_SUCCESS":
       return {...state, info: action.payload.all, loading: false};
+    case "ASSET_SELECTOR":
+      return {show: false, loading: true, current: ""};
+    case "ASSET_SELECTOR_SUCCESS":
+      return {show: false, loading: true, current: action.payload.all};
     default:
       return {...state};
   }

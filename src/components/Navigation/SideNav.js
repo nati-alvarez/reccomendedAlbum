@@ -1,5 +1,6 @@
 import React from "react";
 import {useSelector, useDispatch} from "react-redux";
+import {Link} from "react-router-dom";
 import {assetSelector} from "../../Redux/Actions/assetSelector";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
@@ -9,7 +10,7 @@ import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 function SideNavLabels() {
   const dispatch = useDispatch();
   const navSelect = useSelector((state) => state.nav);
-
+  console.log(navSelect);
   return navSelect.info ? (
     <div className={`navContainer ${navSelect.show ? "activeLibrary" : ""}`}>
       <FontAwesomeIcon
@@ -19,16 +20,22 @@ function SideNavLabels() {
         }}
       ></FontAwesomeIcon>
       {navSelect.info.map((asset, i) => (
-        <div
-          key={i}
-          className="navButtons"
-          onClick={() => {
-            dispatch(assetSelector());
-          }}
-        >
-          <img src={asset.image} alt={asset.name} key={`nav item ${i} image`} />
-          <p key={`nav item ${i} name`}>{asset.name}</p>
-        </div>
+        <Link to={`/${asset.type}/${asset.name}`} key={`link ${asset.name}`}>
+          <div
+            key={i}
+            className="navButtons"
+            onClick={() => {
+              dispatch(assetSelector(asset.id, asset.type));
+            }}
+          >
+            <img
+              src={asset.image}
+              alt={asset.name}
+              key={`nav item ${i} image`}
+            />
+            <p key={`nav item ${i} name`}>{asset.name}</p>
+          </div>
+        </Link>
       ))}
     </div>
   ) : (

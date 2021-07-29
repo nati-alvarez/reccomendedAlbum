@@ -1,5 +1,7 @@
 .appContainer {
   display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   margin: 0px auto;
   max-width: 1200px;
 }

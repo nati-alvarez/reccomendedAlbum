@@ -1,6 +1,6 @@
 import {useSelector} from "react-redux";
 
-import SideNavLabels from "./SideNavLabel";
+import SideNavLabels from "./SideNav";
 import SideNavAdmins from "./SideNavAdmin";
 
 import Header from "./Header";
