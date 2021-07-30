@@ -2,10 +2,10 @@ import {useSelector} from "react-redux";
 
 function Bio() {
   const data = useSelector((state) => state);
-  console.log(data.nav.current)
-  return data.nav.current ? (
+  console.log(data.nav.selected)
+  return data.nav.selected ? (
     <div className="bioContainer">
-      {data.nav.current.map((asset, i) => (
+      {data.nav.selected.map((asset, i) => (
         <div key={i} className="infoContainer">
           <img src={asset.image} alt={asset.name} key={`${i} image`} />
           <p key={`${i} name`}>{asset.name}</p>

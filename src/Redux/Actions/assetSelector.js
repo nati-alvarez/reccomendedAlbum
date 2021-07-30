@@ -6,7 +6,7 @@
 
 
 export const assetSelector = (data) => (dispatch) => {
-  console.log(data)
+
   dispatch({
     type: "ASSET_SELECTOR_SUCCESS",
     payload: {
