@@ -6,7 +6,6 @@
 
 
 export const assetSelector = (data) => (dispatch) => {
-
   dispatch({
     type: "ASSET_SELECTOR_SUCCESS",
     payload: {
@@ -14,6 +13,7 @@ export const assetSelector = (data) => (dispatch) => {
       loading: false,
     },
   });
+  
 }
 
 

@@ -1,11 +1,16 @@
-import {useSelector} from "react-redux";
+// import {useSelector} from "react-redux";
 
 function ReleaseInfo({show}) {
-
-  const releaseSelect = useSelector((state) => state);
-  console.log(releaseSelect);
-
-  return <div></div>;
+  // const releaseSelect = useSelector((state) => state.individualRelease);
+  console.log(show);
+  return (
+    <div className={`releaseInfoContainer ${show ? "" : "hideInfo"}`}>
+<div className="tester">
+  TEST
+</div>
+      TEST
+    </div>
+  );
 }
 
 export default ReleaseInfo;

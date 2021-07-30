@@ -17,6 +17,12 @@ export const navSelectorDispatch = (nav) => async (dispatch) => {
       loading: true,
     },
   });
+  dispatch({
+    type: "SHOW",
+    payload: {
+      show: false,
+    },
+  });
 
   const allData = [];
 

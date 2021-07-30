@@ -1,18 +1,10 @@
-import { useState } from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {v4 as uuidv4} from "uuid";
 import {releaseInfoAction} from "../../Redux/Actions/ReleaseInfoAction";
-import ReleaseInfo from "./ReleaseInfo";
 
 function Releases() {
-  const [showInfo, setShowInfo] = useState(false)
   const dispatch = useDispatch();
   const data = useSelector((state) => state);
-
-const releaseInfoVisibility = (id) => {
-  dispatch(releaseInfoAction(id))
-  setShowInfo(true)
-}
 
   return data.releases.all ? (
     <div className="bioContainer #top">
@@ -21,14 +13,13 @@ const releaseInfoVisibility = (id) => {
           <div
             key={uuidv4()}
             className="releaseContainer"
-            onClick={() => releaseInfoVisibility(asset.id)}
+            onClick={() => dispatch(releaseInfoAction(asset.id))}
           >
-            <ReleaseInfo show={showInfo}/>
             <p>{asset.catno}</p>
-            <img src={asset.thumb} alt={asset.title} key={uuidv4()} />
-            <p key={uuidv4()}>{asset.artist}</p>
-            <p key={uuidv4()}>{asset.title}</p>
-            <p key={uuidv4()}>Released - {asset.year}</p>
+            <img src={asset.thumb} alt={asset.title} />
+            <p>{asset.artist}</p>
+            <p>{asset.title}</p>
+            <p>Released - {asset.year}</p>
           </div>
         ))}
       </div>
