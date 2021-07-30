@@ -1,7 +1,9 @@
 import React from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {Link} from "react-router-dom";
+import { navVisibility } from "../../Redux/Actions/navSelectorDispatch"
 import {assetSelector} from "../../Redux/Actions/assetSelector";
+import {loadReleases} from "../../Redux/Actions/ReleasesAction";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 //THIS IS THE NAVIGATION COMPONENT THAT SITS ON THE LEFT HAND SIDE OF THE SCREEN. IT IS POPULATED
@@ -10,13 +12,19 @@ import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 function SideNavLabels() {
   const dispatch = useDispatch();
   const navSelect = useSelector((state) => state.nav);
-  console.log(navSelect);
+
+  const dispatchHandler = (id, type) => {
+    
+    dispatch(assetSelector(id, type));
+    dispatch(loadReleases(id));
+  };
+
   return navSelect.info ? (
     <div className={`navContainer ${navSelect.show ? "activeLibrary" : ""}`}>
       <FontAwesomeIcon
         icon={faArrowLeft}
         onClick={() => {
-          dispatch(assetSelector());
+          dispatch(navVisibility());
         }}
       ></FontAwesomeIcon>
       {navSelect.info.map((asset, i) => (
@@ -25,7 +33,8 @@ function SideNavLabels() {
             key={i}
             className="navButtons"
             onClick={() => {
-              dispatch(assetSelector(asset.id, asset.type));
+              // dispatchHandler(asset.id, asset.type);
+              dispatchHandler(asset);
             }}
           >
             <img

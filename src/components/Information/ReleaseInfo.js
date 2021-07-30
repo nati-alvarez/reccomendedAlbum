@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { DataDiviner } from '../utils/utils'
-import { releaseDetails } from '../API/APIcall'
+import { DataDiviner } from '../../utils/utils'
+import { releaseDetails } from '../../API/APIcall'
 
 
 

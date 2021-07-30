@@ -45,6 +45,7 @@ table {
 * {
 	scrollbar-width: thin;
 	scrollbar-color: rgba(155, 155, 155, 0.7) transparent;
+	scroll-behavior: smooth;
   }
   
   *::-webkit-scrollbar {
