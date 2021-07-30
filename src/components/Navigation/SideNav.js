@@ -13,9 +13,9 @@ function SideNavLabels() {
   const dispatch = useDispatch();
   const navSelect = useSelector((state) => state.nav);
 
-  const dispatchHandler = (id, asset) => {
+  const dispatchHandler = (id, asset, type) => {
     dispatch(assetSelector([asset]));
-    dispatch(loadReleases(id));
+    dispatch(loadReleases(id, type));
   };
 
   return navSelect.all ? (
@@ -32,7 +32,7 @@ function SideNavLabels() {
             key={i}
             className="navButtons"
             onClick={() => {
-              dispatchHandler(asset.id, asset);
+              dispatchHandler(asset.id, asset, asset.type);
             }}
           >
             <img

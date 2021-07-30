@@ -2,7 +2,7 @@ import {useSelector} from "react-redux";
 
 function Bio() {
   const data = useSelector((state) => state);
-  console.log(data.nav.selected)
+
   return data.nav.selected ? (
     <div className="bioContainer">
       {data.nav.selected.map((asset, i) => (

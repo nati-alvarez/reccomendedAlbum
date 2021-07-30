@@ -1,9 +1,14 @@
+// this action populates the page with all the releases of the particular label or artist that 
+// the user selected from the left hand nav menu. 
+
+
 import axios from "axios";
 import {labelReleases} from "../../API/APIcall";
+// import {artistReleases} from "../../API/APIcall";
 import {label} from "../../API/APIcall";
 //Action creator
 
-export const loadReleases = (id) => async (dispatch) => {
+export const loadReleases = (id, type) => async (dispatch) => {
 
   dispatch({
     type: "FETCH_RELEASES",
@@ -11,10 +16,12 @@ export const loadReleases = (id) => async (dispatch) => {
       loading: true,
     },
   });
+
   const pageNumber = await axios.get(labelReleases(id, 1));
+
   let allData = [];
   for (let i = 1; i <= pageNumber.data.pagination.pages; i++) {
-    let data = await axios.get(labelReleases(id, i));
+    let data = await axios.get(labelReleases(id, 1));
     allData.push(data.data.releases);
   }
   let releasesData = [].concat.apply([], allData);
@@ -25,7 +32,7 @@ export const loadReleases = (id) => async (dispatch) => {
   const releasesByTitle = {};
   const releases = [];
   //checks dictionary to see if record by a certain title is already in the dictionary
-  
+
   //if it is, move on to check the format, else, add it to the dictionary
 
   //overwrite and replace if the format isnt CD or Vinyl
@@ -37,7 +44,7 @@ export const loadReleases = (id) => async (dispatch) => {
   // PAP
   // CD
   // VINYL
-//FIlter the data up front 
+  //FIlter the data up front
   // eslint-disable-next-line
   releasesData.map((release) => {
     if (!release.format.includes("File") && release.thumb) {

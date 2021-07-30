@@ -14,6 +14,9 @@ export const artist = (artistId) =>
 export const labelReleases = (labelId, pageNumber) =>
   `${base_url}labels/${labelId}/releases?page=${pageNumber}&per_page=100&key=${process.env.REACT_APP_DISCOGS_API_KEY}&secret=${process.env.REACT_APP_DISCOGS_API_SECRET}`;
 
+export const artistReleases = (artistId, pageNumber) =>
+  `${base_url}artists/${artistId}/releases?page=${pageNumber}&per_page=100&key=${process.env.REACT_APP_DISCOGS_API_KEY}&secret=${process.env.REACT_APP_DISCOGS_API_SECRET}`;
+
 //RELEASE DETAILS
 export const releaseDetails = (releaseId) =>
   `${base_url}releases/${releaseId}?key=${process.env.REACT_APP_DISCOGS_API_KEY}&secret=${process.env.REACT_APP_DISCOGS_API_SECRET}`;
