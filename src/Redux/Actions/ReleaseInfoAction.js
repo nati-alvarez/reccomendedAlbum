@@ -19,7 +19,7 @@ const allData = []
   console.log(data)
   allData.push({
     artists: data[0].artists_sort,
-    title: data[0].images[0].title,
+    title: data[0].title,
     released: data[0].released_formatted,
     img: data[0].thumb,
     tracklist: data[0].tracklist,
@@ -34,3 +34,11 @@ const allData = []
     },
   });
 }
+export const showBio = () => (dispatch) => {
+    dispatch({
+      type: "SHOW",
+      payload: {
+        show: false,
+      },
+    });
+  }

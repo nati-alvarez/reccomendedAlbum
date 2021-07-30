@@ -1,12 +1,36 @@
+@import "./mixins.scss";
+
 .releaseInfoContainer {
-    border: 2px solid red;
-    transform: translate(-100%);
-    transition: all 0.5s ease;
-    opacity: 0;
+  
+  @include flexColumn;
+  padding: 20px;
+  img {
+    padding: 20px;
+  }
+  h2 {
+    padding: 10px;
+  }
 }
 
-
-.activeInfo{
-    transform: translate(0%);
-    opacity: 1;
+.tracklistSpan {
+  width: 200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+padding: 20px;
+  .position {
+      width: 50%;
+    text-align: left;
   }
+  .title {
+    width: 50%;
+    text-align: left;
+  }
+}
+.videoPlayer {
+    border: 2px solid red;
+    @include flexColumn;
+
+    padding: 20px;
+    width: 300px;
+}
