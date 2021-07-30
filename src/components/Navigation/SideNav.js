@@ -1,8 +1,8 @@
 import React from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {Link} from "react-router-dom";
-import {navVisibility} from "../../Redux/Actions/navSelectorDispatch";
-import {assetSelector} from "../../Redux/Actions/assetSelector";
+import {navVisibility} from "../../Redux/Actions/navSelectorAction";
+import {assetSelector} from "../../Redux/Actions/assetSelectorAction";
 import {loadReleases} from "../../Redux/Actions/ReleasesAction";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";

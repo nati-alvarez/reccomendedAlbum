@@ -1,7 +1,7 @@
 import React from "react";
 import {useDispatch} from "react-redux";
 
-import { navSelectorDispatch } from '../../Redux/Actions/navSelectorDispatch'
+import { navSelectorDispatch } from '../../Redux/Actions/navSelectorAction'
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faRecordVinyl} from "@fortawesome/free-solid-svg-icons";
