@@ -16,19 +16,19 @@ function Header() {
     <div className="headerContainer">
       <nav>
         <span onClick={() => dispatch(navSelectorDispatch("labels"))}>
-          <FontAwesomeIcon icon={faRecordVinyl}></FontAwesomeIcon>
+          <FontAwesomeIcon className='fai' icon={faRecordVinyl}></FontAwesomeIcon>
           <p>Label</p>
         </span>
         <span onClick={() => dispatch(navSelectorDispatch("artists"))}>
-          <FontAwesomeIcon icon={faUserAlt}></FontAwesomeIcon>
+          <FontAwesomeIcon className='fai' icon={faUserAlt}></FontAwesomeIcon>
           <p>Artist</p>
         </span>
         <span onClick={() => dispatch(navSelectorDispatch("genre"))}>
-          <FontAwesomeIcon icon={faMusic}></FontAwesomeIcon>
+          <FontAwesomeIcon className='fai' icon={faMusic}></FontAwesomeIcon>
           <p>Genre</p>
         </span>
         <span>
-          <FontAwesomeIcon icon={faDoorOpen}></FontAwesomeIcon>
+          <FontAwesomeIcon className='fai' icon={faDoorOpen}></FontAwesomeIcon>
           <p>Sign In</p>
         </span>
       </nav>

@@ -1,13 +1,22 @@
 .navContainer {
   background-color: whitesmoke;
   width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
   box-shadow: 2px 2px 50px grey;
-  overflow: scroll;
+  overflow-y: auto;
   transform: translateX(-100%);
   transition: all 0.5s ease;
   opacity: 0;
+  @include breakpoint(tablet) {
+    margin-top: 30px;
+    width: 50%;
+  }
+  @include breakpoint(desktop) {
+    margin-top: 60px;
+    width: 20%;
+  }
   .navButtons {
     display: flex;
     flex-direction: column;
@@ -15,9 +24,11 @@
     align-items: center;
     cursor: pointer;
     padding: 10px;
+    
     img {
       border-radius: 200px;
       width: 50%;
+
     }
     &:hover {
       background: ghostwhite;
