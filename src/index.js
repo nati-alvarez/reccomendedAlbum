@@ -4,7 +4,7 @@ import App from "./App";
 
 //Styles
 import "./Styles/index.scss";
-
+import "bootstrap/dist/css/bootstrap.min.css"
 //Redux
 import {createStore, applyMiddleware, compose} from "redux";
 import thunk from "redux-thunk";

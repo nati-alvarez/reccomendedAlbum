@@ -1,5 +1,6 @@
-//This is the nav selector - depending on what button the user clicked
-// in the header this dispatch will populate a navigation menu that slides out from the left.
+//This is the nav selector - All actions in here relate to the nav and its functions 
+//ie: depending on what button the user clicked
+// in the header the navSelectorDispatch will populate a navigation menu that slides out from the left.
 // That menu will be populated by either the users saved content (if they have an account) or
 // or dummy data.
 
@@ -90,6 +91,18 @@ export const navSelectorDispatch = (nav) => async (dispatch) => {
 export const navVisibility = () => (dispatch) => {
   dispatch({
     type: "NAV_VISIBLE"
+  });
+}
+
+export const signButton = (data) => (dispatch) => {
+  //this controls which button is visible on the header 
+  // sign in if the user is not yet signed in 
+  // avatar if the user is signed in. 
+  dispatch({
+    type: "SIGN_TOGGLE",
+    payload: {
+      signToggle: data
+    }
   });
 }
 
