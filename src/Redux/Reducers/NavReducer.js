@@ -13,7 +13,7 @@ const navReducer = (state = initialState, action) => {
     case "NAV_SELECTOR_SUCCESS":
       return {...state, all: action.payload.all, loading: false};
     case "NAV_VISIBLE":
-      return {...state, show: true};
+      return {...state, show: false};
     case "SIGN_TOGGLE":
       return {...state, signToggle: action.payload.signToggle};
     case "ASSET_SELECTOR_SUCCESS":
