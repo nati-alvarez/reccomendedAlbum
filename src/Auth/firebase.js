@@ -1,8 +1,9 @@
 import firebase from "firebase/app";
 import "firebase/auth";
+import "firebase/firestore";
 
 const userApp = firebase.initializeApp({
-//   apiKey: "AIzaSyCeJbdoGXUwTwTWFhzU8ap6hU_ORRfqaYA",
+  // apiKey: "AIzaSyCeJbdoGXUwTwTWFhzU8ap6hU_ORRfqaYA",
 //   authDomain: "sonicarchitecture-development.firebaseapp.com",
 //   projectId: "sonicarchitecture-development",
 //   storageBucket: "sonicarchitecture-development.appspot.com",
@@ -16,6 +17,13 @@ const userApp = firebase.initializeApp({
     messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
     appId: process.env.REACT_APP_FIREBASE_APP_ID,
 });
+
+const firestore = userApp.firestore()
+export const database = {
+    label: firestore.collection('label'),
+    artist: firestore.collection('artist'),
+    title: firestore.collection('title')
+}
 
 export const auth = userApp.auth();
 

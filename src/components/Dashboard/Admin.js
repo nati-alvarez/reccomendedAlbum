@@ -8,8 +8,6 @@ import {useAuth} from "../../Auth/AuthProvider";
 function Admin(props) {
   const {currentUser, logout} = useAuth();
 
-  console.log(currentUser)
-  
   const [error, setError] = useState("");
   const history = useHistory();
   async function handleLogout() {
@@ -23,7 +21,7 @@ function Admin(props) {
   }
   return (
 
-    <div>
+    <div className='adminContainer'>
       <strong>Email:</strong> {currentUser.email}
       <button onClick={handleLogout}>Log out</button>
     </div>

@@ -1,0 +1,95 @@
+.dashBoardContainer {
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+}
+
+// .adminContainer{
+    
+// }
+
+
+.ProfileSectionContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 1px solid gainsboro;
+  border-radius: 10px;
+  p {
+    font-size: 0.5rem;
+  }
+  img {
+    max-width: 10vw;
+    border-radius: 20px;
+  }
+  .userInfo {
+    label {
+      display: flex;
+      cursor: pointer;
+    }
+  }
+}
+
+.listenNextContainer {
+  border: 1px solid gainsboro;
+  border-radius: 10px;
+  width: 14vw;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  img {
+    max-width: 8vw;
+    max-height: 100%;
+    border-radius: 20px;
+  }
+}
+
+.nextShipContainer {
+  border: 1px solid gainsboro;
+  text-align: center;
+  border-radius: 10px;
+  img {
+    max-width: 6vw;
+    max-height: 100%;
+    border-radius: 20px;
+  }
+  h4 {
+    padding: 5px;
+  }
+
+  .nextShipImage {
+    margin-left: 13px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+  }
+
+  .requestButton {
+    max-width: 6vw;
+    max-height: 100%;
+    border-radius: 20px;
+  }
+}
+
+.topTenContainer {
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    img {
+      max-width: 6vw;
+      max-height: 100%;
+      border-radius: 20px;
+    }
+    .topTenImage {
+        display: flex;
+        gap: 2px;
+    }
+}

@@ -6,6 +6,8 @@ import {assetSelector} from "../../Redux/Actions/assetSelectorAction";
 import {loadReleases} from "../../Redux/Actions/ReleasesAction";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
+import AddButton from "../../Common/AddButton";
+
 //THIS IS THE NAVIGATION COMPONENT THAT SITS ON THE LEFT HAND SIDE OF THE SCREEN. IT IS POPULATED
 //BY DATA PULLED IN FROM THE API.
 
@@ -18,6 +20,8 @@ function SideNavLabels() {
     dispatch(loadReleases(id, type));
   };
 
+
+
   return navSelect.all ? (
     <div className={`navContainer ${navSelect.show ? "activeLibrary" : ""}`}>
       <FontAwesomeIcon
@@ -26,6 +30,9 @@ function SideNavLabels() {
           dispatch(navVisibility());
         }}
       ></FontAwesomeIcon>
+      <div className="navButtons">
+      <AddButton />
+      </div>
       {navSelect.all.map((asset, i) => (
         <Link to={`/${asset.type}/${asset.name}`} key={`link ${asset.name}`}>
           <div
