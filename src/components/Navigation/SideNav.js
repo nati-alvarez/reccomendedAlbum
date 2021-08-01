@@ -20,8 +20,6 @@ function SideNavLabels() {
     dispatch(loadReleases(id, type));
   };
 
-
-
   return navSelect.all ? (
     <div className={`navContainer ${navSelect.show ? "activeLibrary" : ""}`}>
       <FontAwesomeIcon
@@ -30,7 +28,9 @@ function SideNavLabels() {
           dispatch(navVisibility());
         }}
       ></FontAwesomeIcon>
-
+      <div className="addButton">
+        <AddButton />
+      </div>
       {navSelect.all.map((asset, i) => (
         <Link to={`/${asset.type}/${asset.name}`} key={`link ${asset.name}`}>
           <div

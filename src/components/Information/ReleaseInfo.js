@@ -4,19 +4,19 @@ import {showBio} from "../../Redux/Actions/ReleaseInfoAction";
 function ReleaseInfo() {
   const dispatch = useDispatch();
   const releaseInfo = useSelector((state) => state.individualRelease);
+  //This function converts the returned youtube 'watch' uris into youtube 'embed' uris
+  // which is neccessary to host them.
   function youtube_parser(url) {
-    var regExp = 
+    let regExp =
       /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
-    var match = url.match(regExp);
-    return match && match[7].length == 11 ? match[7] : false;
+    let match = url.match(regExp);
+    return match && match[7].length === 11 ? match[7] : false;
   }
   const videoLinks = [];
-  releaseInfo.videos.map((url) => {
-    console.log(url.uri)
+  releaseInfo.videos.forEach((url) => {
     videoLinks.push(youtube_parser(url.uri));
   });
 
-  console.log(videoLinks)
   return (
     <div className="releaseInfoContainer">
       <img src={releaseInfo.img} alt={releaseInfo.title} />
@@ -34,6 +34,7 @@ function ReleaseInfo() {
       <div className="videoPlayer">
         {videoLinks.map((video, i) => (
           <iframe
+            key={i}
             title={i}
             id="ytplayer"
             type="text/html"

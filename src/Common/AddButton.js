@@ -2,14 +2,44 @@ import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import React, {useState} from "react";
 import {Button, Modal, Form} from "react-bootstrap";
-import {database} from "../Auth/firebase";
-import Search from "./Search";
+// import {database} from "../Auth/firebase";
+
 import {useDispatch, useSelector} from "react-redux";
 import { search } from "../Redux/Actions/searchAction";
 
 function AddButton(props) {
   const dispatch = useDispatch();
   const navType = useSelector((state) => state.nav.type);
+
+  // regex tester
+
+  const regexTester = () => {
+    let url = "https://www.youtube.com/watch?v=BDgQJCekDAk"
+    let regExp = 
+        /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+        var match = url.match(regExp);
+    console.log(match)
+        // return match && match[7].length == 11 ? match[7] : false;
+  }
+regexTester()
+
+  // function youtube_parser(url) {
+  //   var regExp = 
+  //     /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+  //   var match = url.match(regExp);
+  //   return match && match[7].length == 11 ? match[7] : false;
+  // }
+  // const videoLinks = [];
+  // releaseInfo.videos.map((url) => {
+  //   console.log(url.uri)
+  //   videoLinks.push(youtube_parser(url.uri));
+  // });
+
+
+
+
+
+
 
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
@@ -29,13 +59,13 @@ function AddButton(props) {
   };
 
 
-  const addHandler = (type) => {
-    database.type.add({
-      name,
-    });
-    setName("");
-    closeModal();
-  };
+  // const addHandler = (type) => {
+  //   database.type.add({
+  //     name,
+  //   });
+  //   setName("");
+  //   closeModal();
+  // };
   return (
     <>
       <Button onClick={openModal} variant="outline-success" size="sm">

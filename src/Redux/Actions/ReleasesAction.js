@@ -17,6 +17,20 @@ export const loadReleases = (id, type) => async (dispatch) => {
     },
   });
 
+  // const dummyLabelCodes = [90336, 157803, 23127, 389319, 153824, 88949];
+  // for (let i = 0; i < dummyLabelCodes.length; i++) {
+  //   let data = await DataDiviner(label(dummyLabelCodes[i]));
+  //   allData.push({
+  //     name: data[0].name,
+  //     image: data[0].images[0].uri,
+  //     profile: data[0].profile,
+  //     url: data[0].urls[0],
+  //     id: data[0].id,
+  //     type: "label",
+  //   });
+  // }
+
+
   const pageNumber = await axios.get(labelReleases(id, 1));
 
   let allData = [];

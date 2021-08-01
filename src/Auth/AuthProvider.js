@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from "react";
 import {auth} from "../Auth/firebase";
 import {useDispatch} from "react-redux";
-import { signButton } from "../Redux/Actions/navSelectorAction";
+import { navSelectorDispatch, signButton } from "../Redux/Actions/navSelectorAction";
 
 const AuthContext = React.createContext();
 
@@ -16,6 +16,7 @@ export function AuthProvider({children}) {
 
   function signUp(email, password) {
     dispatch(signButton(true));
+    dispatch(navSelectorDispatch("label"));
     return auth.createUserWithEmailAndPassword(email, password);
   }
 

@@ -28,7 +28,7 @@ export const navSelectorDispatch = (nav) => async (dispatch) => {
   const allData = [];
 
   if (nav === "label") {
-    //todo replace these codes with some from local storage
+    //todo replace these codes with some from the users db
     const dummyLabelCodes = [90336, 157803, 23127, 389319, 153824, 88949];
     for (let i = 0; i < dummyLabelCodes.length; i++) {
       let data = await DataDiviner(label(dummyLabelCodes[i]));
@@ -42,7 +42,7 @@ export const navSelectorDispatch = (nav) => async (dispatch) => {
       });
     }
   } else if (nav === "artist") {
-    //todo replace these codes with some from local storage
+    //todo replace these codes with some from the users db
     const dummyCodes = [411447, 3415415, 216297, 59946, 1868506, 830699];
     for (let i = 0; i < dummyCodes.length; i++) {
       let data = await DataDiviner(artist(dummyCodes[i]));
