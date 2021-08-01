@@ -5,6 +5,8 @@ const Search = () => {
   const [searchInput, setSearchInput] = useState();
   const releaseInfo = useSelector((state) => state.releases.all);
 
+
+
   const inputHandler = (e) => {
     setSearchInput(e);
   };
@@ -20,23 +22,23 @@ const Search = () => {
         />
         <button>Search</button>
         {searchInput &&
-          releaseInfo.map((release) => {
+          releaseInfo.map((release, i) => {
             if (
               release.title.toLowerCase().includes(searchInput.toLowerCase())
             ) {
               return (
                 <div className="searchResults">
-                  {/* <Release
-                      name={release.title}
-                      format={release.format}
-                      released={release.year}
-                      artist={release.artist}
-                      id={release.id}
-                      master={release.resource_url}
-                      image={release.thumb}
-                      key={release.id}
-                      catno={release.catno}
-                    /> */}
+                  <SearchRelease
+                    name={release.title}
+                    format={release.format}
+                    released={release.year}
+                    artist={release.artist}
+                    id={release.id}
+                    master={release.resource_url}
+                    image={release.thumb}
+                    key={i}
+                    catno={release.catno}
+                  />
                 </div>
               );
             }
@@ -45,7 +47,7 @@ const Search = () => {
             ) {
               return (
                 <div className="searchResults">
-                  {/* <Release
+                  <SearchRelease
                         name={release.title}
                         format={release.format}
                         released={release.year}
@@ -53,9 +55,9 @@ const Search = () => {
                         id={release.id}
                         master={release.resource_url}
                         image={release.thumb}
-                        key={release.id}
+                        key={i}
                         catno={release.catno}
-                      />*/}
+                      />
                 </div>
               );
             } else return <></>;
@@ -65,4 +67,26 @@ const Search = () => {
   );
 };
 
-export default Search
+const SearchRelease = ({
+  name,
+  format,
+  released,
+  artist,
+  id,
+  master,
+  image,
+  key,
+  catno,
+}) => {
+  return (
+    <div>
+      <img src={image} alt={name} />
+      <span>
+        <p>{artist}</p>
+        <>{name}</>
+      </span>
+    </div>
+  );
+};
+
+export default Search;

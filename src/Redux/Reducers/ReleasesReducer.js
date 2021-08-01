@@ -5,8 +5,7 @@ const initState = {
   label: [],
   preorders: [],
   search: [],
-  loading: false
-
+  loading: false,
 };
 
 const releasesReducer = (state = initState, action) => {
@@ -14,8 +13,13 @@ const releasesReducer = (state = initState, action) => {
     case "FETCH_RELEASES":
       return {...state, loading: true};
     case "FETCH_RELEASES_SUCCESS":
-      return {...state, all: action.payload.all.sort((a, b) => b.year - a.year), label: action.payload.label, loading: false};
-      case "SEARCH":
+      return {
+        ...state,
+        all: action.payload.all.sort((a, b) => b.year - a.year),
+        label: action.payload.label,
+        loading: false,
+      };
+    case "SEARCH":
       return {...state, loading: true};
     case "SEARCH_SUCCESS":
       return {...state, all: action.payload.all, loading: false};

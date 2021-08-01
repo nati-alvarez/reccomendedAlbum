@@ -1,6 +1,5 @@
 import React from "react";
-import {useDispatch, useSelector} from "react-redux";
-
+import {useDispatch} from "react-redux";
 import {
   navSelectorDispatch,
   navVisibility,
@@ -17,7 +16,6 @@ import {Link} from "react-router-dom";
 function Header() {
   const {currentUser} = useAuth();
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.nav);
 
   return (
     <div className="headerContainer">
@@ -41,7 +39,7 @@ function Header() {
             <p>Dashboard</p>
           </span>
         </Link>
-        {data.signToggle ? (
+        {currentUser ? (
           <span>
             <Link to={"/dashboard"}>
               <FontAwesomeIcon

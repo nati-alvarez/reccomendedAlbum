@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useState} from "react";
 import {auth} from "../Auth/firebase";
 import {useDispatch} from "react-redux";
 import { navSelectorDispatch, signButton } from "../Redux/Actions/navSelectorAction";
+import { loadReleasesOnLogin } from "../Redux/Actions/ReleasesAction";
 
 const AuthContext = React.createContext();
 
@@ -22,6 +23,7 @@ export function AuthProvider({children}) {
 
   function login(email, password) {
     dispatch(signButton(true));
+    dispatch(loadReleasesOnLogin());
     return auth.signInWithEmailAndPassword(email, password);
   }
 
