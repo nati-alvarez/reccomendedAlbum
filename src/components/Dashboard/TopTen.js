@@ -1,22 +1,23 @@
 import React from "react";
-import picture from "../../assets/genre.png";
-import {useAuth} from "../../Auth/AuthProvider";
-import {v4 as uuidv4} from "uuid";
+// import picture from "../../assets/genre.png";
+// import {useAuth} from "../../Auth/AuthProvider";
+// import {v4 as uuidv4} from "uuid";
+import AddButton from "../../Common/AddButton";
 function TopTen(props) {
-  const {currentUser} = useAuth();
+  // const {currentUser} = useAuth();
 
-  const data = [
-    picture,
-    picture,
-    picture,
-    picture,
-    picture,
-    picture,
-    picture,
-    picture,
-    picture,
-    picture,
-  ];
+  // const data = [
+  //   picture,
+  //   picture,
+  //   picture,
+  //   picture,
+  //   picture,
+  //   picture,
+  //   picture,
+  //   picture,
+  //   picture,
+  //   picture,
+  // ];
 
   return (
     <div className="topTenContainer">
@@ -24,9 +25,12 @@ function TopTen(props) {
         <h4>Top Ten</h4>
       </div>
       <div className="topTenImage">
-        {data.map((image) => (
+      <div className="navButtons">
+      <AddButton />
+      </div>
+        {/* {data.map((image) => (
           <img src={image} alt="topTenImage" key={uuidv4()} />
-        ))}
+        ))} */}
       </div>
     </div>
   );

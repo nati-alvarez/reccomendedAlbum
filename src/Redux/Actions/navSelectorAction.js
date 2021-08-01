@@ -27,7 +27,7 @@ export const navSelectorDispatch = (nav) => async (dispatch) => {
 
   const allData = [];
 
-  if (nav === "labels") {
+  if (nav === "label") {
     //todo replace these codes with some from local storage
     const dummyLabelCodes = [90336, 157803, 23127, 389319, 153824, 88949];
     for (let i = 0; i < dummyLabelCodes.length; i++) {
@@ -41,7 +41,7 @@ export const navSelectorDispatch = (nav) => async (dispatch) => {
         type: "label",
       });
     }
-  } else if (nav === "artists") {
+  } else if (nav === "artist") {
     //todo replace these codes with some from local storage
     const dummyCodes = [411447, 3415415, 216297, 59946, 1868506, 830699];
     for (let i = 0; i < dummyCodes.length; i++) {
@@ -84,6 +84,7 @@ export const navSelectorDispatch = (nav) => async (dispatch) => {
     payload: {
       all: allData,
       loading: false,
+      type: nav
     },
   });
 };
@@ -102,6 +103,7 @@ export const signButton = (data) => (dispatch) => {
     type: "SIGN_TOGGLE",
     payload: {
       signToggle: data
+      
     }
   });
 }

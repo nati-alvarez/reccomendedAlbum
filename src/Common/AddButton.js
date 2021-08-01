@@ -4,7 +4,13 @@ import React, {useState} from "react";
 import {Button, Modal, Form} from "react-bootstrap";
 import {database} from "../Auth/firebase";
 import Search from "./Search";
+import {useDispatch, useSelector} from "react-redux";
+import { search } from "../Redux/Actions/searchAction";
+
 function AddButton(props) {
+  const dispatch = useDispatch();
+  const navType = useSelector((state) => state.nav.type);
+
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   //modal functions
@@ -16,6 +22,12 @@ function AddButton(props) {
   function closeModal() {
     setOpen(false);
   }
+
+  const searchHandler = (e) => {
+    e.preventDefault();
+  dispatch(search(name, navType))
+  };
+
 
   const addHandler = (type) => {
     database.type.add({
@@ -29,11 +41,11 @@ function AddButton(props) {
       <Button onClick={openModal} variant="outline-success" size="sm">
         <FontAwesomeIcon icon={faPlus} />
       </Button>
-      <div className="searchResultsContainer">
+      {/* <div className="searchResultsContainer">
         <Search />
-      </div>
+      </div> */}
       <Modal show={open} onHide={closeModal}>
-        <Form onSubmit={addHandler}>
+        <Form onSubmit={searchHandler}>
           <Modal.Body>
             <Form.Group>
               <Form.Label>Name</Form.Label>
@@ -49,8 +61,8 @@ function AddButton(props) {
             <Button variant="secondary" onClick={closeModal}>
               Close
             </Button>
-            <Button variant="success" type="submit">
-              Add Folder
+            <Button variant="success" type="submit" >
+              Search
             </Button>
           </Modal.Footer>
         </Form>

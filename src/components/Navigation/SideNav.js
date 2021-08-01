@@ -9,7 +9,7 @@ import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 import AddButton from "../../Common/AddButton";
 
 //THIS IS THE NAVIGATION COMPONENT THAT SITS ON THE LEFT HAND SIDE OF THE SCREEN. IT IS POPULATED
-//BY DATA PULLED IN FROM THE API.
+//BY DATA PULLED IN FROM THE API OR THE USERS DB (IF THEY ARE SIGNED IN).
 
 function SideNavLabels() {
   const dispatch = useDispatch();
@@ -30,9 +30,7 @@ function SideNavLabels() {
           dispatch(navVisibility());
         }}
       ></FontAwesomeIcon>
-      <div className="navButtons">
-      <AddButton />
-      </div>
+
       {navSelect.all.map((asset, i) => (
         <Link to={`/${asset.type}/${asset.name}`} key={`link ${asset.name}`}>
           <div

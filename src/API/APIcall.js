@@ -27,4 +27,4 @@ export const formatDetails = (masterId) =>
   `${base_url}masters/${masterId}?key=${process.env.REACT_APP_DISCOGS_API_KEY}&secret=${process.env.REACT_APP_DISCOGS_API_SECRET}`;
 //SEARCHED TITLE
 
-export const searchTitle = (input) => `${base_url}database/search?q=${input}`;
+export const searchTitle = (input, type) => `${base_url}database/search?q=${input}&${type}?key=${process.env.REACT_APP_DISCOGS_API_KEY}&secret=${process.env.REACT_APP_DISCOGS_API_SECRET}`;

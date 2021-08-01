@@ -19,14 +19,14 @@ function Header() {
   return (
     <div className="headerContainer">
       <nav>
-        <span onClick={() => dispatch(navSelectorDispatch("labels"))}>
+        <span onClick={() => dispatch(navSelectorDispatch("label"))}>
           <FontAwesomeIcon
             className="fai"
             icon={faRecordVinyl}
           ></FontAwesomeIcon>
           <p>Label</p>
         </span>
-        <span onClick={() => dispatch(navSelectorDispatch("artists"))}>
+        <span onClick={() => dispatch(navSelectorDispatch("artist"))}>
           <FontAwesomeIcon className="fai" icon={faUserAlt}></FontAwesomeIcon>
           <p>Artist</p>
         </span>

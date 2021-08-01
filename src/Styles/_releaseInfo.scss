@@ -28,9 +28,9 @@ padding: 20px;
   }
 }
 .videoPlayer {
-    border: 2px solid red;
-    @include flexColumn;
 
+    @include flexColumn;
+gap: 20px;
     padding: 20px;
     width: 300px;
 }

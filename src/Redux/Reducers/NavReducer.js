@@ -4,6 +4,7 @@ const initialState = {
   all: [],
   selected: [],
   loading: false,
+  type: "",
 };
 
 const navReducer = (state = initialState, action) => {
@@ -11,7 +12,12 @@ const navReducer = (state = initialState, action) => {
     case "NAV_SELECTOR":
       return {...state, show: true, all: action.payload.all};
     case "NAV_SELECTOR_SUCCESS":
-      return {...state, all: action.payload.all, loading: false};
+      return {
+        ...state,
+        all: action.payload.all,
+        loading: false,
+        type: action.payload.type,
+      };
     case "NAV_VISIBLE":
       return {...state, show: false};
     case "SIGN_TOGGLE":
