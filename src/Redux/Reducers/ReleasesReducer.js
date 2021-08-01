@@ -22,7 +22,11 @@ const releasesReducer = (state = initState, action) => {
     case "SEARCH":
       return {...state, loading: true};
     case "SEARCH_SUCCESS":
-      return {...state, all: action.payload.all, loading: false};
+      return {
+        ...state,
+        search: action.payload.all,
+        loading: false,
+      };
     default:
       return {...state};
   }

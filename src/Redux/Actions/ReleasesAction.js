@@ -146,7 +146,7 @@ const allData = []
   let merged = [].concat.apply([], allData);
   
   dispatch({
-    type: "FETCH_RELEASES_SUCCESS",
+    type: "SEARCH_SUCCESS",
     payload: {
       all: merged,
 

@@ -1,15 +1,16 @@
-import {useState} from "react";
+import { useState} from "react";
 import {useSelector} from "react-redux";
+import {database, topTen} from "../Auth/firebase";
+import {useAuth} from "../Auth/AuthProvider";
 
 const Search = () => {
   const [searchInput, setSearchInput] = useState();
-  const releaseInfo = useSelector((state) => state.releases.all);
-
-
+  const releaseInfo = useSelector((state) => state.releases.search);
 
   const inputHandler = (e) => {
     setSearchInput(e);
   };
+
 
   return (
     <div className="styledSearch">
@@ -20,7 +21,6 @@ const Search = () => {
           placeholder={"search titles"}
           onChange={(e) => inputHandler(e.target.value)}
         />
-        <button>Search</button>
         {searchInput &&
           releaseInfo.map((release, i) => {
             if (
@@ -30,13 +30,8 @@ const Search = () => {
                 <div className="searchResults">
                   <SearchRelease
                     name={release.title}
-                    format={release.format}
-                    released={release.year}
                     artist={release.artist}
-                    id={release.id}
-                    master={release.resource_url}
                     image={release.thumb}
-                    key={i}
                     catno={release.catno}
                   />
                 </div>
@@ -48,16 +43,11 @@ const Search = () => {
               return (
                 <div className="searchResults">
                   <SearchRelease
-                        name={release.title}
-                        format={release.format}
-                        released={release.year}
-                        artist={release.artist}
-                        id={release.id}
-                        master={release.resource_url}
-                        image={release.thumb}
-                        key={i}
-                        catno={release.catno}
-                      />
+                    name={release.title}
+                    artist={release.artist}
+                    image={release.thumb}
+                    catno={release.catno}
+                  />
                 </div>
               );
             } else return <></>;
@@ -67,23 +57,46 @@ const Search = () => {
   );
 };
 
-const SearchRelease = ({
-  name,
-  format,
-  released,
-  artist,
-  id,
-  master,
-  image,
-  key,
-  catno,
-}) => {
+const SearchRelease = ({name, artist, image, catno}) => {
+  const [position, setPosition] = useState(1);
+
+  const {currentUser} = useAuth();
+
+  let topTen = database.topTen;
+  //to do change hardcoded number to dynamic number from top ten list
+
+  const addTitle = (number) => {
+    topTen.doc(number).set({
+      name: {name},
+      artist: {artist},
+      image: {image},
+      userId: currentUser.uid,
+      number: number,
+    });
+  };
+  const changePositionGet = (number) => {
+    topTen.doc(number).set({
+      name: {name},
+      artist: {artist},
+      image: {image},
+      userId: currentUser.uid,
+      number: number,
+    });
+  };
+
+
+  const addHandler = () => {
+    addTitle(position.toString());
+    setPosition(position + 1);
+  };
+
   return (
-    <div>
+    <div onClick={addHandler}>
       <img src={image} alt={name} />
       <span>
         <p>{artist}</p>
-        <>{name}</>
+        <p>{name}</p>
+        <p>{catno}</p>
       </span>
     </div>
   );
