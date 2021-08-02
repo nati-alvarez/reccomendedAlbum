@@ -11,6 +11,8 @@ function Admin(props) {
 
   const [error, setError] = useState("");
   const history = useHistory();
+
+
   async function handleLogout() {
     setError("");
     try {
@@ -20,8 +22,8 @@ function Admin(props) {
       setError("Failed to logout");
     }
   }
+  
   return (
-
     <div className='adminContainer'>
                   {error && <Alert variant="danger">{error}</Alert>}
       <strong>Email:</strong> {currentUser.email}

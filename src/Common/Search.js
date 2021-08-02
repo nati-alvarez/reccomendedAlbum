@@ -1,6 +1,6 @@
 import { useState} from "react";
 import {useSelector} from "react-redux";
-import {database, topTen} from "../Auth/firebase";
+import {database} from "../Auth/firebase";
 import {useAuth} from "../Auth/AuthProvider";
 
 const Search = () => {
@@ -74,15 +74,15 @@ const SearchRelease = ({name, artist, image, catno}) => {
       number: number,
     });
   };
-  const changePositionGet = (number) => {
-    topTen.doc(number).set({
-      name: {name},
-      artist: {artist},
-      image: {image},
-      userId: currentUser.uid,
-      number: number,
-    });
-  };
+  // const changePositionGet = (number) => {
+  //   topTen.doc(number).set({
+  //     name: {name},
+  //     artist: {artist},
+  //     image: {image},
+  //     userId: currentUser.uid,
+  //     number: number,
+  //   });
+  // };
 
 
   const addHandler = () => {

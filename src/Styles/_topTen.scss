@@ -1,0 +1,12 @@
+.topTenContainer {
+    border: 2px solid red;
+    height: 50rem;
+    display: flex;
+    .topTenImage {
+        border: 2px solid green;
+        display: flex;
+        .img {
+            width: 100%;
+        }
+    }
+}

@@ -40,25 +40,25 @@ function Header() {
           </span>
         </Link>
         {currentUser ? (
-          <span>
-            <Link to={"/dashboard"}>
+          <Link to={"/dashboard"}>
+            <span>
               <FontAwesomeIcon
                 className="fai"
                 icon={faDragon}
               ></FontAwesomeIcon>
               <p>Welcome back</p>
-            </Link>
-          </span>
+            </span>
+          </Link>
         ) : (
-          <span>
-            <Link to={"/login"}>
+          <Link to={"/login"}>
+            <span>
               <FontAwesomeIcon
                 className="fai"
                 icon={faDoorOpen}
               ></FontAwesomeIcon>
               <p>Sign In</p>
-            </Link>
-          </span>
+            </span>
+          </Link>
         )}
       </nav>
     </div>
