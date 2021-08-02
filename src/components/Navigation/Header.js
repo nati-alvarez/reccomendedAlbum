@@ -12,15 +12,12 @@ import {faMusic} from "@fortawesome/free-solid-svg-icons";
 import {faDoorOpen} from "@fortawesome/free-solid-svg-icons";
 import {faDragon} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
-import { userActions } from "../../Redux/Actions/userActions";
+
 
 function Header() {
   const {currentUser} = useAuth();
   const dispatch = useDispatch();
-const dashboardHandler = () => {
-  dispatch(userActions())
-  dispatch(navVisibility())
-}
+
   return (
     <div className="headerContainer">
       <nav>
@@ -38,14 +35,14 @@ const dashboardHandler = () => {
           <p>Artist</p>
         </span> */}
         <Link to={"/search"}>
-          <span>
+          <span onClick={() =>  dispatch(navVisibility())}>
             <FontAwesomeIcon className="fai" icon={faMusic}></FontAwesomeIcon>
             <p>Search</p>
           </span>
         </Link>
         {currentUser ? (
           <Link to={"/dashboard"}>
-            <span>
+          <span onClick={() =>  dispatch(navVisibility())}>
               <FontAwesomeIcon
                 className="fai"
                 icon={faDragon}

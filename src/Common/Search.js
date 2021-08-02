@@ -6,7 +6,8 @@ import {useAuth} from "../Auth/AuthProvider";
 const Search = () => {
   const [searchInput, setSearchInput] = useState();
   const releaseInfo = useSelector((state) => state.releases.search);
-
+  
+console.log(releaseInfo)
   const inputHandler = (e) => {
     setSearchInput(e);
   };
