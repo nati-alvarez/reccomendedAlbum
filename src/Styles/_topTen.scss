@@ -1,25 +1,57 @@
 @import "./mixins.scss";
 
 .topTenContainer {
-    border: 1px solid gainsboro;
-    border-radius: 10px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  // position: sticky;
+  border: 1px solid gainsboro;
+  border-radius: 10px;
+  width: 100%;
+  max-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-    padding: 50px 0px;
-    h4 {
-        padding: 20px;
-    }
+  padding: 50px 0px;
+  h4 {
+    padding: 20px;
+  }
+  img {
+    float: left;
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+  }
+  .topTenImage {
+    max-height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+  }
+  p {
+    font-size: 10px;
+    text-align: center;
+  }
+  @include breakpoint(mobileLarge) {
     img {
-      max-width: 6rem;
-      max-height: 100%;
-      border-radius: 20px;
+      width: 75px;
+      height: 75px;
     }
-    .topTenImage {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2px;
+  }
+  @include breakpoint(tablet) {
+    img {
+      width: 100px;
+      height: 100px;
     }
+  }
+  @include breakpoint(laptop) {
+    img {
+      width: 145px;
+      height: 145px;
+    }
+  }
+  @include breakpoint(desktop) {
+    img {
+      width: 200px;
+      height: 200px;
+    }
+  }
 }

@@ -37,10 +37,10 @@ const dashboardHandler = () => {
           <FontAwesomeIcon className="fai" icon={faUserAlt}></FontAwesomeIcon>
           <p>Artist</p>
         </span> */}
-        <Link to={currentUser ? "/dashboard" : "/login"}>
-          <span onClick={() =>  dashboardHandler()}>
+        <Link to={"/search"}>
+          <span>
             <FontAwesomeIcon className="fai" icon={faMusic}></FontAwesomeIcon>
-            <p>Dashboard</p>
+            <p>Search</p>
           </span>
         </Link>
         {currentUser ? (
@@ -50,7 +50,7 @@ const dashboardHandler = () => {
                 className="fai"
                 icon={faDragon}
               ></FontAwesomeIcon>
-              <p>Welcome back</p>
+              <p>Dashboard</p>
             </span>
           </Link>
         ) : (

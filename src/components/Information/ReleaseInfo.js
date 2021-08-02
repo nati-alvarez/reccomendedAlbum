@@ -13,9 +13,12 @@ function ReleaseInfo() {
     return match && match[7].length === 11 ? match[7] : false;
   }
   const videoLinks = [];
-  releaseInfo.videos.forEach((url) => {
-    videoLinks.push(youtube_parser(url.uri));
-  });
+  if (releaseInfo.videos) {
+    releaseInfo.videos.forEach((url) => {
+      videoLinks.push(youtube_parser(url.uri));
+    });
+  }
+  
 
   return (
     <div className="releaseInfoContainer">

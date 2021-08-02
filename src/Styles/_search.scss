@@ -1,32 +1,47 @@
 @import "./mixins.scss";
 
 .addButton {
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.searchContainer {
+    padding: 20px;
+    position: absolute;
+    width: 100%;
 }
 .styledSearch {
-    padding: 3rem 5rem;
+//   padding: 3rem 5rem;
   text-align: center;
   input {
-    width: 30vw;
-    font-size: 1.5rem;
+    // width: 80%;
+    font-size: 1rem;
     padding: 0.5rem;
     border: 0.5px solid black;
+    border-radius: 20px;
     margin-top: 1rem;
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
     font-weight: bold;
-}
-button {
+  }
+  button {
     font-size: 1.5rem;
     border: none;
     padding: 0.5rem 2rem;
     cursor: pointer;
     background: #ff7676;
     color: white;
-}
+  }
 }
 .searchResults {
-    padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  img {
+    
+  }
+  p {font-size: 18px;}
+}
+.searchResult {
+  padding: 40px;
 }

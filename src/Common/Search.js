@@ -14,20 +14,21 @@ const Search = () => {
 
   return (
     <div className="styledSearch">
-      <div className="Search">
+      <div className="searchContainer">
         <input
           type="text"
           key="searchBar"
           placeholder={"search titles"}
           onChange={(e) => inputHandler(e.target.value)}
         />
+        <div className="searchResults">
         {searchInput &&
           releaseInfo.map((release, i) => {
             if (
               release.title.toLowerCase().includes(searchInput.toLowerCase())
             ) {
               return (
-                <div className="searchResults">
+                <div className="searchResult">
                   <SearchRelease
                     name={release.title}
                     artist={release.artist}
@@ -41,7 +42,7 @@ const Search = () => {
               release.artist.toLowerCase().includes(searchInput.toLowerCase())
             ) {
               return (
-                <div className="searchResults">
+                <div className="searchResult">
                   <SearchRelease
                     name={release.title}
                     artist={release.artist}
@@ -52,6 +53,7 @@ const Search = () => {
               );
             } else return <></>;
           })}
+          </div>
       </div>
     </div>
   );

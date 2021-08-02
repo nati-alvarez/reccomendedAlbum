@@ -88,7 +88,7 @@ export const loadReleasesOnLogin = () => async (dispatch) => {
 const allData = []
   for (let i = 0; i < dummyLabelCodes.length; i++) {
     const pageNumber = await axios.get(labelReleases(dummyLabelCodes[i], 1));
-
+console.log(pageNumber)
     let allReleaseData = [];
     //second for loop gets the releases for each label
     for (let j = 1; j <= pageNumber.data.pagination.pages; j++) {
