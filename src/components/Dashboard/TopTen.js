@@ -1,10 +1,16 @@
 import React from "react";
 import {useSelector} from "react-redux";
 
+
 import AddButton from "../../Common/AddButton";
+
 function TopTen(props) {
+
+
   const topTenData = useSelector((state) => state.user);
 
+
+console.log(topTenData.topTen)
   return (
     <div className="topTenContainer">
       <div>
@@ -13,6 +19,7 @@ function TopTen(props) {
       <div className="topTenImage">
         {topTenData.topTen.map((data, i) => (
           <div className='topTenImageHolder' key={i}>
+            {console.log(data)}
             <img src={data.image.image} />
           </div>
         ))}

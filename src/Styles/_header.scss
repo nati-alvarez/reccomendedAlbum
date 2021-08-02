@@ -1,3 +1,5 @@
+@import "./mixins.scss";
+
 .headerContainer {
   //position: absolute;
   width: 100%;
@@ -10,19 +12,17 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
   }
   span {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+    // width: 100%;
+    @include flexColumn;
     justify-content: center;
-    align-items: center;
-    margin-top: 25px;
+    margin-top: 50px;
     background: transparent;
-    border: none;
+padding: 10px;
     cursor: pointer;
-    padding: 1rem;
+    // padding-top: .1rem;
     transition: all 0.3s ease;
 
     &:hover {
@@ -36,13 +36,12 @@
         height: 25px;
       }
     }
-
   }
   @include breakpoint(desktop) {
     margin-top: 50px;
-    
+
     .fai {
-      
+      margin-top: 200px;
       width: 275px;
       height: 55px;
     }
@@ -58,6 +57,7 @@
   p {
     padding: 10px;
     white-space: nowrap;
+    margin-bottom: 0rem;
   }
   a {
     text-align: center;

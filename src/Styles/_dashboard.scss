@@ -1,3 +1,5 @@
+@import "./mixins.scss";
+
 .dashBoardContainer {
     display: flex;
     padding: 20px;
@@ -76,20 +78,3 @@
   }
 }
 
-.topTenContainer {
-    border: 1px solid gainsboro;
-    border-radius: 10px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    img {
-      max-width: 6vw;
-      max-height: 100%;
-      border-radius: 20px;
-    }
-    .topTenImage {
-        display: flex;
-        gap: 2px;
-    }
-}

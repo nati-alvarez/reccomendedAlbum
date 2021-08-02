@@ -1,12 +1,25 @@
+@import "./mixins.scss";
+
 .topTenContainer {
-    border: 2px solid red;
-    height: 50rem;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    width: 100%;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 50px 0px;
+    h4 {
+        padding: 20px;
+    }
+    img {
+      max-width: 6rem;
+      max-height: 100%;
+      border-radius: 20px;
+    }
     .topTenImage {
-        border: 2px solid green;
         display: flex;
-        .img {
-            width: 100%;
-        }
+        flex-wrap: wrap;
+        gap: 2px;
     }
 }
