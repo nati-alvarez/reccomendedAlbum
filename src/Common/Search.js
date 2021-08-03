@@ -7,7 +7,7 @@ const Search = () => {
   const [searchInput, setSearchInput] = useState();
   const releaseInfo = useSelector((state) => state.releases.search);
   
-console.log(releaseInfo)
+
   const inputHandler = (e) => {
     setSearchInput(e);
   };
@@ -89,8 +89,13 @@ const SearchRelease = ({name, artist, image, catno}) => {
 
 
   const addHandler = () => {
-    addTitle(position.toString());
-    setPosition(position + 1);
+    if (currentUser) {
+      addTitle(position.toString())
+      setPosition(position + 1);  
+    } else {
+      
+    }
+    
   };
 
   return (

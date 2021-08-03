@@ -12,11 +12,21 @@ import {faMusic} from "@fortawesome/free-solid-svg-icons";
 import {faDoorOpen} from "@fortawesome/free-solid-svg-icons";
 import {faDragon} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
-
+import {loadReleasesSearch} from "../../Redux/Actions/ReleasesAction";
 
 function Header() {
   const {currentUser} = useAuth();
   const dispatch = useDispatch();
+
+  const searchHandler = () => {
+    // if the user is not signed in run the all data
+    //fetcher, otherwise this will have been run when the user logged in.
+    if (!currentUser) {
+      dispatch(loadReleasesSearch());
+    }
+
+    dispatch(navVisibility());
+  };
 
   return (
     <div className="headerContainer">
@@ -35,14 +45,14 @@ function Header() {
           <p>Artist</p>
         </span> */}
         <Link to={"/search"}>
-          <span onClick={() =>  dispatch(navVisibility())}>
+          <span onClick={searchHandler}>
             <FontAwesomeIcon className="fai" icon={faMusic}></FontAwesomeIcon>
             <p>Search</p>
           </span>
         </Link>
         {currentUser ? (
           <Link to={"/dashboard"}>
-          <span onClick={() =>  dispatch(navVisibility())}>
+            <span onClick={() => dispatch(navVisibility())}>
               <FontAwesomeIcon
                 className="fai"
                 icon={faDragon}

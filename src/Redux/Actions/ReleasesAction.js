@@ -4,7 +4,6 @@
 import axios from "axios";
 import {labelReleases} from "../../API/APIcall";
 
-
 export const loadReleases = (id, type) => async (dispatch) => {
   dispatch({
     type: "FETCH_RELEASES",
@@ -18,7 +17,7 @@ export const loadReleases = (id, type) => async (dispatch) => {
   let allData = [];
   for (let i = 1; i <= pageNumber.data.pagination.pages; i++) {
     let data = await axios.get(labelReleases(id, i));
-    console.log(data)
+    console.log(data);
     allData.push(data.data.releases);
   }
   let releasesData = [].concat.apply([], allData);
@@ -75,7 +74,7 @@ export const loadReleases = (id, type) => async (dispatch) => {
   });
 };
 
-export const loadReleasesOnLogin = () => async (dispatch) => {
+export const loadReleasesSearch = () => async (dispatch) => {
   dispatch({
     type: "FETCH_RELEASES",
     payload: {
@@ -85,10 +84,10 @@ export const loadReleasesOnLogin = () => async (dispatch) => {
 
   const dummyLabelCodes = [90336, 157803, 23127, 389319, 153824, 88949];
   //first for loop pulls up info on each label
-const allData = []
+  const allData = [];
   for (let i = 0; i < dummyLabelCodes.length; i++) {
     const pageNumber = await axios.get(labelReleases(dummyLabelCodes[i], 1));
-console.log(pageNumber)
+    console.log(pageNumber);
     let allReleaseData = [];
     //second for loop gets the releases for each label
     for (let j = 1; j <= pageNumber.data.pagination.pages; j++) {
@@ -97,24 +96,10 @@ console.log(pageNumber)
     }
     let releasesData = [].concat.apply([], allReleaseData);
 
-    //creates dictionary to store all unique records
+
     const releasesByTitle = {};
     const releases = [];
-    //checks dictionary to see if record by a certain title is already in the dictionary
 
-    //if it is, move on to check the format, else, add it to the dictionary
-
-    //overwrite and replace if the format isnt CD or Vinyl
-    //POSSIBLE FORMATS
-    // FILE
-    // W/LBL
-    // PROMO
-    // TP
-    // PAP
-    // CD
-    // VINYL
-    //FIlter the data up front
-    // eslint-disable-next-line
     releasesData.forEach((release) => {
       if (!release.format.includes("File") && release.thumb) {
         if (!releasesByTitle[release.title]) {
@@ -135,16 +120,18 @@ console.log(pageNumber)
         }
       }
     });
-    //add the records in dictionary to releases array to pass to reducer
+
     for (let title in releasesByTitle) {
       releases.push(releasesByTitle[title]);
     }
-    //flatten the array of arrays into a single array for searching all labels
+        //here we flatten the arrays, this allows search functionality
+    // if the user wants to search all labels then they cannot be in seperate 
+    // arrays (organized by label), they have to be in one big array. 
 
-    allData.push(releases)
+    allData.push(releases);
   }
   let merged = [].concat.apply([], allData);
-  
+
   dispatch({
     type: "SEARCH_SUCCESS",
     payload: {

@@ -5,7 +5,7 @@ import {
   navSelectorDispatch,
   signButton,
 } from "../Redux/Actions/navSelectorAction";
-import {loadReleasesOnLogin} from "../Redux/Actions/ReleasesAction";
+import {loadReleasesSearch} from "../Redux/Actions/ReleasesAction";
 import {userActions} from "../Redux/Actions/userActions";
 
 const AuthContext = React.createContext();
@@ -26,8 +26,11 @@ export function AuthProvider({children}) {
   }
 
   function login(email, password) {
+    //user actions pulls in user data from the db
     dispatch(userActions());
-  dispatch(loadReleasesOnLogin())
+    //load releases pulls in label info from the api
+    //this can be removed once the db is properly set up.
+  dispatch(loadReleasesSearch())
     return auth.signInWithEmailAndPassword(email, password);
   }
 

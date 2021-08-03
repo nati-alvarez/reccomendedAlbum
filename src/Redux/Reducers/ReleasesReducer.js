@@ -4,7 +4,7 @@ const initState = {
   all: 0,
   label: [],
   preorders: [],
-  search: [],
+  search: false,
   loading: false,
 };
 
@@ -16,7 +16,6 @@ const releasesReducer = (state = initState, action) => {
       return {
         ...state,
         all: action.payload.all.sort((a, b) => b.year - a.year),
-        search: action.payload.all,
         label: action.payload.label,
         loading: false,
       };
