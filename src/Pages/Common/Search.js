@@ -1,17 +1,15 @@
-import { useState} from "react";
+import {useState} from "react";
 import {useSelector} from "react-redux";
-import {database} from "../Auth/firebase";
-import {useAuth} from "../Auth/AuthProvider";
+import {database} from "../../Auth/firebase";
+import {useAuth} from "../../Auth/AuthProvider";
 
 const Search = () => {
   const [searchInput, setSearchInput] = useState();
   const releaseInfo = useSelector((state) => state.releases.search);
-  
-
+console.log(releaseInfo)
   const inputHandler = (e) => {
     setSearchInput(e);
   };
-
 
   return (
     <div className="styledSearch">
@@ -23,38 +21,40 @@ const Search = () => {
           onChange={(e) => inputHandler(e.target.value)}
         />
         <div className="searchResults">
-        {searchInput &&
-          releaseInfo.map((release, i) => {
-            if (
-              release.title.toLowerCase().includes(searchInput.toLowerCase())
-            ) {
-              return (
-                <div className="searchResult">
-                  <SearchRelease
-                    name={release.title}
-                    artist={release.artist}
-                    image={release.thumb}
-                    catno={release.catno}
-                  />
-                </div>
-              );
-            }
-            if (
-              release.artist.toLowerCase().includes(searchInput.toLowerCase())
-            ) {
-              return (
-                <div className="searchResult">
-                  <SearchRelease
-                    name={release.title}
-                    artist={release.artist}
-                    image={release.thumb}
-                    catno={release.catno}
-                  />
-                </div>
-              );
-            } else return <></>;
-          })}
-          </div>
+          {searchInput &&
+            releaseInfo.map((release, i) => {
+              if (
+                release.title.toLowerCase().includes(searchInput.toLowerCase())
+              ) {
+                return (
+                  <div className="searchResult">
+                    <SearchRelease
+                      name={release.title}
+                      artist={release.artist}
+                      image={release.thumb}
+                      catno={release.catno}
+                      key={i}
+                    />
+                  </div>
+                );
+              }
+              if (
+                release.artist.toLowerCase().includes(searchInput.toLowerCase())
+              ) {
+                return (
+                  <div className="searchResult">
+                    <SearchRelease
+                      name={release.title}
+                      artist={release.artist}
+                      image={release.thumb}
+                      catno={release.catno}
+                      key={i + 1}
+                    />
+                  </div>
+                );
+              } else return <></>;
+            })}
+        </div>
       </div>
     </div>
   );
@@ -87,15 +87,12 @@ const SearchRelease = ({name, artist, image, catno}) => {
   //   });
   // };
 
-
   const addHandler = () => {
     if (currentUser) {
-      addTitle(position.toString())
-      setPosition(position + 1);  
+      addTitle(position.toString());
+      setPosition(position + 1);
     } else {
-      
     }
-    
   };
 
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import {useSelector, useDispatch} from "react-redux";
 
-import AddButton from "../../Common/AddButton";
+import AddButton from "../Common/AddButton";
 import { userActions } from "../../Redux/Actions/userActions";
 
 function TopTen(props) {

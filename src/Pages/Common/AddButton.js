@@ -3,7 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import React, {useState} from "react";
 import {Button, Modal} from "react-bootstrap";
 import {useDispatch} from "react-redux";
-import { userActions } from "../Redux/Actions/userActions";
+import {userActions} from "../../Redux/Actions/userActions";
 
 import Search from "./Search";
 
@@ -19,9 +19,8 @@ function AddButton(props) {
   }
 
   function closeModal() {
-    dispatch(userActions())
+    dispatch(userActions());
     setOpen(false);
-    
   }
 
   // const addHandler = (type) => {

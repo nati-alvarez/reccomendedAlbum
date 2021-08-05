@@ -1,14 +1,14 @@
 // import Begin from "./components/Begin";
-import Navigator from "./components/Navigation/";
-import Info from "./components/Information";
-import Dashboard from "./components/Dashboard";
+import Navigator from "./Pages/Navigation/";
+import Info from "./Pages/Information";
+import Dashboard from "./Pages/Dashboard";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import Signup from "./components/SignIn/Signup";
+import Signup from "./Pages/SignIn/Signup";
 import {AuthProvider} from "./Auth/AuthProvider";
-import Login from "./components/SignIn/Login";
+import Login from "./Pages/SignIn/Login";
 import PrivateRoute from "./Auth/PrivateRoute";
-import ForgotPassword from "./components/SignIn/ForgotPassword";
-import SearchPage from "./components/Information/SearchPage";
+import ForgotPassword from "./Pages/SignIn/ForgotPassword";
+import SearchPage from "./Pages/Information/SearchPage";
 
 
 function App() {

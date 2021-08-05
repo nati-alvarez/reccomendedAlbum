@@ -17,8 +17,9 @@ function Releases() {
             className="releaseContainer"
             onClick={() => dispatch(releaseInfoAction(asset.id))}
           >
-            <p>{asset.catno}</p>
+
             <img src={asset.thumb} alt={asset.title} />
+            <p>{asset.catno}</p>
             <p>{asset.artist}</p>
             <p>{asset.title}</p>
             <p>Released - {asset.year}</p>

@@ -1,5 +1,5 @@
 import React from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {
   navSelectorDispatch,
   navVisibility,
@@ -15,6 +15,7 @@ import {Link} from "react-router-dom";
 import {loadReleasesSearch} from "../../Redux/Actions/ReleasesAction";
 
 function Header() {
+  const data = useSelector((state) => state.all);
   const {currentUser} = useAuth();
   const dispatch = useDispatch();
 
@@ -28,11 +29,19 @@ function Header() {
     dispatch(navVisibility());
   };
 
+  const loadData = () => {
+    if (data && data.length > 0) {
+      return data;
+    } else {
+      dispatch(navSelectorDispatch("label"));
+    }
+  };
+
   return (
     <div className="headerContainer">
       <nav>
         <Link to={"/"}>
-          <span onClick={() => dispatch(navSelectorDispatch("label"))}>
+          <span onClick={loadData}>
             <FontAwesomeIcon
               className="fai"
               icon={faRecordVinyl}

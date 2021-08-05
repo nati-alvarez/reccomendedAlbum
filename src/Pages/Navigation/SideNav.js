@@ -6,7 +6,7 @@ import {assetSelector} from "../../Redux/Actions/assetSelectorAction";
 import {loadReleases} from "../../Redux/Actions/ReleasesAction";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
-import AddButton from "../../Common/AddButton";
+import AddButton from "../Common/AddButton";
 
 //THIS IS THE NAVIGATION COMPONENT THAT SITS ON THE LEFT HAND SIDE OF THE SCREEN. IT IS POPULATED
 //BY DATA PULLED IN FROM THE API OR THE USERS DB (IF THEY ARE SIGNED IN).

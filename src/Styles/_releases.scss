@@ -27,7 +27,7 @@
   
 }
 .releaseContainer {
-  padding: 20px;
+
   width: 40%;
   box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
   text-align: center;
@@ -36,6 +36,7 @@
     width: 100%; 
   }
   p {
+    // padding: 20px;
     font-size: 12px;
     text-transform: lowercase;
   }

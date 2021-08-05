@@ -1,7 +1,7 @@
 
 
 
-import Search from "../../Common/Search";
+import Search from "../Common/Search";
 
 
 function SearchPage(props) {
