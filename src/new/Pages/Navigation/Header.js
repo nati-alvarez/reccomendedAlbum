@@ -4,7 +4,6 @@ import React from "react";
 import {useDispatch} from "react-redux";
 import {useSelector} from "react-redux";
 //Utils
-import {DataChecker} from "../../Utils/DataChecker";
 
 //React Router
 import {Link} from "react-router-dom";
@@ -17,13 +16,17 @@ import {faDoorOpen} from "@fortawesome/free-solid-svg-icons";
 // import {faDragon} from "@fortawesome/free-solid-svg-icons";
 import {labelAction, navVisibility} from "../../Redux/Actions/LabelsAction";
 
-function Header(props) {
+function Header() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state);
 
   // the following two functions handle checking if data exists in the reducer already
   // and if the user is signed in or not.
+
   const loadData = () => {
+    //This check is performed on most pages, it checks whether the reducer has relevant information in it
+    // prior to an API request being made. If the data already exists then the information is pulled from the reducer
+    // this eliminates unneccessary API requests.
     if (data.Label.all.length > 0) {
       dispatch(navVisibility());
     } else {
