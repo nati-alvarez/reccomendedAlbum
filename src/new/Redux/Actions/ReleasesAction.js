@@ -2,7 +2,12 @@
 // the user selected from the left hand nav menu.
 
 import axios from "axios";
-import { DataDiviner, releaseDetails, labelReleases } from "../../Utils/APIcall";
+import {
+  DataDiviner,
+  releaseDetails,
+  labelReleases,
+  label,
+} from "../../Utils/APIcall";
 
 export const loadReleases = (id) => async (dispatch) => {
   dispatch({
@@ -64,33 +69,35 @@ export const loadReleases = (id) => async (dispatch) => {
   for (let title in releasesByTitle) {
     releases.push(releasesByTitle[title]);
   }
+
+  //finally get the name of the label so it can be displayed on the label bio section
+
+  const labelInfo = await axios.get(label(id));
+
   dispatch({
     type: "FETCH_RELEASES_SUCCESS",
     payload: {
       all: releases,
-
+      label: labelInfo.data,
       loading: false,
     },
   });
 };
 
-
-
-// this action populates the page with all the information about the 
+// this action populates the page with all the information about the
 //release that the user selected from the particular
-// artist or labels releases. 
+// artist or labels releases.
 
 export const releaseInfoAction = (id) => async (dispatch) => {
-
   dispatch({
     type: "FETCH_RELEASE_INFO",
     payload: {
       loading: true,
     },
   });
-const allData = []
+  const allData = [];
   let data = await DataDiviner(releaseDetails(id));
-  console.log(data)
+  console.log(data);
   allData.push({
     artists: data[0].artists_sort,
     title: data[0].title,
@@ -104,25 +111,18 @@ const allData = []
     type: "FETCH_RELEASE_INFO_SUCCESS",
     payload: {
       loading: false,
-      all: allData
+      selected: allData,
     },
   });
-}
-export const showBio = () => (dispatch) => {
-    dispatch({
-      type: "SHOW",
-      payload: {
-        show: false,
-      },
-    });
-  }
-
-
-
-
-
-
-
+};
+// export const showBio = () => (dispatch) => {
+//     dispatch({
+//       type: "SHOW",
+//       payload: {
+//         show: false,
+//       },
+//     });
+//   }
 
 export const loadReleasesSearch = () => async (dispatch) => {
   dispatch({
@@ -145,7 +145,6 @@ export const loadReleasesSearch = () => async (dispatch) => {
       allReleaseData.push(data.data.releases);
     }
     let releasesData = [].concat.apply([], allReleaseData);
-
 
     const releasesByTitle = {};
     const releases = [];
@@ -174,9 +173,9 @@ export const loadReleasesSearch = () => async (dispatch) => {
     for (let title in releasesByTitle) {
       releases.push(releasesByTitle[title]);
     }
-        //here we flatten the arrays, this allows search functionality
-    // if the user wants to search all labels then they cannot be in seperate 
-    // arrays (organized by label), they have to be in one big array. 
+    //here we flatten the arrays, this allows search functionality
+    // if the user wants to search all labels then they cannot be in seperate
+    // arrays (organized by label), they have to be in one big array.
 
     allData.push(releases);
   }

@@ -1,0 +1,36 @@
+@import "./mixins.scss";
+
+.releaseInfoContainer {
+  
+  @include flexColumn;
+  padding: 20px;
+  img {
+    padding: 20px;
+  }
+  h2 {
+    padding: 10px;
+  }
+}
+
+.tracklistSpan {
+  width: 200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+padding: 20px;
+  .position {
+      width: 50%;
+    text-align: left;
+  }
+  .title {
+    width: 50%;
+    text-align: left;
+  }
+}
+.videoPlayer {
+
+    @include flexColumn;
+gap: 20px;
+    padding: 20px;
+    width: 300px;
+}

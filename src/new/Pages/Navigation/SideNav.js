@@ -24,7 +24,7 @@ function SideNavLabels() {
   const releases = useSelector((state) => state.Releases);
 
   const dispatchHandler = (id) => {
-    if (releases.all.length > 0) {
+    if (releases.label.id === id) {
       dispatch(navVisibility());
     } else {
       dispatch(loadReleases(id));
