@@ -9,7 +9,10 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import {createStore, applyMiddleware, compose} from "redux";
 import thunk from "redux-thunk";
 import logger from 'redux-logger'
-import rootReducer from "./Redux/Reducers/RootReducer";
+// old
+// import rootReducer from "./Redux/Reducers/RootReducer";
+//new
+import rootReducer from "./new/Redux/Reducers/RootReducer";
 import {Provider} from "react-redux";
 
 

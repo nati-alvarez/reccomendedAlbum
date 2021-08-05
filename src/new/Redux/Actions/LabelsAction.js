@@ -42,5 +42,11 @@ export const labelAction = () => async (dispatch) => {
             all: allData,
           },
       });
+}
+// This action is called to open or close the side nav
 
+export const navVisibility = () => (dispatch) => {
+  dispatch({
+    type: "NAV_VISIBLE"
+  });
 }

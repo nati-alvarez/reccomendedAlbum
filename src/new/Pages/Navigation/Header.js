@@ -15,7 +15,7 @@ import {faRecordVinyl} from "@fortawesome/free-solid-svg-icons";
 import {faMusic} from "@fortawesome/free-solid-svg-icons";
 import {faDoorOpen} from "@fortawesome/free-solid-svg-icons";
 // import {faDragon} from "@fortawesome/free-solid-svg-icons";
-import {labelAction} from "../../Redux/Actions/LabelsAction";
+import {labelAction, navVisibility} from "../../Redux/Actions/LabelsAction";
 
 function Header(props) {
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ function Header(props) {
   // and if the user is signed in or not.
   const loadData = () => {
     if (data.Label.all.length > 0) {
-      return
+      dispatch(navVisibility());
     } else {
       dispatch(labelAction());
     }

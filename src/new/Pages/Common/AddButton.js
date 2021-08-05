@@ -2,13 +2,13 @@ import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import React, {useState} from "react";
 import {Button, Modal} from "react-bootstrap";
-import {useDispatch} from "react-redux";
-import {userActions} from "../../Redux/Actions/userActions";
+// import {useDispatch} from "react-redux";
+// import {userActions} from "../../Redux/Actions/userActions";
 
-import Search from "./Search";
+// import Search from "./Search";
 
 function AddButton(props) {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const [open, setOpen] = useState(false);
 
@@ -19,7 +19,7 @@ function AddButton(props) {
   }
 
   function closeModal() {
-    dispatch(userActions());
+    // dispatch(userActions());
     setOpen(false);
   }
 
@@ -38,9 +38,9 @@ function AddButton(props) {
 
       <Modal show={open} onHide={closeModal} animation={false}>
         <Modal.Body>
-          <div className="searchResultsContainer">
+          {/* <div className="searchResultsContainer">
             <Search />
-          </div>
+          </div> */}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={closeModal}>
