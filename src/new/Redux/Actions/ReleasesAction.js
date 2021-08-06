@@ -9,7 +9,7 @@ import {
   label,
 } from "../../Utils/APIcall";
 
-export const loadReleases = (id) => async (dispatch) => {
+export const loadReleases = (id, info) => async (dispatch) => {
   dispatch({
     type: "FETCH_RELEASES",
     payload: {
@@ -72,13 +72,13 @@ export const loadReleases = (id) => async (dispatch) => {
 
   //finally get the name of the label so it can be displayed on the label bio section
 
-  const labelInfo = await axios.get(label(id));
+
 
   dispatch({
     type: "FETCH_RELEASES_SUCCESS",
     payload: {
       all: releases,
-      label: labelInfo.data,
+      label: info,
       loading: false,
     },
   });
@@ -111,7 +111,7 @@ export const releaseInfoAction = (id) => async (dispatch) => {
     type: "FETCH_RELEASE_INFO_SUCCESS",
     payload: {
       loading: false,
-      selected: allData,
+      selectedRelease: allData,
     },
   });
 };

@@ -23,11 +23,11 @@ function SideNavLabels() {
   const data = useSelector((state) => state.Label);
   const releases = useSelector((state) => state.Releases);
 
-  const dispatchHandler = (id) => {
-    if (releases.label.id === id) {
+  const dispatchHandler = (id, info) => {
+    if (releases.selectedLabel.id === id) {
       dispatch(navVisibility());
     } else {
-      dispatch(loadReleases(id));
+      dispatch(loadReleases(id, info));
       dispatch(navVisibility());
     }
   };
@@ -48,7 +48,7 @@ function SideNavLabels() {
             key={i}
             className="navButtons"
             onClick={() => {
-              dispatchHandler(asset.id);
+              dispatchHandler(asset.id, asset);
             }}
           >
             <img
