@@ -1,7 +1,5 @@
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {database} from "../../Auth/firebase";
-import {useAuth} from "../../Auth/AuthProvider";
 import {releaseInfoAction} from "../../Redux/Actions/ReleaseInfoAction";
 
 const Search = () => {

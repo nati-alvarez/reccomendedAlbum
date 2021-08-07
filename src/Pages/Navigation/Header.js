@@ -18,8 +18,7 @@ function Header() {
   const data = useSelector((state) => state);
   const {currentUser} = useAuth();
   const dispatch = useDispatch();
-  const releases = useSelector((state) => state.releases);
-  console.log(data);
+
   const searchHandler = () => {
     // if the user is not signed in run the all data
     //fetcher, otherwise this will have been run when the user logged in.
