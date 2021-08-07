@@ -15,23 +15,25 @@ import {Link} from "react-router-dom";
 import {loadReleasesSearch} from "../../Redux/Actions/ReleasesAction";
 
 function Header() {
-  const data = useSelector((state) => state.all);
+  const data = useSelector((state) => state);
   const {currentUser} = useAuth();
   const dispatch = useDispatch();
-
+  const releases = useSelector((state) => state.releases);
+  console.log(data);
   const searchHandler = () => {
     // if the user is not signed in run the all data
     //fetcher, otherwise this will have been run when the user logged in.
-    if (!currentUser) {
+    if (data.releases.search && data.releases.search.length > 0) {
+      dispatch(navVisibility());
+    } else {
       dispatch(loadReleasesSearch());
     }
-
-    dispatch(navVisibility());
+    
   };
 
   const loadData = () => {
-    if (data && data.length > 0) {
-      return data;
+    if (data.nav && data.nav.length > 0) {
+      return;
     } else {
       dispatch(navSelectorDispatch("label"));
     }

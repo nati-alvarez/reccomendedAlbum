@@ -1,19 +1,17 @@
-import Releases from "./Releases";
-import Bio from "./Bio";
 import {useSelector} from "react-redux";
-import ReleaseInfo from "./ReleaseInfo";
+import ReleaseInfo from "../Information/ReleaseInfo";
+import Search from "./Search";
 
 function Index(props) {
   const checker = useSelector((state) => state.individualRelease);
-  console.log(checker)
+console.log(checker)
   return checker.show ? (
     <div>
-      <ReleaseInfo/>
+      <ReleaseInfo />
     </div>
   ) : (
     <div>
-      <Bio />
-      <Releases />
+      <Search />
     </div>
   );
 }

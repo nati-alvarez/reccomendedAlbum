@@ -1,7 +1,8 @@
 import {useState} from "react";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {database} from "../../Auth/firebase";
 import {useAuth} from "../../Auth/AuthProvider";
+import {releaseInfoAction} from "../../Redux/Actions/ReleaseInfoAction";
 
 const Search = () => {
   const [searchInput, setSearchInput] = useState();
@@ -11,7 +12,7 @@ const Search = () => {
     setSearchInput(e);
   };
 
-  return (
+  return releaseInfo.length > 0 ? (
     <div className="styledSearch">
       <div className="searchContainer">
         <input
@@ -27,13 +28,14 @@ const Search = () => {
                 release.title.toLowerCase().includes(searchInput.toLowerCase())
               ) {
                 return (
-                  <div className="searchResult">
+                  <div className="searchResult" key={i}>
                     <SearchRelease
                       name={release.title}
                       artist={release.artist}
                       image={release.thumb}
                       catno={release.catno}
                       key={i}
+                      id={release.id}
                     />
                   </div>
                 );
@@ -42,13 +44,14 @@ const Search = () => {
                 release.artist.toLowerCase().includes(searchInput.toLowerCase())
               ) {
                 return (
-                  <div className="searchResult">
+                  <div className="searchResult" key={i}>
                     <SearchRelease
                       name={release.title}
                       artist={release.artist}
                       image={release.thumb}
                       catno={release.catno}
                       key={i + 1}
+                      id={release.id}
                     />
                   </div>
                 );
@@ -57,46 +60,18 @@ const Search = () => {
         </div>
       </div>
     </div>
+  ) : (
+    <> LOADING </>
   );
 };
 
-const SearchRelease = ({name, artist, image, catno}) => {
-  const [position, setPosition] = useState(1);
+const SearchRelease = ({name, artist, image, catno, key, id}) => {
 
-  const {currentUser} = useAuth();
+  const dispatch = useDispatch();
 
-  let topTen = database.topTen;
-  //to do change hardcoded number to dynamic number from top ten list
-
-  const addTitle = (number) => {
-    topTen.doc(number).set({
-      name: {name},
-      artist: {artist},
-      image: {image},
-      userId: currentUser.uid,
-      number: number,
-    });
-  };
-  // const changePositionGet = (number) => {
-  //   topTen.doc(number).set({
-  //     name: {name},
-  //     artist: {artist},
-  //     image: {image},
-  //     userId: currentUser.uid,
-  //     number: number,
-  //   });
-  // };
-
-  const addHandler = () => {
-    if (currentUser) {
-      addTitle(position.toString());
-      setPosition(position + 1);
-    } else {
-    }
-  };
 
   return (
-    <div onClick={addHandler}>
+    <div onClick={() => dispatch(releaseInfoAction(id))} key={key}>
       <img src={image} alt={name} />
       <span>
         <p>{artist}</p>

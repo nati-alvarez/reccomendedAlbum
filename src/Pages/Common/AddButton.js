@@ -2,7 +2,7 @@ import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import React, {useState} from "react";
 import {Button, Modal} from "react-bootstrap";
-import Search from "./Search";
+import Search from "../Search/Search";
 // import {useDispatch} from "react-redux";
 // import {userActions} from "../../Redux/Actions/userActions";
 

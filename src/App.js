@@ -8,7 +8,7 @@ import {AuthProvider} from "./Auth/AuthProvider";
 import Login from "./Pages/SignIn/Login";
 import PrivateRoute from "./Auth/PrivateRoute";
 import ForgotPassword from "./Pages/SignIn/ForgotPassword";
-import SearchPage from "./Pages/Information/SearchPage";
+import Search from "./Pages/Search/";
 
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
               <Route path={["/:type/:info"]} component={Info} />
               <Route path="/signup" component={Signup} />
               <Route path="/login" component={Login} />
-              <Route path="/search" component={SearchPage} />
+              <Route path="/search" component={Search} />
               <Route path="/forgot-password" component={ForgotPassword} />
               <PrivateRoute path="/dashboard" component={Dashboard} />
             </Switch>
