@@ -1,9 +1,9 @@
 import {useSelector, useDispatch} from "react-redux";
-import {showBio} from "../../../Redux/Actions/ReleaseInfoAction";
+import {showBio} from "../../Redux/Actions/ReleasesAction";
 
 function ReleaseInfo() {
   const dispatch = useDispatch();
-  const releaseInfo = useSelector((state) => state.individualRelease);
+  const releaseInfo = useSelector((state) => state.Releases);
   //This function converts the returned youtube 'watch' uris into youtube 'embed' uris
   // which is neccessary to host them.
   function youtube_parser(url) {

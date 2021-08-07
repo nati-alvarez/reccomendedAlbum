@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./new/App";
+import App from "./App";
 
 //Styles
 import "./Styles/index.scss";
@@ -10,9 +10,9 @@ import {createStore, applyMiddleware, compose} from "redux";
 import thunk from "redux-thunk";
 import logger from 'redux-logger'
 // old
-// import rootReducer from "./Redux/Reducers/RootReducer";
+import rootReducer from "./Redux/Reducers/RootReducer";
 //new
-import rootReducer from "./new/Redux/Reducers/RootReducer";
+// import rootReducer from "./new/Redux/Reducers/RootReducer";
 import {Provider} from "react-redux";
 
 

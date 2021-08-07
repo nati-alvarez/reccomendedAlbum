@@ -6,7 +6,6 @@ import {
   DataDiviner,
   releaseDetails,
   labelReleases,
-  label,
 } from "../../Utils/APIcall";
 
 export const loadReleases = (id, info) => async (dispatch) => {
@@ -89,6 +88,7 @@ export const loadReleases = (id, info) => async (dispatch) => {
 // artist or labels releases.
 
 export const releaseInfoAction = (id) => async (dispatch) => {
+  console.log(id)
   dispatch({
     type: "FETCH_RELEASE_INFO",
     payload: {
@@ -115,14 +115,7 @@ export const releaseInfoAction = (id) => async (dispatch) => {
     },
   });
 };
-// export const showBio = () => (dispatch) => {
-//     dispatch({
-//       type: "SHOW",
-//       payload: {
-//         show: false,
-//       },
-//     });
-//   }
+
 
 export const loadReleasesSearch = () => async (dispatch) => {
   dispatch({
@@ -189,4 +182,13 @@ export const loadReleasesSearch = () => async (dispatch) => {
       loading: false,
     },
   });
+
 };
+export const showBio = () => (dispatch) => {
+  dispatch({
+    type: "SHOW",
+    payload: {
+      show: false,
+    },
+  });
+}

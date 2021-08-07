@@ -5,6 +5,12 @@ const initState = {
   search: false,
   loading: false,
   show: false,
+  artists: "",
+  title: "",
+  released: "",
+  img: "",
+  tracklist: [],
+  videos: [],
 };
 
 const releasesReducer = (state = initState, action) => {
@@ -16,13 +22,22 @@ const releasesReducer = (state = initState, action) => {
         ...state,
         all: action.payload.all.sort((a, b) => b.year - a.year),
         loading: false,
-        selectedLabel: action.payload.label
+        selectedLabel: action.payload.label,
       };
 
     case "FETCH_RELEASE_INFO":
       return {...state, loading: true};
     case "FETCH_RELEASE_INFO_SUCCESS":
-      return {...state, loading: false, selectedRelease: action.payload.selectedRelease, show: true};
+      return {
+        ...state,
+        show: true,
+        artists: action.payload.selectedRelease[0].artists,
+        title: action.payload.selectedRelease[0].title,
+        released: action.payload.selectedRelease[0].released,
+        img: action.payload.selectedRelease[0].img,
+        tracklist: action.payload.selectedRelease[0].tracklist,
+        videos: action.payload.selectedRelease[0].videos,
+      };
 
     case "SEARCH":
       return {...state, loading: true};
@@ -32,6 +47,13 @@ const releasesReducer = (state = initState, action) => {
         search: action.payload.all,
         loading: false,
       };
+
+      case "SHOW":
+        return {
+          ...state,
+          show: false,
+        };
+
     default:
       return {...state};
   }

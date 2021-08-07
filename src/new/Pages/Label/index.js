@@ -8,8 +8,6 @@ import { useSelector } from "react-redux";
 
 function Index(props) {
   const dataChecker = useSelector((state) => state.Releases);
-
-  console.log(dataChecker)
   return dataChecker.show ? (
     <div>
       <ReleaseInfo/>

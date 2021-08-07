@@ -13,10 +13,12 @@ function Releases() {
     // This check is performed on most pages, it checks whether the reducer has relevant information in it
     // prior to an API request being made. If the data already exists then the information is pulled from the reducer
     // this eliminates unneccessary API requests.
-    if (data.Releases.selected.id === id) {
+    if (data.Releases.selectedRelease.id === id) {
+
       return;
     } else {
-      releaseInfoAction(id);
+
+      dispatch(releaseInfoAction(id));
     }
   };
 
