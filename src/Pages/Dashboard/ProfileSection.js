@@ -1,22 +1,34 @@
-import picture from "../../assets/genre.png";
+import axios from "axios";
+import {useEffect, useState} from "react";
+
 
 import {useAuth} from "../../Auth/AuthProvider";
 
 const ProfileSection = () => {
   const {currentUser} = useAuth();
+  const [userInfo, setUserInfo] = useState({
+    name: "",
+  });
 
+  useEffect(() => {
+    axios
+      .get("https://rlca-backend.herokuapp.com/user/610f0899fbc8aa0d170023eb")
+      .then(function (response) {
+        setUserInfo(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
+console.log(userInfo)
   return (
     <div className="ProfileSectionContainer">
       <div>
-        <img src={picture} alt="Profile" />
+        <img src={userInfo.avatar} alt="avatar" />
       </div>
       <div className="userInfo">
-        <p>Name: name</p>
+        <p>Name: {userInfo.name}</p>
         <p>Email: {currentUser.email}</p>
-        <p>Artist Name: nickname</p>
-        <p>Address: </p>
-        <p>Bio: </p>
-        <p>Favorite Artists: </p>
         <label>
           <p>Sonic Deducer</p>
           <input type="checkbox" />
