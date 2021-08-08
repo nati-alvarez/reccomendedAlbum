@@ -1,7 +1,10 @@
+import axios from "axios";
 import {useSelector, useDispatch} from "react-redux";
+
 import {showBio} from "../../Redux/Actions/ReleaseInfoAction";
 
 function ReleaseInfo() {
+
   const dispatch = useDispatch();
   const releaseInfo = useSelector((state) => state.individualRelease);
   //This function converts the returned youtube 'watch' uris into youtube 'embed' uris
@@ -18,7 +21,16 @@ function ReleaseInfo() {
       videoLinks.push(youtube_parser(url.uri));
     });
   }
-  
+  console.log(releaseInfo.img)
+  const topTenHandler = async (releaseInfo) => {
+    await axios.patch('http://localhost:3001/user/610f0899fbc8aa0d170023eb', {topTen: releaseInfo.img})
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
 
   return (
     <div className="releaseInfoContainer">
@@ -46,6 +58,14 @@ function ReleaseInfo() {
           ></iframe>
         ))}
       </div>
+      <div className='releaseInfoButtonContainer'>
+      <button
+        onClick={() => {
+          topTenHandler(releaseInfo)
+        }}
+      >
+        Top Ten
+      </button>
       <button
         onClick={() => {
           dispatch(showBio());
@@ -53,6 +73,8 @@ function ReleaseInfo() {
       >
         Back
       </button>
+      </div>
+      
     </div>
   );
 }

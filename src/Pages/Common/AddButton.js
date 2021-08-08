@@ -8,7 +8,7 @@ import Search from "../Search/Search";
 
 // import Search from "./Search";
 
-function AddButton(props) {
+function AddButton({topTen}) {
   // const dispatch = useDispatch();
 
   const [open, setOpen] = useState(false);
@@ -40,7 +40,7 @@ function AddButton(props) {
       <Modal show={open} onHide={closeModal} animation={false}>
         <Modal.Body>
           <div className="searchResultsContainer">
-            <Search />
+            <Search topTen={topTen}/>
           </div>
         </Modal.Body>
         <Modal.Footer>
