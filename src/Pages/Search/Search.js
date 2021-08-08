@@ -1,7 +1,7 @@
-import axios from "axios";
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {releaseInfoAction} from "../../Redux/Actions/ReleaseInfoAction";
+import { topTenHandler } from "../../utils/utils";
 
 const Search = ({topTen}) => {
   const [searchInput, setSearchInput] = useState();
@@ -68,18 +68,7 @@ const Search = ({topTen}) => {
 
 const SearchRelease = ({name, artist, image, catno, key, id, topTen}) => {
   const dispatch = useDispatch();
-  const topTenHandler = async (releaseInfo) => {
-    await axios
-      .patch("http://localhost:3001/user/610f0899fbc8aa0d170023eb", {
-        topTen: releaseInfo,
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
+
   return (
     <div onClick={() => dispatch(releaseInfoAction(id))} key={key}>
       <img src={image} alt={name} />
@@ -91,7 +80,10 @@ const SearchRelease = ({name, artist, image, catno, key, id, topTen}) => {
       {topTen ? (
         <button
           className="addToTopTenButton"
-          onClick={() => topTenHandler(image)}
+          onClick={() => {
+            //TODO change hardcoded user id to dynamic one
+            topTenHandler(image, "610f0899fbc8aa0d170023eb")
+          }}
         >
           Add to Top Ten
         </button>

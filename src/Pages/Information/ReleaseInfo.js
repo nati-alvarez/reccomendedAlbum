@@ -1,7 +1,7 @@
-import axios from "axios";
 import {useSelector, useDispatch} from "react-redux";
 
 import {showBio} from "../../Redux/Actions/ReleaseInfoAction";
+import { topTenHandler } from "../../utils/utils";
 
 function ReleaseInfo() {
 
@@ -21,16 +21,8 @@ function ReleaseInfo() {
       videoLinks.push(youtube_parser(url.uri));
     });
   }
-  console.log(releaseInfo.img)
-  const topTenHandler = async (releaseInfo) => {
-    await axios.patch('http://localhost:3001/user/610f0899fbc8aa0d170023eb', {topTen: releaseInfo.img})
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
+
+
 
   return (
     <div className="releaseInfoContainer">
@@ -61,7 +53,8 @@ function ReleaseInfo() {
       <div className='releaseInfoButtonContainer'>
       <button
         onClick={() => {
-          topTenHandler(releaseInfo)
+          //TODO change hardcoded user id to dynamic one
+          topTenHandler(releaseInfo.img, "610f0899fbc8aa0d170023eb")
         }}
       >
         Top Ten

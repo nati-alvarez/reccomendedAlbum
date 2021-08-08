@@ -12,3 +12,15 @@ export const DataDiviner = async (url) => {
   return allData;
 };
 
+// this is the function that allows the user to add a title 
+//to their top ten on their dashboard.
+
+export const topTenHandler = async (coverArt, userId) => {
+  await axios.patch(`https://rlca-backend.herokuapp.com/user/${userId}`, {topTen: coverArt})
+  .then(function (response) {
+    return response.data
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
