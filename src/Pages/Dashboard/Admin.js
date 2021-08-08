@@ -26,7 +26,7 @@ function Admin(props) {
   return (
     <div className='adminContainer'>
                   {error && <Alert variant="danger">{error}</Alert>}
-      <strong>Email:</strong> {currentUser.email}
+
       <button onClick={handleLogout}>Log out</button>
     </div>
   );

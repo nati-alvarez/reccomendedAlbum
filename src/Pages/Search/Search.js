@@ -33,7 +33,6 @@ const Search = ({topTen}) => {
                       artist={release.artist}
                       image={release.thumb}
                       catno={release.catno}
-                      key={i}
                       id={release.id}
                       topTen={topTen}
                     />
@@ -66,11 +65,11 @@ const Search = ({topTen}) => {
   );
 };
 
-const SearchRelease = ({name, artist, image, catno, key, id, topTen}) => {
+const SearchRelease = ({name, artist, image, catno, id, topTen}) => {
   const dispatch = useDispatch();
 
   return (
-    <div onClick={() => dispatch(releaseInfoAction(id))} key={key}>
+    <div onClick={() => dispatch(releaseInfoAction(id))}>
       <img src={image} alt={name} />
       <span>
         <p>{artist}</p>

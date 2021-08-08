@@ -9,8 +9,9 @@ function index(props) {
   return (
     <div className='dashBoardContainer'>
       <TopTen/>
-      <Admin />
+
       <ProfileSection/>
+      <Admin />
       {/* <ListenNext/>
       
       <NextShipment/> */}

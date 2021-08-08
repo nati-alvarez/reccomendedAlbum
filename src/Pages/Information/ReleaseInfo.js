@@ -57,7 +57,7 @@ function ReleaseInfo() {
           topTenHandler(releaseInfo.img, "610f0899fbc8aa0d170023eb")
         }}
       >
-        Top Ten
+        +Top Ten
       </button>
       <button
         onClick={() => {
