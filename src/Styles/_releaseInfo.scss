@@ -38,12 +38,12 @@
 
   @include breakpoint(laptop) {
     
-    border: 2px solid black;
+
   }
 
   @include breakpoint(desktop) {
+// macbook    
     
-    border: 2px solid blue;
   }
 }
 

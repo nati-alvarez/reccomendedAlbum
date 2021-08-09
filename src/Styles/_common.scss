@@ -18,6 +18,7 @@
 
 .loadingContainer {
   position: absolute;
+  
   left: 50px;
   right: 50px;
   bottom: 150px;
@@ -31,9 +32,15 @@
     }
   }
   img {
-
+    border-radius: 110px;
     width: 100%;
     animation: rotation 2s infinite linear;
   }
+  @include breakpoint(tablet) {
+    // 700px
+    img {
+        width: 50%;
+    }
+}
 
 }
