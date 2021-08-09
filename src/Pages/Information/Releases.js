@@ -17,7 +17,6 @@ function Releases() {
             className="releaseContainer"
             onClick={() => dispatch(releaseInfoAction(asset.id))}
           >
-
             <img src={asset.thumb} alt={asset.title} />
             <p>{asset.catno}</p>
             <p>{asset.artist}</p>
@@ -28,11 +27,11 @@ function Releases() {
       </div>
       <div className="footerContainer">
         <div className={`${data.releases.all ? "loadMore" : "hideTop"}`}>
-        <button onClick={() => setLoadAmmount(prev => prev + 20)}>
+          <button onClick={() => setLoadAmmount((prev) => prev + 20)}>
             <p>Load More Titles</p>
           </button>
           <button>
-            <a href="#top">TOP</a>
+            <a href="#top">Top</a>
           </button>
         </div>
       </div>

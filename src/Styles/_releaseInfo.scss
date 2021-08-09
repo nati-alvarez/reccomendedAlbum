@@ -1,7 +1,6 @@
 @import "./mixins.scss";
 
 .releaseInfoContainer {
-  
   @include flexColumn;
   padding: 20px;
   img {
@@ -18,9 +17,9 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-padding: 20px;
+  padding: 20px;
   .position {
-      width: 50%;
+    width: 50%;
     text-align: left;
   }
   .title {
@@ -29,10 +28,30 @@ padding: 20px;
   }
 }
 .videoPlayer {
+  @include flexColumn;
+  gap: 20px;
+  margin-bottom: 0.5rem;
+  padding: 20px;
+  width: 300px;
+}
 
-    @include flexColumn;
-gap: 20px;
-margin-bottom: .5rem;
-    padding: 20px;
-    width: 300px;
+.releaseInfoButtonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  
+  width: 100%;
+  button {
+    background-color: lightslategray; /* Green */
+    border-radius: 20px;
+  
+      
+  color: white;
+    padding: 15px 32px;
+    text-align: center;
+    
+  text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
 }

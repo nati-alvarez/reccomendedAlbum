@@ -1,7 +1,7 @@
 import {useSelector, useDispatch} from "react-redux";
-
 import {showBio} from "../../Redux/Actions/ReleaseInfoAction";
 import { topTenHandler } from "../../utils/utils";
+
 
 function ReleaseInfo() {
 
@@ -30,6 +30,7 @@ function ReleaseInfo() {
       <h2>{releaseInfo.artists}</h2>
       <h2>{releaseInfo.title}</h2>
       <p>{releaseInfo.released}</p>
+      
       <span>
         {releaseInfo.tracklist.map((track, i) => (
           <span key={i} className="tracklistSpan">

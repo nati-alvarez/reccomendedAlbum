@@ -54,17 +54,6 @@ function SideNavLabels() {
     <></>
   );
 
-  // return labelData.navSelector.info[1] ? (
-  //   <div className={`navContainer ${visible ? "activeLibrary" : ""}`}>
-  //     {labelData.info.map((asset, i) => (
-  //       <div key={i} className="navButtons">
-  //         <img src={asset.image} alt={asset.name} key={`${i} label logo`} />
-  //       </div>
-  //     ))}
-  //   </div>
-  // ) : (
-  //   <p>...LOADING</p>
-  // );
 }
 
 export default SideNavLabels;
