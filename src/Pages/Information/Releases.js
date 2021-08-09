@@ -2,7 +2,7 @@ import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {v4 as uuidv4} from "uuid";
 import {releaseInfoAction} from "../../Redux/Actions/ReleaseInfoAction";
-
+import LoadingImage from '../../assets/loading.jpeg'
 function Releases() {
   const [loadAmmount, setLoadAmmount] = useState(20);
   const dispatch = useDispatch();
@@ -37,7 +37,10 @@ function Releases() {
       </div>
     </div>
   ) : (
-    <></>
+    <div className='loadingContainer'>
+     
+    <img src={LoadingImage} alt='loading'/>     
+        </div>
   );
 }
 

@@ -13,6 +13,7 @@ import {faDoorOpen} from "@fortawesome/free-solid-svg-icons";
 import {faDragon} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
 import {loadReleasesSearch} from "../../Redux/Actions/ReleasesAction";
+import { showBio } from "../../Redux/Actions/ReleaseInfoAction";
 
 function Header() {
   const data = useSelector((state) => state);
@@ -28,6 +29,7 @@ function Header() {
       dispatch(loadReleasesSearch());
     }
     
+    dispatch(showBio());
   };
 
   const loadData = () => {
@@ -50,10 +52,6 @@ function Header() {
             <p>Label</p>
           </span>
         </Link>
-        {/* <span onClick={() => dispatch(navSelectorDispatch("artist"))}>
-          <FontAwesomeIcon className="fai" icon={faUserAlt}></FontAwesomeIcon>
-          <p>Artist</p>
-        </span> */}
         <Link to={"/search"}>
           <span onClick={searchHandler}>
             <FontAwesomeIcon className="fai" icon={faMusic}></FontAwesomeIcon>

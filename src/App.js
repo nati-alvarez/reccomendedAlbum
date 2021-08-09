@@ -13,9 +13,10 @@ import Search from "./Pages/Search/";
 
 function App() {
   return (
-    <Router>
+    <Router onUpdate={() => window.scrollTo(0, 0)}>
       <AuthProvider>
         <div>
+
           <Navigator />
           <div className="appContainer">
             <Switch>

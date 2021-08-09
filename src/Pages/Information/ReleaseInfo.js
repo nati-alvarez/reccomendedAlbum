@@ -4,7 +4,7 @@ import { topTenHandler } from "../../utils/utils";
 
 
 function ReleaseInfo() {
-
+  window.scrollTo(0,0)
   const dispatch = useDispatch();
   const releaseInfo = useSelector((state) => state.individualRelease);
   //This function converts the returned youtube 'watch' uris into youtube 'embed' uris

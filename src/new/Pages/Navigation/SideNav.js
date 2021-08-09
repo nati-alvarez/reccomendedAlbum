@@ -3,6 +3,7 @@ import {useSelector, useDispatch} from "react-redux";
 
 //Components
 import AddButton from "../Common/AddButton";
+import LoadingImage from '../../assets/loading.jpeg'
 
 //React Router
 import {Link} from "react-router-dom";
@@ -16,7 +17,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 
 //THIS IS THE NAVIGATION COMPONENT THAT SITS ON THE LEFT HAND SIDE OF THE SCREEN. IT IS POPULATED
-//BY DATA PULLED IN FROM THE API OR THE USERS DB (IF THEY ARE SIGNED IN).
+//BY DATA PULLED IN FROM THE API & THE USERS DB (IF THEY ARE SIGNED IN).
 
 function SideNavLabels() {
   const dispatch = useDispatch();
@@ -62,7 +63,10 @@ function SideNavLabels() {
       ))}
     </div>
   ) : (
-    <></>
+    <div className='loadingContainer'>
+     
+    <img src={LoadingImage} alt='loading'/>     
+        </div>
   );
 }
 
