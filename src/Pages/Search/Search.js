@@ -13,7 +13,7 @@ const Search = ({topTen}) => {
   };
 
   return releaseInfo.length > 0 ? (
-    <div className="styledSearch">
+
       <div className="searchContainer">
         <input
           type="text"
@@ -60,7 +60,7 @@ const Search = ({topTen}) => {
             })}
         </div>
       </div>
-    </div>
+    
   ) : (
     <div className='loadingContainer'>
      
