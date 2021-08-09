@@ -1,6 +1,19 @@
 @import "./mixins.scss";
 
+@include breakpoint(desktop) {
+}
+@include breakpoint(laptop) {
+}
+@include breakpoint(tablet) {
+}
+@include breakpoint(mobileLarge) {
+}
+@include breakpoint(mobileSmall) {
+}
+
 .releaseInfoContainer {
+  
+  margin-top: 20px;  
   @include flexColumn;
   padding: 20px;
   img {
@@ -10,21 +23,44 @@
     text-align: center;
     padding: 10px;
   }
+
+  @include breakpoint(tablet) {
+
+    img {
+      width: 40%;
+    }
+  }
+
+  @include breakpoint(laptop) {
+    
+    border: 2px solid black;
+  }
+
+  @include breakpoint(desktop) {
+    
+    border: 2px solid blue;
+  }
 }
 
 .tracklistSpan {
-  width: 200px;
+  text-align: center;
+
+  
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 20px;
   .position {
     width: 50%;
-    text-align: left;
+    // text-align: right;
   }
   .title {
     width: 50%;
     text-align: left;
+  }
+  @include breakpoint(tablet) {
+
+    width: 400px;
   }
 }
 .videoPlayer {
@@ -39,18 +75,17 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  
+
   width: 100%;
   button {
     background-color: lightslategray; /* Green */
     border-radius: 20px;
-  
-      
-  color: white;
+
+    color: white;
     padding: 15px 32px;
     text-align: center;
-    
-  text-decoration: none;
+
+    text-decoration: none;
     display: inline-block;
     font-size: 16px;
   }
