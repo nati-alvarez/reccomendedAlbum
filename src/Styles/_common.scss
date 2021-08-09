@@ -1,7 +1,5 @@
 @import "./mixins.scss";
 
-
-
 // @include breakpoint(mobileSmall) {
 //     // 330px
 // }
@@ -18,20 +16,24 @@
 //     // 1200px
 // }
 
-
-
-
-
 .loadingContainer {
-    position: absolute;
-    left: 50px;
-    right: 50px;
-    bottom: 150px;
+  position: absolute;
+  left: 50px;
+  right: 50px;
+  bottom: 150px;
   @include flexColumn;
-    img {
-        width: 100%;
+  @keyframes rotation {
+    from {
+      transform: rotate(0deg);
     }
-}
-.loading{
-    
+    to {
+      transform: rotate(359deg);
+    }
+  }
+  img {
+
+    width: 100%;
+    animation: rotation 2s infinite linear;
+  }
+
 }
