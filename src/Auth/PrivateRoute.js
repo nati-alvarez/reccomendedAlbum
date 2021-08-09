@@ -2,16 +2,22 @@
 
 import React from "react";
 import {Redirect, Route} from "react-router-dom";
-import {useAuth} from "./AuthProvider";
+// import {useAuth} from "./AuthProvider";
+
+let deserializedAccessData = JSON.parse(localStorage.getItem("okta-token-storage"));
 
 function PrivateRoute({component: Component, ...rest}) {
-  const {currentUser} = useAuth();
+  // const {currentUser} = useAuth();
   return (
     <Route
       {...rest}
       render={(props) => {
         //if we have a current user we want to render the secured component - if we dont take the user to login.
-        return currentUser ? <Component {...props} /> : <Redirect to="/login" />;
+        return deserializedAccessData ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to="/login" />
+        );
       }}
     ></Route>
   );

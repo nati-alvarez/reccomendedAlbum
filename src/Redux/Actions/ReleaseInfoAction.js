@@ -16,7 +16,7 @@ export const releaseInfoAction = (id) => async (dispatch) => {
   });
 const allData = []
   let data = await DataDiviner(releaseDetails(id));
-  console.log(data)
+  
   allData.push({
     artists: data[0].artists_sort,
     title: data[0].title,

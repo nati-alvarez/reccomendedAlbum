@@ -95,15 +95,12 @@ export const navVisibility = () => (dispatch) => {
   });
 }
 
-export const signButton = (data) => (dispatch) => {
-  //this controls which button is visible on the header 
-  // sign in if the user is not yet signed in 
-  // avatar if the user is signed in. 
+export const userID = (data) => (dispatch) => {
+  //this sends the userId to the reducer
   dispatch({
-    type: "SIGN_TOGGLE",
+    type: "ID",
     payload: {
-      signToggle: data
-      
+      id: data
     }
   });
 }

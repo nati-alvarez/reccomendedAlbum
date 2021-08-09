@@ -17,7 +17,7 @@ export const loadReleases = (id, type) => async (dispatch) => {
   let allData = [];
   for (let i = 1; i <= pageNumber.data.pagination.pages; i++) {
     let data = await axios.get(labelReleases(id, i));
-    console.log(data);
+
     allData.push(data.data.releases);
   }
   let releasesData = [].concat.apply([], allData);
@@ -87,7 +87,7 @@ export const loadReleasesSearch = () => async (dispatch) => {
   const allData = [];
   for (let i = 0; i < dummyLabelCodes.length; i++) {
     const pageNumber = await axios.get(labelReleases(dummyLabelCodes[i], 1));
-    console.log(pageNumber);
+
     let allReleaseData = [];
     //second for loop gets the releases for each label
     for (let j = 1; j <= pageNumber.data.pagination.pages; j++) {
@@ -95,7 +95,6 @@ export const loadReleasesSearch = () => async (dispatch) => {
       allReleaseData.push(data.data.releases);
     }
     let releasesData = [].concat.apply([], allReleaseData);
-
 
     const releasesByTitle = {};
     const releases = [];
@@ -124,9 +123,9 @@ export const loadReleasesSearch = () => async (dispatch) => {
     for (let title in releasesByTitle) {
       releases.push(releasesByTitle[title]);
     }
-        //here we flatten the arrays, this allows search functionality
-    // if the user wants to search all labels then they cannot be in seperate 
-    // arrays (organized by label), they have to be in one big array. 
+    //here we flatten the arrays, this allows search functionality
+    // if the user wants to search all labels then they cannot be in seperate
+    // arrays (organized by label), they have to be in one big array.
 
     allData.push(releases);
   }

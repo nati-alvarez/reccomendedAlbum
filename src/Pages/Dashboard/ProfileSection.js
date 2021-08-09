@@ -1,11 +1,7 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
 
-
-import {useAuth} from "../../Auth/AuthProvider";
-
 const ProfileSection = () => {
-  const {currentUser} = useAuth();
   const [userInfo, setUserInfo] = useState({
     name: "",
   });
@@ -20,7 +16,7 @@ const ProfileSection = () => {
         console.log(error);
       });
   }, []);
-console.log(userInfo)
+
   return (
     <div className="ProfileSectionContainer">
       <div>
@@ -28,7 +24,8 @@ console.log(userInfo)
       </div>
       <div className="userInfo">
         <p>Name: {userInfo.name}</p>
-        <p>Email: {currentUser.email}</p>
+        <p>Email: {userInfo.email}</p>
+
         <label>
           <p>Sonic Deducer</p>
           <input type="checkbox" />

@@ -16,7 +16,7 @@ function TopTen(props) {
 useEffect(() => {
   axios.get('https://rlca-backend.herokuapp.com/user/610f0899fbc8aa0d170023eb')
   .then(function (response) {
-    console.log(response);
+    
     setTopTenData(response.data.topTen)
   })
   .catch(function (error) {

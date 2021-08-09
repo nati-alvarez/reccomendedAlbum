@@ -1,7 +1,6 @@
 import React, {useRef, useState} from "react";
 import {Card, Form, Button, Container, Alert} from "react-bootstrap";
-import {Link, useHistory} from "react-router-dom";
-import {useAuth} from "../../Auth/AuthProvider";
+import {Link} from "react-router-dom";
 
 function Login(props) {
   const [error, setError] = useState("");
@@ -9,22 +8,15 @@ function Login(props) {
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  const {login} = useAuth();
-  const history = useHistory();
-
   async function handleSubmit(e) {
     e.preventDefault();
-
     try {
       setError("");
       setLoading(true);
-      await login(emailRef.current.value, passwordRef.current.value);
-      history.push("/dashboard");
+      window.location = "https://rlca-backend.herokuapp.com/authorize";
     } catch {
       setError("Failed to log in");
     }
-
-    setLoading(false);
   }
 
   return (

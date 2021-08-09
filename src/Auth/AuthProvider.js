@@ -1,12 +1,10 @@
 import React, {useContext, useEffect, useState} from "react";
 import {auth} from "../Auth/firebase";
 import {useDispatch} from "react-redux";
-import {
-  navSelectorDispatch,
-  signButton,
-} from "../Redux/Actions/navSelectorAction";
+import {navSelectorDispatch, userID} from "../Redux/Actions/navSelectorAction";
 import {loadReleasesSearch} from "../Redux/Actions/ReleasesAction";
 import {userActions} from "../Redux/Actions/userActions";
+import axios from "axios";
 
 const AuthContext = React.createContext();
 
@@ -20,9 +18,53 @@ export function AuthProvider({children}) {
   const [loading, setLoading] = useState(true);
 
   function signUp(email, password) {
-    dispatch(signButton(true));
     dispatch(navSelectorDispatch("label"));
-    return auth.createUserWithEmailAndPassword(email, password);
+
+    axios.get('/auth/authorize')
+  .then(function (response) {
+    console.log(response);
+    return response
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+
+
+
+    // return auth.createUserWithEmailAndPassword(email, password);
+  }
+
+  function sendId(name, email, set) {
+    let id;
+    if (set) {
+      console.log("post")
+      axios
+        .post("https://rlca-backend.herokuapp.com/user/", {
+          name: name,
+          email: email,
+        })
+        .then(function (response) {
+          console.log(response);
+          id = response.data.id;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+        dispatch(userID(id));
+    } else {
+      console.log("get")
+      axios
+        .get(`/user/${name}`)
+        .then(function (response) {
+          console.log(response);
+          id = response.data.id;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+        dispatch(userID(id));
+    }
   }
 
   function login(email, password) {
@@ -30,12 +72,11 @@ export function AuthProvider({children}) {
     dispatch(userActions());
     //load releases pulls in label info from the api
     //this can be removed once the db is properly set up.
-  dispatch(loadReleasesSearch())
+    dispatch(loadReleasesSearch());
     return auth.signInWithEmailAndPassword(email, password);
   }
 
   function logout() {
-    dispatch(signButton(false));
     return auth.signOut();
   }
 
@@ -57,6 +98,7 @@ export function AuthProvider({children}) {
     login,
     logout,
     resetPassword,
+    sendId,
   };
 
   return (

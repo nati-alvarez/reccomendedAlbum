@@ -21,7 +21,7 @@ export const loadReleases = (id, info) => async (dispatch) => {
   let allData = [];
   for (let i = 1; i <= pageNumber.data.pagination.pages; i++) {
     let data = await axios.get(labelReleases(id, i));
-    console.log(data);
+    
     allData.push(data.data.releases);
   }
   let releasesData = [].concat.apply([], allData);
@@ -88,7 +88,7 @@ export const loadReleases = (id, info) => async (dispatch) => {
 // artist or labels releases.
 
 export const releaseInfoAction = (id) => async (dispatch) => {
-  console.log(id)
+  
   dispatch({
     type: "FETCH_RELEASE_INFO",
     payload: {
@@ -97,7 +97,7 @@ export const releaseInfoAction = (id) => async (dispatch) => {
   });
   const allData = [];
   let data = await DataDiviner(releaseDetails(id));
-  console.log(data);
+  
   allData.push({
     artists: data[0].artists_sort,
     title: data[0].title,
@@ -130,7 +130,7 @@ export const loadReleasesSearch = () => async (dispatch) => {
   const allData = [];
   for (let i = 0; i < dummyLabelCodes.length; i++) {
     const pageNumber = await axios.get(labelReleases(dummyLabelCodes[i], 1));
-    console.log(pageNumber);
+    
     let allReleaseData = [];
     //second for loop gets the releases for each label
     for (let j = 1; j <= pageNumber.data.pagination.pages; j++) {

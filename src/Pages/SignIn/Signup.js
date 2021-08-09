@@ -1,19 +1,18 @@
 import React, {useRef, useState} from "react";
 import {Card, Form, Button, Container, Alert} from "react-bootstrap";
 import {Link, useHistory} from "react-router-dom";
-import {useDispatch} from "react-redux";
+
 import {useAuth} from "../../Auth/AuthProvider";
-import { signButton } from "../../Redux/Actions/navSelectorAction";
 
 function Signup() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const emailRef = useRef();
   const passwordRef = useRef();
+  const nameRef = useRef();
   const passwordConfirmRef = useRef();
-  const {signUp} = useAuth();
+  const {signUp, sendId} = useAuth();
   const history = useHistory();
-  const dispatch = useDispatch();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -26,8 +25,8 @@ function Signup() {
       setError("");
       setLoading(true);
       await signUp(emailRef.current.value, passwordRef.current.value);
+      await sendId(nameRef.current.value, emailRef.current.value, true);
       history.push("/dashboard");
-      dispatch(signButton(true));
     } catch {
       setError("Failed to create an account");
     }
@@ -46,6 +45,10 @@ function Signup() {
             <h2 className="text-center mb-4">Sign Up</h2>
             {error && <Alert variant="danger">{error}</Alert>}
             <Form onSubmit={handleSubmit}>
+              <Form.Group id="name">
+                <Form.Label>Name</Form.Label>
+                <Form.Control type="name" ref={nameRef} required />
+              </Form.Group>
               <Form.Group id="email">
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="email" ref={emailRef} required />

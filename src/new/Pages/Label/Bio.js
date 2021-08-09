@@ -2,7 +2,7 @@ import {useSelector} from "react-redux";
 
 function Bio() {
   const data = useSelector((state) => state);
-  console.log(data);
+  
   return data.Releases.loading ? (
     <>LOADING</>
     

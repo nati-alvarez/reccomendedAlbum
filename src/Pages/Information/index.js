@@ -5,7 +5,7 @@ import ReleaseInfo from "./ReleaseInfo";
 
 function Index(props) {
   const checker = useSelector((state) => state.individualRelease);
-  console.log(checker)
+  
   return checker.show ? (
     <div>
       <ReleaseInfo/>
