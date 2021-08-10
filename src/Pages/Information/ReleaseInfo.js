@@ -1,6 +1,6 @@
 import {useSelector, useDispatch} from "react-redux";
 import {showBio} from "../../Redux/Actions/ReleaseInfoAction";
-import { topTenHandler } from "../../utils/utils";
+// import { topTenHandler } from "../../utils/utils";
 
 
 function ReleaseInfo() {
@@ -55,7 +55,7 @@ function ReleaseInfo() {
       <button
         onClick={() => {
           //TODO change hardcoded user id to dynamic one
-          topTenHandler(releaseInfo.img, "610f0899fbc8aa0d170023eb")
+          // topTenHandler(releaseInfo.img, "610f0899fbc8aa0d170023eb")
         }}
       >
         +Top Ten

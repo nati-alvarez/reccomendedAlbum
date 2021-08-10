@@ -8,7 +8,7 @@ function Login(props) {
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
     try {
       setError("");

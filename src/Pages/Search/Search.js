@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {releaseInfoAction} from "../../Redux/Actions/ReleaseInfoAction";
-import { topTenHandler } from "../../utils/utils";
+// import { topTenHandler } from "../../utils/utils";
 import LoadingImage from '../../assets/loading.jpeg'
 
 const Search = ({topTen}) => {
@@ -85,7 +85,7 @@ const SearchRelease = ({name, artist, image, catno, id, topTen}) => {
           className="addToTopTenButton"
           onClick={() => {
             //TODO change hardcoded user id to dynamic one
-            topTenHandler(image, "610f0899fbc8aa0d170023eb")
+            // topTenHandler(image, "610f0899fbc8aa0d170023eb")
           }}
         >
           Add to Top Ten
