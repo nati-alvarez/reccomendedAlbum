@@ -13,33 +13,43 @@ const ProfileSection = () => {
       .get("https://rlca-backend.herokuapp.com/identity")
       .then(function (response) {
         console.log(response);
-        setUserInfo(response.data);
-        console.log(userInfo.id, userInfo.username);
+        axios
+          .post("https://rlca-backend.herokuapp.com/user", {
+            idNum: response.data.id,
+            name: response.data.username,
+          })
+          .then(function (response) {
+            axios
+              .get(`https://rlca-backend.herokuapp.com/user/${userInfo.id}`)
+              .then(function (response) {
+                setUserInfo(response.data);
+              });
+          });
       })
       .catch(function (error) {
         console.log(error);
       });
 
-    axios
-      .post("https://rlca-backend.herokuapp.com/user", {
-        idNum: userInfo.id,
-        name: userInfo.username,
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    // axios
+    //   .post("https://rlca-backend.herokuapp.com/user", {
+    //     idNum: userInfo.id,
+    //     name: userInfo.username,
+    //   })
+    //   .then(function (response) {
+    //     console.log(response);
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
 
-    axios
-      .get(`https://rlca-backend.herokuapp.com/user/${userInfo.id}`)
-      .then(function (response) {
-        setUserInfo(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    // axios
+    //   .get(`https://rlca-backend.herokuapp.com/user/${userInfo.id}`)
+    //   .then(function (response) {
+    //     setUserInfo(response.data);
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
     // eslint-disable-next-line
   }, []);
 
