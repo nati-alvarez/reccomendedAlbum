@@ -19,8 +19,8 @@ const ProfileSection = () => {
       .catch(function (error) {
         console.log(error);
       });
-
-    axios
+console.log(userInfo.id, userInfo.username)
+      axios
       .post("https://rlca-backend.herokuapp.com/user", {
         idNum: userInfo.id,
         name: userInfo.username,
@@ -32,16 +32,23 @@ const ProfileSection = () => {
         console.log(error);
       });
 
-    // axios
-    //   .get(`https://rlca-backend.herokuapp.com/user/${userInfo.id}`)
-    //   .then(function (response) {
-    //     setUserInfo(response.data);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
+
+    axios
+      .get(`https://rlca-backend.herokuapp.com/user/${userInfo.id}`)
+      .then(function (response) {
+        setUserInfo(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     // eslint-disable-next-line
   }, []);
+
+
+const activate = () => {
+
+
+}
 
   return (
     <div className="ProfileSectionContainer">
@@ -56,6 +63,7 @@ const ProfileSection = () => {
           <p>Sonic Deducer</p>
           <input type="checkbox" />
         </label>
+        <button onClick={activate}>ACTIVATE ACCOUNT</button>
       </div>
     </div>
   );
