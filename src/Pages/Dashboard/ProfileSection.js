@@ -19,7 +19,7 @@ const ProfileSection = () => {
       .catch(function (error) {
         console.log(error);
       });
-// console.log(userInfo.id, userInfo.username)
+console.log(userInfo.id, userInfo.username)
 //       axios
 //       .post("https://rlca-backend.herokuapp.com/user", {
 //         idNum: userInfo.id,
