@@ -16,6 +16,11 @@ const ProfileSection = () => {
         setUserInfo(response.data);
         console.log(userInfo.id, userInfo.username);
       })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    axios
       .post("https://rlca-backend.herokuapp.com/user", {
         idNum: userInfo.id,
         name: userInfo.username,
@@ -23,15 +28,18 @@ const ProfileSection = () => {
       .then(function (response) {
         console.log(response);
       })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    axios
       .get(`https://rlca-backend.herokuapp.com/user/${userInfo.id}`)
       .then(function (response) {
-        console.log(`final response from get ${response}`);
         setUserInfo(response.data);
       })
       .catch(function (error) {
         console.log(error);
       });
-
     // eslint-disable-next-line
   }, []);
 
@@ -44,8 +52,6 @@ const ProfileSection = () => {
       </div>
       <div className="userInfo">
         <p>Name: {userInfo.name}</p>
-
-        <p>ID: {userInfo.id}</p>
         {/* <p>Email: {userInfo.email}</p> */}
 
         <label>
