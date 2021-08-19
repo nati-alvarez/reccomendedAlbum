@@ -14,7 +14,7 @@ const ProfileSection = () => {
       .then(function (response) {
         console.log(response);
         axios
-          .post("https://rlca-backend.herokuapp.com/user", {
+          .post("https://rlca-backend.herokuapp.com/user/", {
             idNum: response.data.id,
             name: response.data.username,
           })
