@@ -44,6 +44,7 @@ const ProfileSection = () => {
       </div>
       <div className="userInfo">
         <p>Name: {userInfo.name}</p>
+        <p>ID: {userInfo.ID}</p>
         {/* <p>Email: {userInfo.email}</p> */}
 
         <label>
