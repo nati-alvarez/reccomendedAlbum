@@ -13,42 +13,29 @@ const ProfileSection = () => {
       .get("https://rlca-backend.herokuapp.com/identity")
       .then(function (response) {
         console.log(response);
-
+        setUserInfo(response.data);
+        console.log(userInfo.id, userInfo.username);
+      })
+      .post("https://rlca-backend.herokuapp.com/user", {
+        idNum: userInfo.id,
+        name: userInfo.username,
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .get(`https://rlca-backend.herokuapp.com/user/${userInfo.id}`)
+      .then(function (response) {
+        console.log(`final response from get ${response}`);
         setUserInfo(response.data);
       })
       .catch(function (error) {
         console.log(error);
       });
-console.log(userInfo.id, userInfo.username)
-//       axios
-//       .post("https://rlca-backend.herokuapp.com/user", {
-//         idNum: userInfo.id,
-//         name: userInfo.username,
-//       })
-//       .then(function (response) {
-//         console.log(response);
-//       })
-//       .catch(function (error) {
-//         console.log(error);
-//       });
 
-
-//     axios
-//       .get(`https://rlca-backend.herokuapp.com/user/${userInfo.id}`)
-//       .then(function (response) {
-//         setUserInfo(response.data);
-//       })
-//       .catch(function (error) {
-//         console.log(error);
-      // });
     // eslint-disable-next-line
   }, []);
 
-
-const activate = () => {
-
-
-}
+  const activate = () => {};
 
   return (
     <div className="ProfileSectionContainer">
@@ -57,6 +44,8 @@ const activate = () => {
       </div>
       <div className="userInfo">
         <p>Name: {userInfo.name}</p>
+
+        <p>ID: {userInfo.id}</p>
         {/* <p>Email: {userInfo.email}</p> */}
 
         <label>
