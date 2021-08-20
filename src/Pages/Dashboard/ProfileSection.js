@@ -20,13 +20,12 @@ const ProfileSection = () => {
         setUserInfo({
           name: response.data.username,
           id: response.data.id,
-        }).then(function (response) {
-          axios
-            .get(`https://rlca-backend.herokuapp.com/user/${userInfo.id}`)
-            .then(function (response) {
-              setUserInfo(response.data);
-            });
         });
+        axios
+          .get(`https://rlca-backend.herokuapp.com/user/${userInfo.id}`)
+          .then(function (response) {
+            setUserInfo(response.data);
+          });
       })
       .catch(function (error) {
         console.log(error);
@@ -34,8 +33,6 @@ const ProfileSection = () => {
 
     // eslint-disable-next-line
   }, []);
-
-  const activate = () => {};
 
   return (
     <div className="ProfileSectionContainer">
