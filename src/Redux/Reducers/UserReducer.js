@@ -1,5 +1,5 @@
 const initState = {
-  topTen: [],
+  id: false,
   rest: [],
   loading: false,
 };
@@ -12,7 +12,7 @@ const userReducer = (state = initState, action) => {
       return {
         ...state,
         loading: false,
-        topTen: action.payload.all,
+        id: action.payload.id,
       };
 
     default:

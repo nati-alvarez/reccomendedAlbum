@@ -1,10 +1,12 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
-
+import {useDispatch} from "react-redux";
+import {userActions} from "../../Redux/Actions/userActions";
 const ProfileSection = () => {
+  const dispatch = useDispatch();
   const [userInfo, setUserInfo] = useState({
     name: "",
-    id: Math.random(),
+    id: 13,
   });
   // const [users, setUsers] = useState();
 
@@ -13,24 +15,30 @@ const ProfileSection = () => {
       .get("https://rlca-backend.herokuapp.com/identity")
       .then(function (response) {
         console.log(response);
-        axios.post("https://rlca-backend.herokuapp.com/user/", {
-          idNum: response.data.id,
-          name: response.data.username,
-        });
         setUserInfo({
           name: response.data.username,
           id: response.data.id,
+        }).catch(function (error) {
+          console.log(error);
         });
         axios
-          .get(`https://rlca-backend.herokuapp.com/user/${userInfo.id}`)
+          .post("https://rlca-backend.herokuapp.com/user/", {
+            idNum: response.data.id,
+            name: response.data.username,
+          })
           .then(function (response) {
-            setUserInfo(response.data);
+            userInfo.id === response.data.id &&
+              axios
+                .get(`https://rlca-backend.herokuapp.com/user/${userInfo.id}`)
+                .then(function (response) {
+                  setUserInfo(response.data);
+                });
+            dispatch(userActions(userInfo.id));
+          })
+          .catch(function (error) {
+            console.log(error);
           });
-      })
-      .catch(function (error) {
-        console.log(error);
       });
-
     // eslint-disable-next-line
   }, []);
 

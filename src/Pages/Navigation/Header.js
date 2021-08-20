@@ -4,7 +4,7 @@ import {
   navSelectorDispatch,
   navVisibility,
 } from "../../Redux/Actions/navSelectorAction";
-import {useAuth} from "../../Auth/AuthProvider";
+
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faRecordVinyl} from "@fortawesome/free-solid-svg-icons";
 // import {faUserAlt} from "@fortawesome/free-solid-svg-icons";
@@ -13,11 +13,10 @@ import {faDoorOpen} from "@fortawesome/free-solid-svg-icons";
 import {faDragon} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
 import {loadReleasesSearch} from "../../Redux/Actions/ReleasesAction";
-import { showBio } from "../../Redux/Actions/ReleaseInfoAction";
+import {showBio} from "../../Redux/Actions/ReleaseInfoAction";
 
 function Header() {
   const data = useSelector((state) => state);
-  const {currentUser} = useAuth();
   const dispatch = useDispatch();
 
   const searchHandler = () => {
@@ -28,7 +27,7 @@ function Header() {
     } else {
       dispatch(loadReleasesSearch());
     }
-    
+
     dispatch(showBio());
   };
 
@@ -58,7 +57,7 @@ function Header() {
             <p>Search</p>
           </span>
         </Link>
-        {currentUser ? (
+        {data.user.id ? (
           <Link to={"/dashboard"}>
             <span onClick={() => dispatch(navVisibility())}>
               <FontAwesomeIcon
