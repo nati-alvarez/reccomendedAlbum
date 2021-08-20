@@ -25,15 +25,13 @@ const ProfileSection = () => {
             name: response.data.username,
           })
           .then(function () {
-            {
-              userInfo.id === response.data.id &&
-                axios
-                  .get(`https://rlca-backend.herokuapp.com/user/${userInfo.id}`)
-                  .then(function (response) {
-                    setUserInfo(response.data);
-                  });
-              dispatch(userActions(userInfo.id));
-            }
+            userInfo.id === response.data.id &&
+              axios
+                .get(`https://rlca-backend.herokuapp.com/user/${userInfo.id}`)
+                .then(function (response) {
+                  setUserInfo(response.data);
+                });
+            dispatch(userActions(userInfo.id));
           })
           .catch(function (error) {
             console.log(error);
