@@ -1,6 +1,6 @@
 
 import Admin from "./Admin";
-import ProfileSection from "./ProfileSection";
+// import ProfileSection from "./ProfileSection";
 // import ListenNext from "./ListenNext";
 // import NextShipment from "./NextShipment";
 // import TopTen from "./TopTen";
@@ -11,7 +11,7 @@ function index(props) {
 
       {/* <TopTen/> */}
 
-      <ProfileSection/>
+      {/* <ProfileSection/> */}
       <Admin />
       {/* <ListenNext/>
       

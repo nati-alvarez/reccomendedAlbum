@@ -29,7 +29,7 @@ export const navSelectorDispatch = (nav) => async (dispatch) => {
 
   if (nav === "label") {
     //todo replace these codes with some from the users db
-    const dummyLabelCodes = [90336, 157803, 23127, 389319, 153824, 88949];
+    const dummyLabelCodes = [1149832, 157803, 23127, 389319, 153824, 88949];
     for (let i = 0; i < dummyLabelCodes.length; i++) {
       let data = await DataDiviner(label(dummyLabelCodes[i]));
       allData.push({
