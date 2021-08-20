@@ -44,14 +44,13 @@ const ProfileSection = () => {
       </div>
       <div className="userInfo">
         <p>Name: {userInfo.name}</p>
-        <p>ID: {userInfo.ID}</p>
+        <p>ID: {userInfo.id}</p>
         {/* <p>Email: {userInfo.email}</p> */}
 
         <label>
           <p>Sonic Deducer</p>
           <input type="checkbox" />
         </label>
-        <button onClick={activate}>ACTIVATE ACCOUNT</button>
       </div>
     </div>
   );
