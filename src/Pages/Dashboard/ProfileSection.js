@@ -24,7 +24,7 @@ const ProfileSection = () => {
             idNum: response.data.id,
             name: response.data.username,
           })
-          .then(function (response) {
+          .then(function () {
             {
               userInfo.id === response.data.id &&
                 axios
