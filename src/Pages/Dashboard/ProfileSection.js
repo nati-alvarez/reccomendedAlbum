@@ -18,8 +18,6 @@ const ProfileSection = () => {
         setUserInfo({
           name: response.data.username,
           id: response.data.id,
-        }).catch(function (error) {
-          console.log(error);
         });
         axios
           .post("https://rlca-backend.herokuapp.com/user/", {
@@ -27,17 +25,22 @@ const ProfileSection = () => {
             name: response.data.username,
           })
           .then(function (response) {
-            userInfo.id === response.data.id &&
-              axios
-                .get(`https://rlca-backend.herokuapp.com/user/${userInfo.id}`)
-                .then(function (response) {
-                  setUserInfo(response.data);
-                });
-            dispatch(userActions(userInfo.id));
+            {
+              userInfo.id === response.data.id &&
+                axios
+                  .get(`https://rlca-backend.herokuapp.com/user/${userInfo.id}`)
+                  .then(function (response) {
+                    setUserInfo(response.data);
+                  });
+              dispatch(userActions(userInfo.id));
+            }
           })
           .catch(function (error) {
             console.log(error);
           });
+      })
+      .catch(function (error) {
+        console.log(error);
       });
     // eslint-disable-next-line
   }, []);
