@@ -1,60 +1,34 @@
-import React, {useRef, useState} from "react";
-import {Card, Form, Button, Container, Alert} from "react-bootstrap";
-import {Link} from "react-router-dom";
+import DiscogsLogo from '../../assets/discogsLogo.png'
 
 function Login(props) {
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  const emailRef = useRef();
-  const passwordRef = useRef();
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    try {
-      setError("");
-      setLoading(true);
-      window.location = "https://rlca-backend.herokuapp.com/authorize";
-    } catch {
-      setError("Failed to log in");
-    }
+  function authorize() {
+    // window.location = "https://rlca-backend.herokuapp.com/authorize";
+    window.location = "http://localhost:3001/authorize";
   }
 
   return (
-    <Container
-      className="d-flex align-items-center justify-content-center"
-      style={{minHeight: "100vh"}}
-    >
-      <div className="w-100" style={{maxWidth: "400px"}}>
-        <Card>
-          <Card.Body>
-            <h2 className="text-center mb-4">Log In</h2>
-            {error && <Alert variant="danger">{error}</Alert>}
-            <Form onSubmit={handleSubmit}>
-              <Form.Group id="email">
-                <Form.Label>Email</Form.Label>
-                <Form.Control type="email" ref={emailRef} required />
-              </Form.Group>
-              <Form.Group id="password">
-                <Form.Label>password</Form.Label>
-                <Form.Control type="password" ref={passwordRef} required />
-              </Form.Group>
+    <div className="loginContainerMain">
+      <img className="discogsLogo" src={DiscogsLogo} alt='discogsLogo'/>
+      <p>
+        sonic architecture uses oauth authentication to access the discogs
+        database. discogs is the largest and most comprehensive music database
+        on the planet.
+      </p>
+      
+      <p>
+        more than 595,000 people have contributed some piece of knowledge, to
+        build up a catalog of more than 14,319,858 recordings and 7,697,070
+        artists.
+      </p>
+      <p>
+        by creating an account, or logging in with your existing account, you
+        can currate sonic architecture to catalog your favorite record labels
+        and releases.
+      </p>
+      
 
-              <br></br>
-              <Button type="submit" className="w-100" disabled={loading}>
-                Log In
-              </Button>
-            </Form>
-            <div className="w-100 text-center mt-3">
-              <Link to="/forgot-password">Forgot Password?</Link>
-            </div>
-          </Card.Body>
-        </Card>
-
-        <div className="w-100 text-center mt-2">
-          Need an account? <Link to="/signup">Sign Up</Link>
-        </div>
-      </div>
-    </Container>
+      <button onClick={authorize}>Log-in using your discogs account</button>
+    </div>
   );
 }
 

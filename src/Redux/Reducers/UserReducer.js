@@ -2,6 +2,7 @@ const initState = {
   id: false,
   rest: [],
   loading: false,
+  show: false,
 };
 
 const userReducer = (state = initState, action) => {
@@ -14,6 +15,11 @@ const userReducer = (state = initState, action) => {
         loading: false,
         id: action.payload.id,
       };
+//todo create actions for these
+    case "USER_NAV_SELECTOR":
+      return {...state, show: true, all: action.payload.all};
+    case "USER_NAV_VISIBLE":
+      return {...state, show: false};
 
     default:
       return {...state};

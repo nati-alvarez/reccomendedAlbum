@@ -6,7 +6,6 @@ import {assetSelector} from "../../Redux/Actions/assetSelectorAction";
 import {loadReleases} from "../../Redux/Actions/ReleasesAction";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
-import AddButton from "../Common/AddButton";
 import LoadingImage from "../../assets/loading.jpeg";
 
 //THIS IS THE NAVIGATION COMPONENT THAT SITS ON THE LEFT HAND SIDE OF THE SCREEN. IT IS POPULATED
@@ -29,9 +28,7 @@ function SideNavLabels() {
           dispatch(navVisibility());
         }}
       ></FontAwesomeIcon>
-      <div className="addButton">
-        <AddButton />
-      </div>
+
       {navSelect.all.map((asset, i) => (
         <Link to={`/${asset.type}/${asset.name}`} key={`link ${asset.name}`}>
           <div
