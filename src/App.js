@@ -8,6 +8,7 @@ import Login from "./Pages/SignIn/Login";
 // import PrivateRoute from "./Auth/PrivateRoute";
 
 import Search from "./Pages/Search/";
+import Interim from "./Pages/SignIn/Interim";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path={["/:type/:info"]} component={Info} />
 
             <Route path="/login" component={Login} />
+            <Route path="/authorizing" component={Interim} />
             <Route path="/search" component={Search} />
 
             {/* <PrivateRoute path="/dashboard" component={Dashboard} /> */}

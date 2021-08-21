@@ -1,9 +1,11 @@
 import axios from "axios";
+import {useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {showBio} from "../../Redux/Actions/ReleaseInfoAction";
 // import { topTenHandler } from "../../utils/utils";
 
 function ReleaseInfo() {
+  const [disabled, setDisabled] = useState(false);
   window.scrollTo(0, 0);
   const dispatch = useDispatch();
   const releaseInfo = useSelector((state) => state.individualRelease);
@@ -37,6 +39,7 @@ function ReleaseInfo() {
       .catch(function (error) {
         console.log(error);
       });
+    setDisabled(true);
   }
 
   return (
@@ -67,7 +70,12 @@ function ReleaseInfo() {
         ))}
       </div>
       <div className="releaseInfoButtonContainer">
-        <button onClick={() => topTenHandler(releaseInfo.id)}>+Top Ten</button>
+        <button
+          onClick={() => topTenHandler(releaseInfo.img)}
+          disabled={disabled}
+        >
+          +Top Ten
+        </button>
         <button
           onClick={() => {
             dispatch(showBio());

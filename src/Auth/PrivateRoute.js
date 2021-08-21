@@ -4,7 +4,7 @@ import React from "react";
 import {Redirect, Route} from "react-router-dom";
 // import {useAuth} from "./AuthProvider";
 
-let deserializedAccessData = JSON.parse(localStorage.getItem("okta-token-storage"));
+let deserializedAccessData = localStorage.getItem("userID");
 
 function PrivateRoute({component: Component, ...rest}) {
   // const {currentUser} = useAuth();

@@ -1,7 +1,12 @@
 import React from "react";
 import SonicArchLogo from "../../assets/SonicArchLogo.png";
 function HomeGuide(props) {
-  return (
+  const userId = localStorage.getItem("userID");
+  return userId ? (
+    <div className="homeGuideContainer">
+      <img src={SonicArchLogo} alt="logo" />
+    </div>
+  ) : (
     <div className="homeGuideContainer">
       <img src={SonicArchLogo} alt="logo" />
 

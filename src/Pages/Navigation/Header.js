@@ -18,7 +18,7 @@ import {showBio} from "../../Redux/Actions/ReleaseInfoAction";
 function Header() {
   const data = useSelector((state) => state);
   const dispatch = useDispatch();
-
+  const userId = localStorage.getItem("userID");
   const searchHandler = () => {
     // if the reducer does not have all search data run the all data
     //fetcher, otherwise this will have been run when the user logged in.
@@ -57,7 +57,7 @@ function Header() {
             <p>Search</p>
           </span>
         </Link>
-        {data.user.id ? (
+        {userId ? (
           <Link to={"/dashboard"}>
             <span onClick={() => dispatch(navVisibility())}>
               <FontAwesomeIcon
