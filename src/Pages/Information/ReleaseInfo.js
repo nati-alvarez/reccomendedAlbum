@@ -1,12 +1,13 @@
+import axios from "axios";
 import {useSelector, useDispatch} from "react-redux";
 import {showBio} from "../../Redux/Actions/ReleaseInfoAction";
 // import { topTenHandler } from "../../utils/utils";
 
-
 function ReleaseInfo() {
-  window.scrollTo(0,0)
+  window.scrollTo(0, 0);
   const dispatch = useDispatch();
   const releaseInfo = useSelector((state) => state.individualRelease);
+
   //This function converts the returned youtube 'watch' uris into youtube 'embed' uris
   // which is neccessary to host them.
   function youtube_parser(url) {
@@ -22,7 +23,21 @@ function ReleaseInfo() {
     });
   }
 
+  function topTenHandler(itemId) {
+    const userId = localStorage.getItem("userID");
 
+    axios
+      // .patch("https://rlca-backend.herokuapp.com/user/", {
+      .patch(`http://localhost:3001/user/${userId}`, {
+        topTen: itemId,
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
   return (
     <div className="releaseInfoContainer">
@@ -30,7 +45,7 @@ function ReleaseInfo() {
       <h2>{releaseInfo.artists}</h2>
       <h2>{releaseInfo.title}</h2>
       <p>{releaseInfo.released}</p>
-      
+
       <span>
         {releaseInfo.tracklist.map((track, i) => (
           <span key={i} className="tracklistSpan">
@@ -51,24 +66,16 @@ function ReleaseInfo() {
           ></iframe>
         ))}
       </div>
-      <div className='releaseInfoButtonContainer'>
-      <button
-        onClick={() => {
-          //TODO change hardcoded user id to dynamic one
-          // topTenHandler(releaseInfo.img, "610f0899fbc8aa0d170023eb")
-        }}
-      >
-        +Top Ten
-      </button>
-      <button
-        onClick={() => {
-          dispatch(showBio());
-        }}
-      >
-        Back
-      </button>
+      <div className="releaseInfoButtonContainer">
+        <button onClick={() => topTenHandler(releaseInfo.id)}>+Top Ten</button>
+        <button
+          onClick={() => {
+            dispatch(showBio());
+          }}
+        >
+          Back
+        </button>
       </div>
-      
     </div>
   );
 }
