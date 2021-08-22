@@ -10,12 +10,13 @@ import {
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowLeft, faPlus} from "@fortawesome/free-solid-svg-icons";
 import LoadingImage from "../../assets/loading.jpeg";
-
+import {useHistory} from "react-router-dom";
 //THIS IS THE NAVIGATION COMPONENT THAT SITS ON THE LEFT HAND SIDE OF THE SCREEN. IT IS POPULATED
 //BY DATA PULLED IN FROM THE API OR THE USERS DB (IF THEY ARE SIGNED IN).
 
 function SideNavLabels() {
   const dispatch = useDispatch();
+  let history = useHistory();
   const data = useSelector((state) => state);
   const userId = localStorage.getItem("userID");
   const dispatchHandler = (id, asset, type) => {
@@ -27,11 +28,12 @@ function SideNavLabels() {
     // if the reducer does not have all search data run the all data
     //fetcher, otherwise this will have been run when the user logged in.
     if (data.releases.search && data.releases.search.length > 0) {
-      window.location = "http://localhost:3000/search";
+      
+      history.push("/search");
     } else {
       dispatch(loadReleasesSearch());
     }
-    window.location = "http://localhost:3000/search";
+    history.push("/search");
   };
 
   return userId ? (
