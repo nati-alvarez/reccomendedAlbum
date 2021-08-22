@@ -1,14 +1,29 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {releaseInfoAction} from "../../Redux/Actions/ReleaseInfoAction";
 import LoadingImage from "../../assets/loading.jpeg";
 import axios from "axios";
 import {topTenAction} from "../../Redux/Actions/userActions";
+import {navVisibility} from "../../Redux/Actions/navSelectorAction";
+import {loadReleasesSearch} from "../../Redux/Actions/ReleasesAction";
+import {showBio} from "../../Redux/Actions/ReleaseInfoAction";
 
 const Search = ({topTen}) => {
+  const dispatch = useDispatch();
   const [searchInput, setSearchInput] = useState();
   const releaseInfo = useSelector((state) => state.releases.search);
+  useEffect(() => {
+    // if the reducer does not have all search data run the all data
+    //fetcher, otherwise this will have been run when the user logged in.
+    if (releaseInfo && releaseInfo.length > 0) {
+      dispatch(navVisibility());
+    } else {
+      dispatch(loadReleasesSearch());
+    }
 
+    dispatch(showBio());
+    // eslint-disable-next-line
+  }, []);
   const inputHandler = (e) => {
     setSearchInput(e);
   };

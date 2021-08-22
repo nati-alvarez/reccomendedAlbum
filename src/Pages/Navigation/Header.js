@@ -1,4 +1,3 @@
-import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {
   navSelectorDispatch,
@@ -7,7 +6,7 @@ import {
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faRecordVinyl} from "@fortawesome/free-solid-svg-icons";
-// import {faUserAlt} from "@fortawesome/free-solid-svg-icons";
+
 import {faMusic} from "@fortawesome/free-solid-svg-icons";
 import {faDoorOpen} from "@fortawesome/free-solid-svg-icons";
 import {faDragon} from "@fortawesome/free-solid-svg-icons";
@@ -15,10 +14,14 @@ import {Link} from "react-router-dom";
 import {loadReleasesSearch} from "../../Redux/Actions/ReleasesAction";
 import {showBio} from "../../Redux/Actions/ReleaseInfoAction";
 
+
+
 function Header() {
   const data = useSelector((state) => state);
   const dispatch = useDispatch();
   const userId = localStorage.getItem("userID");
+
+
   const searchHandler = () => {
     // if the reducer does not have all search data run the all data
     //fetcher, otherwise this will have been run when the user logged in.

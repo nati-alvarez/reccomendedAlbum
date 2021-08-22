@@ -1,33 +1,22 @@
-import axios from "axios";
-import {useEffect, useState} from "react";
-// import {useDispatch} from "react-redux";
-// import {getUserInfo} from "../../Redux/Actions/getUserInfo";
+import {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {getUserInfo} from "../../Redux/Actions/userActions";
 
 const ProfileSection = () => {
-  const userId = localStorage.getItem("userID");
-  // const dispatch = useDispatch();
-  // dispatch(getUserInfo(userId));
-  const [userInfo, setUserInfo] = useState();
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.user.all[0]);
 
   useEffect(() => {
-    axios
-      // .get(`https://rlca-backend.herokuapp.com/user/${userInfo.id}`)
-      .get(`http://localhost:3001/user/${userId}`)
-      .then(function (response) {
-        setUserInfo(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    dispatch(getUserInfo());
     // eslint-disable-next-line
   }, []);
 
-  return userInfo ? (
+  return data ? (
     <div className="ProfileSectionContainer">
       <div>{/* <img src={userInfo.avatar} alt="avatar" /> */}</div>
       <div className="userInfo">
-        <p>Name: {userInfo.name}</p>
-        <p>ID: {userInfo.idNum}</p>
+        <p>Name: {data.name}</p>
+        <p>ID: {data.idNum}</p>
         <label>
           <p>Sonic Deducer</p>
           <input type="checkbox" />

@@ -1,5 +1,6 @@
 const initState = {
   id: false,
+  all: [],
   topTen: [],
   loading: false,
   show: false,
@@ -14,6 +15,7 @@ const userReducer = (state = initState, action) => {
         ...state,
         loading: false,
         id: action.payload.id,
+        all: action.payload.all
       };
 
     case "USER_NAV_SELECTOR":

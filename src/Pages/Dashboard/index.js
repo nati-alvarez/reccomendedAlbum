@@ -1,10 +1,19 @@
 // import Admin from "./Admin";
+import {useDispatch} from "react-redux";
+import {getUserInfo} from "../../Redux/Actions/userActions";
 import ProfileSection from "./ProfileSection";
 // import ListenNext from "./ListenNext";
 // import NextShipment from "./NextShipment";
 import TopTen from "./TopTen";
 
-function index(props) {
+function Index(props) {
+  const dispatch = useDispatch();
+  const userId = localStorage.getItem("userId");
+
+  if (userId) {
+    dispatch(getUserInfo());
+  }
+
   return (
     <div className="dashBoardContainer">
       <TopTen />
@@ -18,4 +27,4 @@ function index(props) {
   );
 }
 
-export default index;
+export default Index;

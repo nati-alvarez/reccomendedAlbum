@@ -1,16 +1,15 @@
 import axios from "axios";
-import {useState} from "react";
+import { useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {showBio} from "../../Redux/Actions/ReleaseInfoAction";
 import {topTenAction} from "../../Redux/Actions/userActions";
 // import { topTenHandler } from "../../utils/utils";
 
 function ReleaseInfo() {
-  const [disabled, setDisabled] = useState({
-    topTen: false,
-    inLibrary: false,
-    remove: false,
-  });
+  const [topTenDisabled, setTopTenDisabled] = useState(false);
+  const [inLibraryDisabled, setInLibraryDisabled] = useState(false);
+  const [removeDisabled, setremoveDisabled] = useState(false);
+
   window.scrollTo(0, 0);
   const dispatch = useDispatch();
   const releaseInfo = useSelector((state) => state.individualRelease);
@@ -30,6 +29,8 @@ function ReleaseInfo() {
     });
   }
 
+
+
   function topTenHandler(itemId) {
     axios
       // .patch("https://rlca-backend.herokuapp.com/user/", {
@@ -42,15 +43,16 @@ function ReleaseInfo() {
       .catch(function (error) {
         console.log(error);
       });
-    setDisabled.topTen(true);
+    setTopTenDisabled(true);
     dispatch(topTenAction(itemId));
   }
 
-  function inLibraryHandler(itemId) {
+  function inLibraryHandler(itemId, add) {
     axios
       // .patch("https://rlca-backend.herokuapp.com/user/", {
       .patch(`http://localhost:3001/user/${userId}`, {
         inLibrary: itemId,
+        add: add,
       })
       .then(function (response) {
         console.log(response);
@@ -58,11 +60,7 @@ function ReleaseInfo() {
       .catch(function (error) {
         console.log(error);
       });
-    setDisabled({
-      topTen: disabled.topTen,
-      inLibrary: true,
-      remove: disabled.remove,
-    });
+    add ? setInLibraryDisabled(true) : setremoveDisabled(true);
   }
 
   return (
@@ -74,11 +72,16 @@ function ReleaseInfo() {
       <label className="inLibrary">
         <button
           onClick={() => inLibraryHandler(releaseInfo.id)}
-          disabled={disabled.inLibrary}
+          disabled={inLibraryDisabled}
         >
           Add to Library
         </button>
-        <button disabled={disabled.remove}>Remove from Library</button>
+        <button
+          disabled={removeDisabled}
+          onClick={() => topTenHandler(releaseInfo.img, false)}
+        >
+          Remove from Library
+        </button>
       </label>
       <span>
         {releaseInfo.tracklist.map((track, i) => (
@@ -102,8 +105,8 @@ function ReleaseInfo() {
       </div>
       <div className="releaseInfoButtonContainer">
         <button
-          onClick={() => topTenHandler(releaseInfo.img)}
-          disabled={disabled.topTen}
+          onClick={() => topTenHandler(releaseInfo.img, true)}
+          disabled={topTenDisabled}
         >
           +Top Ten
         </button>

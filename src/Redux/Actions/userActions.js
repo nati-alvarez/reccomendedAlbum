@@ -3,7 +3,7 @@
 
 import axios from "axios";
 
-export const getUserInfo = (id) => (dispatch) => {
+export const getUserInfo = () => async (dispatch) => {
   dispatch({
     type: "FETCH_USER_DATA",
     payload: {
@@ -11,25 +11,22 @@ export const getUserInfo = (id) => (dispatch) => {
     },
   });
 
+  const userId = localStorage.getItem("userID");
+  const allData = [];
+  await axios
+    .get(`http://localhost:3001/user/${userId}`)
+    .then(function (response) {
+      allData.push(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
   dispatch({
     type: "FETCH_USER_DATA_SUCCESS",
     payload: {
-      id: id,
-      loading: false,
-    },
-  });
-
-  dispatch({
-    type: "ADD_TO_TOP_TEN",
-    payload: {
-      loading: true,
-    },
-  });
-
-  dispatch({
-    type: "ADD_TO_TOP_TEN_SUCCESS",
-    payload: {
-      id: id,
+      id: userId,
+      all: allData,
       loading: false,
     },
   });
