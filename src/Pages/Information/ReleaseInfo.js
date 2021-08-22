@@ -5,11 +5,15 @@ import {showBio} from "../../Redux/Actions/ReleaseInfoAction";
 // import { topTenHandler } from "../../utils/utils";
 
 function ReleaseInfo() {
-  const [disabled, setDisabled] = useState(false);
+  const [disabled, setDisabled] = useState({
+    topTen: false,
+    inLibrary: false,
+    remove: false,
+  });
   window.scrollTo(0, 0);
   const dispatch = useDispatch();
   const releaseInfo = useSelector((state) => state.individualRelease);
-
+  const userId = localStorage.getItem("userID");
   //This function converts the returned youtube 'watch' uris into youtube 'embed' uris
   // which is neccessary to host them.
   function youtube_parser(url) {
@@ -26,8 +30,6 @@ function ReleaseInfo() {
   }
 
   function topTenHandler(itemId) {
-    const userId = localStorage.getItem("userID");
-
     axios
       // .patch("https://rlca-backend.herokuapp.com/user/", {
       .patch(`http://localhost:3001/user/${userId}`, {
@@ -39,7 +41,26 @@ function ReleaseInfo() {
       .catch(function (error) {
         console.log(error);
       });
-    setDisabled(true);
+    setDisabled.topTen(true);
+  }
+
+  function inLibraryHandler(itemId) {
+    axios
+      // .patch("https://rlca-backend.herokuapp.com/user/", {
+      .patch(`http://localhost:3001/user/${userId}`, {
+        inLibrary: itemId,
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    setDisabled({
+      topTen: disabled.topTen,
+      inLibrary: true,
+      remove: disabled.remove,
+    });
   }
 
   return (
@@ -48,7 +69,15 @@ function ReleaseInfo() {
       <h2>{releaseInfo.artists}</h2>
       <h2>{releaseInfo.title}</h2>
       <p>{releaseInfo.released}</p>
-
+      <label className="inLibrary">
+        <button
+          onClick={() => inLibraryHandler(releaseInfo.id)}
+          disabled={disabled.inLibrary}
+        >
+          Add to Library
+        </button>
+        <button disabled={disabled.remove}>Remove from Library</button>
+      </label>
       <span>
         {releaseInfo.tracklist.map((track, i) => (
           <span key={i} className="tracklistSpan">
@@ -72,7 +101,7 @@ function ReleaseInfo() {
       <div className="releaseInfoButtonContainer">
         <button
           onClick={() => topTenHandler(releaseInfo.img)}
-          disabled={disabled}
+          disabled={disabled.topTen}
         >
           +Top Ten
         </button>

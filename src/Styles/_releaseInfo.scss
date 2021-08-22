@@ -17,8 +17,7 @@
 // }
 
 .releaseInfoContainer {
-  
-  margin-top: 20px;  
+  margin-top: 20px;
   @include flexColumn;
   padding: 20px;
   img {
@@ -30,27 +29,22 @@
   }
 
   @include breakpoint(tablet) {
-
     img {
       width: 40%;
     }
   }
 
   @include breakpoint(laptop) {
-    
-
   }
 
   @include breakpoint(desktop) {
-// macbook    
-    
+    // macbook
   }
 }
 
 .tracklistSpan {
   text-align: center;
 
-  
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -64,10 +58,21 @@
     text-align: left;
   }
   @include breakpoint(tablet) {
-
     width: 400px;
   }
 }
+
+.inLibrary {
+  padding: 20px;
+  display: flex;
+
+  align-items: baseline;
+
+  p {
+    margin-right: 10px;
+  }
+}
+
 .videoPlayer {
   @include flexColumn;
   gap: 20px;
