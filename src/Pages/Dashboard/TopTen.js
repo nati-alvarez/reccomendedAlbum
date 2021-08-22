@@ -1,19 +1,20 @@
+import {faPlus} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {loadReleasesSearch} from "../../Redux/Actions/ReleasesAction";
-import loading from "../../assets/loading.jpeg";
-import AddButton from "../Common/AddButton";
 
 function TopTen(props) {
-  const [topTenData, setTopTenData] = useState([]);
+  const [topTenData, setTopTenData] = useState([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
   const data = useSelector((state) => state);
-  const introData = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     // axios.get(`https://rlca-backend.herokuapp.com/user/${userId}`)
     const userId = localStorage.getItem("userID");
+
     axios
       .get(`http://localhost:3001/user/${userId}`)
       .then(function (response) {
@@ -22,6 +23,8 @@ function TopTen(props) {
       .catch(function (error) {
         console.log(error);
       });
+
+    // eslint-disable-next-line
   }, []);
 
   const searchHandler = () => {
@@ -34,7 +37,7 @@ function TopTen(props) {
     }
   };
 
-  return topTenData.length > 0 ? (
+  return (
     <div className="topTenContainer">
       <div>
         <h4>Top Ten</h4>
@@ -46,25 +49,8 @@ function TopTen(props) {
             <p>{i + 1}</p>
           </div>
         ))}
-        <div className="navButtons" onClick={searchHandler}>
-          <AddButton topTen={true} />
-        </div>
-      </div>
-    </div>
-  ) : (
-    <div className="topTenContainer">
-      <div>
-        <h4>Top Ten</h4>
-      </div>
-      <div className="topTenImage">
-        {introData.map((i) => (
-          <div className="topTenImageHolder" key={i}>
-            <img src={loading} alt={i} />
-            <p>{i + 1}</p>
-          </div>
-        ))}
-        <div className="navButtons" onClick={searchHandler}>
-          <AddButton topTen={true} />
+        <div className="navButtonsPlus" onClick={searchHandler}>
+          <FontAwesomeIcon icon={faPlus} />
         </div>
       </div>
     </div>

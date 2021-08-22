@@ -9,7 +9,6 @@ function HomeGuide(props) {
   ) : (
     <div className="homeGuideContainer">
       <img src={SonicArchLogo} alt="logo" />
-
       <p>
         a tool designed to help music lovers keep track of their favorite record
         labels.{" "}

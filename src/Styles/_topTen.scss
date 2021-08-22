@@ -42,6 +42,14 @@
     flex-wrap: wrap;
     gap: 2px;
   }
+  .navButtonsPlus {
+    border: 2px solid green;
+    width: 30px;
+    height: 30px;
+    @include flexColumn;
+    justify-content: center;
+    gap: 2px;
+  }
   p {
     font-size: 10px;
     text-align: center;

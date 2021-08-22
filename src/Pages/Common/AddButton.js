@@ -48,8 +48,10 @@ function AddButton({topTen}) {
 
       <Modal show={open} onHide={closeModal} animation={false}>
         <Modal.Body>
-          <div className="loadingContainer">
-            <img src={LoadingImage} alt="loading" />
+          <div className="searchResultsContainer">
+            <div className="loadingContainer">
+              <img src={LoadingImage} alt="loading" />
+            </div>
           </div>
         </Modal.Body>
         <Modal.Footer>

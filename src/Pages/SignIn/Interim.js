@@ -2,14 +2,13 @@ import React from "react";
 import axios from "axios";
 import {useEffect} from "react";
 
-function Interim(props) {
+const Interim = (props) => {
   useEffect(() => {
     axios
       // .get("https://rlca-backend.herokuapp.com/identity")
       .get("http://localhost:3001/identity")
       .then(function (response) {
         console.log(response);
-
         axios
           // .post("https://rlca-backend.herokuapp.com/user/", {
           .post("http://localhost:3001/user/", {
@@ -17,6 +16,8 @@ function Interim(props) {
             name: response.data.username,
           })
           .then(function () {
+            localStorage.setItem("userID", response.data.id);
+            localStorage.setItem("username", response.data.username);
             window.location = "http://localhost:3000/dashboard";
           })
           .catch(function (error) {
@@ -26,9 +27,10 @@ function Interim(props) {
       .catch(function (error) {
         console.log(error);
       });
+    // eslint-disable-next-line
   }, []);
 
   return <div>AUTHORIZING</div>;
-}
+};
 
 export default Interim;

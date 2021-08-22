@@ -5,7 +5,7 @@ import Guide from "./Pages/Intro";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 import Login from "./Pages/SignIn/Login";
-// import PrivateRoute from "./Auth/PrivateRoute";
+import PrivateRoute from "./Auth/PrivateRoute";
 
 import Search from "./Pages/Search/";
 import Interim from "./Pages/SignIn/Interim";
@@ -24,8 +24,8 @@ function App() {
             <Route path="/authorizing" component={Interim} />
             <Route path="/search" component={Search} />
 
-            {/* <PrivateRoute path="/dashboard" component={Dashboard} /> */}
-            <Route path="/dashboard" component={Dashboard} />
+            <PrivateRoute path="/dashboard" component={Dashboard} />
+            {/* <Route path="/dashboard" component={Dashboard} /> */}
           </Switch>
         </div>
       </div>

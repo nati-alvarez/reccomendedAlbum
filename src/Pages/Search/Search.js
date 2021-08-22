@@ -1,9 +1,9 @@
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {releaseInfoAction} from "../../Redux/Actions/ReleaseInfoAction";
-// import { topTenHandler } from "../../utils/utils";
 import LoadingImage from "../../assets/loading.jpeg";
 import axios from "axios";
+import {topTenAction} from "../../Redux/Actions/userActions";
 
 const Search = ({topTen}) => {
   const [searchInput, setSearchInput] = useState();
@@ -70,13 +70,13 @@ const Search = ({topTen}) => {
 const SearchRelease = ({name, artist, image, catno, id, topTen}) => {
   const [disabled, setDisabled] = useState(false);
   const dispatch = useDispatch();
-  function topTenHandler(itemId) {
+  function topTenHandler(itemImg) {
     const userId = localStorage.getItem("userID");
 
     axios
       // .patch("https://rlca-backend.herokuapp.com/user/", {
       .patch(`http://localhost:3001/user/${userId}`, {
-        topTen: itemId,
+        topTen: itemImg,
       })
       .then(function (response) {
         console.log(response);
@@ -85,6 +85,7 @@ const SearchRelease = ({name, artist, image, catno, id, topTen}) => {
         console.log(error);
       });
     setDisabled(true);
+    dispatch(topTenAction(itemImg));
   }
   return (
     <div onClick={() => dispatch(releaseInfoAction(id))}>

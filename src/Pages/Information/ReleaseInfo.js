@@ -2,6 +2,7 @@ import axios from "axios";
 import {useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {showBio} from "../../Redux/Actions/ReleaseInfoAction";
+import {topTenAction} from "../../Redux/Actions/userActions";
 // import { topTenHandler } from "../../utils/utils";
 
 function ReleaseInfo() {
@@ -42,6 +43,7 @@ function ReleaseInfo() {
         console.log(error);
       });
     setDisabled.topTen(true);
+    dispatch(topTenAction(itemId));
   }
 
   function inLibraryHandler(itemId) {
