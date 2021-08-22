@@ -21,13 +21,13 @@ function TopTen(props) {
     setTopTenData(data?.user?.all[0]?.topTen);
     // eslint-disable-next-line
   }, [data?.user?.all[0]?.topTen]);
+
   const searchHandler = () => {
     // if the reducer does not have all search data run the all data
     //fetcher, otherwise this will have been run when the user logged in.
-    if (data.releases.search && data.releases.search.length > 0) {
+    if (data.releases.search.length > 0) {
       history.push("/search");
     } else {
-      console.log("hit2");
       dispatch(loadReleasesSearch());
     }
     history.push("/search");
@@ -38,7 +38,7 @@ function TopTen(props) {
       <div>
         <h4>Top Ten</h4>
       </div>
-      <div className="topTenImage">
+      <div className="topTenImage" >
         {topTenData?.map((data, i) => (
           <div className="topTenImageHolder" key={i}>
             <img src={data} alt={i} />

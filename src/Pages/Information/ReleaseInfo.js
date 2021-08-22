@@ -1,8 +1,8 @@
 import axios from "axios";
-import { useState} from "react";
+import {useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {showBio} from "../../Redux/Actions/ReleaseInfoAction";
-import {topTenAction} from "../../Redux/Actions/userActions";
+import {getUserInfo, topTenAction} from "../../Redux/Actions/userActions";
 // import { topTenHandler } from "../../utils/utils";
 
 function ReleaseInfo() {
@@ -29,8 +29,6 @@ function ReleaseInfo() {
     });
   }
 
-
-
   function topTenHandler(itemId) {
     axios
       // .patch("https://rlca-backend.herokuapp.com/user/", {
@@ -45,6 +43,7 @@ function ReleaseInfo() {
       });
     setTopTenDisabled(true);
     dispatch(topTenAction(itemId));
+    dispatch(getUserInfo());
   }
 
   function inLibraryHandler(itemId, add) {
@@ -60,7 +59,11 @@ function ReleaseInfo() {
       .catch(function (error) {
         console.log(error);
       });
-    add ? setInLibraryDisabled(true) : setremoveDisabled(true);
+    if (add === true) {
+      setInLibraryDisabled(true);
+    } else {
+      setremoveDisabled(true);
+    }
   }
 
   return (
@@ -71,14 +74,14 @@ function ReleaseInfo() {
       <p>{releaseInfo.released}</p>
       <label className="inLibrary">
         <button
-          onClick={() => inLibraryHandler(releaseInfo.id)}
+          onClick={(() => inLibraryHandler(releaseInfo.id, true))}
           disabled={inLibraryDisabled}
         >
           Add to Library
         </button>
         <button
           disabled={removeDisabled}
-          onClick={() => topTenHandler(releaseInfo.img, false)}
+          onClick={() => inLibraryHandler(releaseInfo.img, false)}
         >
           Remove from Library
         </button>

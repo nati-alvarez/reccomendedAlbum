@@ -1,12 +1,27 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {v4 as uuidv4} from "uuid";
 import {releaseInfoAction} from "../../Redux/Actions/ReleaseInfoAction";
-import LoadingImage from '../../assets/loading.jpeg'
+import LoadingImage from "../../assets/loading.jpeg";
+import {getUserInfo} from "../../Redux/Actions/userActions";
+
 function Releases() {
   const [loadAmmount, setLoadAmmount] = useState(20);
   const dispatch = useDispatch();
   const data = useSelector((state) => state);
+
+  useEffect(() => {
+    dispatch(getUserInfo());
+    // eslint-disable-next-line
+  }, []);
+
+  const inLibraryHandler = (id) => {
+    if (data.user.all[0]?.inLibrary?.filter((e) => e === id).length > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   return data.releases.all ? (
     <div className="bioContainer #top">
@@ -14,7 +29,9 @@ function Releases() {
         {data.releases.all.slice(0, loadAmmount).map((asset) => (
           <div
             key={uuidv4()}
-            className="releaseContainer"
+            className={` releaseContainer ${
+              inLibraryHandler(asset.id) ? "in" : ""
+            }`}
             onClick={() => dispatch(releaseInfoAction(asset.id))}
           >
             <img src={asset.thumb} alt={asset.title} />
@@ -37,10 +54,9 @@ function Releases() {
       </div>
     </div>
   ) : (
-    <div className='loadingContainer'>
-     
-    <img src={LoadingImage} alt='loading'/>     
-        </div>
+    <div className="loadingContainer">
+      <img src={LoadingImage} alt="loading" />
+    </div>
   );
 }
 
