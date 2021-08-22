@@ -14,13 +14,10 @@ import {Link} from "react-router-dom";
 import {loadReleasesSearch} from "../../Redux/Actions/ReleasesAction";
 import {showBio} from "../../Redux/Actions/ReleaseInfoAction";
 
-
-
 function Header() {
   const data = useSelector((state) => state);
   const dispatch = useDispatch();
   const userId = localStorage.getItem("userID");
-
 
   const searchHandler = () => {
     // if the reducer does not have all search data run the all data
@@ -54,6 +51,7 @@ function Header() {
             <p>Label</p>
           </span>
         </Link>
+
         <Link to={"/search"}>
           <span onClick={searchHandler}>
             <FontAwesomeIcon className="fai" icon={faMusic}></FontAwesomeIcon>
