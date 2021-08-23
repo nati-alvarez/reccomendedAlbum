@@ -44,10 +44,10 @@ function Header() {
   const loadData = () => {
     dispatch(navVisibility());
     if (userId) {
-      console.log("hit")
+      console.log("hit");
       dispatch(navSelectorUserDispatch(data.user.all[0]?.labels));
     } else {
-      console.log("miss")
+      console.log("miss");
       if (data.nav && data.nav.length > 0) {
         return;
       } else {
@@ -55,6 +55,7 @@ function Header() {
       }
     }
   };
+
 
   return (
     <div className="headerContainer">
@@ -77,7 +78,9 @@ function Header() {
         </Link>
         {userId ? (
           <Link to={"/dashboard"}>
-            <span onClick={() => dispatch(navVisibility())}>
+            <span
+              onClick={data.nav.show ? () => dispatch(navVisibility()) : null}
+            >
               <FontAwesomeIcon
                 className="fai"
                 icon={faDragon}
@@ -87,7 +90,9 @@ function Header() {
           </Link>
         ) : (
           <Link to={"/login"}>
-            <span onClick={() => dispatch(navVisibility())}>
+            <span
+              onClick={data.nav.show ? () => dispatch(navVisibility()) : null}
+            >
               <FontAwesomeIcon
                 className="fai"
                 icon={faDoorOpen}
