@@ -59,3 +59,36 @@ export const topTenAction = (data) => async (dispatch) => {
     },
   });
 };
+
+export const addLabel = (id) => async (dispatch) => {
+  
+  
+  dispatch({
+    type: "ADD_LABEL",
+    payload: {
+      loading: true,
+    },
+  });
+  const userId = localStorage.getItem("userID");
+  let labels = [];
+  await axios
+    .patch(`http://localhost:3001/user/${userId}`, {
+      labels: id,
+    })
+    .then(function (response) {
+      labels.push(response.data.labels);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+
+
+  dispatch({
+    type: "ADD_LABEL_SUCCESS",
+    payload: {
+      labels: labels,
+      loading: false,
+    },
+  });
+};

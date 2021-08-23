@@ -2,6 +2,7 @@ const initialState = {
   id: "",
   show: false,
   all: [],
+  labels: [],
   selected: [],
   loading: false,
   type: "",
@@ -19,7 +20,7 @@ const navReducer = (state = initialState, action) => {
         type: action.payload.type,
       };
     case "NAV_VISIBLE":
-      return {...state, show: false};
+      return {...state, show: action.payload.show};
     case "ID":
       return {...state, id: action.payload.id};
     case "ASSET_SELECTOR_SUCCESS":
@@ -30,8 +31,10 @@ const navReducer = (state = initialState, action) => {
         loading: true,
         selected: action.payload.all,
         id: state.id,
-        all: state.all
+        all: state.all,
       };
+    case "NAV_SELECTOR_SUCCESS_USER":
+      return {...state, show: true, labels: action.payload.all};
     default:
       return {...state};
   }

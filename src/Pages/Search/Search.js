@@ -24,6 +24,7 @@ const Search = ({topTen}) => {
     dispatch(showBio());
     // eslint-disable-next-line
   }, []);
+  
   const inputHandler = (e) => {
     setSearchInput(e);
   };

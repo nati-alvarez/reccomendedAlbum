@@ -10,6 +10,7 @@ import PrivateRoute from "./Auth/PrivateRoute";
 import Search from "./Pages/Search/";
 import Interim from "./Pages/SignIn/Interim";
 import SideNavAdmin from "./Pages/Navigation/SideNavAdmin";
+import UserLabelSearch from "./Pages/Search/UserLabelSearch";
 
 function App() {
   return (
@@ -27,6 +28,8 @@ function App() {
 
             <PrivateRoute path="/dashboard" component={Dashboard} />
             <PrivateRoute path="/labels" component={SideNavAdmin} />
+            <PrivateRoute path="/searchLabels" component={UserLabelSearch} />
+            
             {/* <Route path="/dashboard" component={Dashboard} /> */}
           </Switch>
         </div>

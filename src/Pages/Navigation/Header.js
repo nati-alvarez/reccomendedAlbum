@@ -1,6 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import {
   navSelectorDispatch,
+  navSelectorUserDispatch,
   navVisibility,
 } from "../../Redux/Actions/navSelectorAction";
 
@@ -23,7 +24,7 @@ function Header() {
     // if the reducer does not have all search data run the all data
     //fetcher, otherwise this will have been run when the user logged in.
     if (data.releases.search && data.releases.search.length > 0) {
-      dispatch(navVisibility());
+      dispatch(navVisibility(true));
     } else {
       dispatch(loadReleasesSearch());
     }
@@ -32,10 +33,19 @@ function Header() {
   };
 
   const loadData = () => {
-    if (data.nav && data.nav.length > 0) {
-      return;
+    if (userId) {
+      if (data.user.labels.length > 0) {
+        dispatch(navVisibility());
+      } else {
+        console.log("test");
+        dispatch(navSelectorUserDispatch(data.user.all[0].labels));
+      }
     } else {
-      dispatch(navSelectorDispatch("label"));
+      if (data.nav && data.nav.length > 0) {
+        return;
+      } else {
+        dispatch(navSelectorDispatch("label", data.user.labels));
+      }
     }
   };
 
@@ -70,7 +80,7 @@ function Header() {
           </Link>
         ) : (
           <Link to={"/login"}>
-            <span>
+            <span onClick={() => dispatch(navVisibility())}>
               <FontAwesomeIcon
                 className="fai"
                 icon={faDoorOpen}
