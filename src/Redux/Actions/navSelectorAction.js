@@ -12,18 +12,19 @@ import genreImg from "../../assets/genre.png";
 import {DataDiviner} from "../../utils/utils";
 
 export const navSelectorUserDispatch = (userLabelCodes) => async (dispatch) => {
+  console.log(userLabelCodes)
   dispatch({
     type: "NAV_SELECTOR_USER",
     payload: {
       loading: true,
     },
   });
-  dispatch({
-    type: "SHOW",
-    payload: {
-      show: false,
-    },
-  });
+  // dispatch({
+  //   type: "SHOW",
+  //   payload: {
+  //     show: false,
+  //   },
+  // });
 
   const labelData = [];
 
@@ -50,7 +51,6 @@ export const navSelectorUserDispatch = (userLabelCodes) => async (dispatch) => {
 };
 
 export const navSelectorDispatch = (nav) => async (dispatch) => {
-  
   dispatch({
     type: "NAV_SELECTOR",
     payload: {
@@ -128,12 +128,12 @@ export const navSelectorDispatch = (nav) => async (dispatch) => {
   });
 };
 
-export const navVisibility = (visibility) => (dispatch) => {
+export const navVisibility = () => (dispatch) => {
   dispatch({
     type: "NAV_VISIBLE",
-    payload: {
-      show: visibility,
-    },
+    // payload: {
+    //   show: visibility,
+    // },
   });
 };
 

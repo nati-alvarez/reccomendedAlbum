@@ -8,7 +8,6 @@ const Interim = (props) => {
       // .get("https://rlca-backend.herokuapp.com/identity")
       .get("http://localhost:3001/identity")
       .then(function (response) {
-        console.log(response);
         axios
           // .post("https://rlca-backend.herokuapp.com/user/", {
           .post("http://localhost:3001/user/", {

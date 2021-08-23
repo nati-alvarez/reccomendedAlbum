@@ -14,11 +14,20 @@ import {faDragon} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
 import {loadReleasesSearch} from "../../Redux/Actions/ReleasesAction";
 import {showBio} from "../../Redux/Actions/ReleaseInfoAction";
+import {useEffect} from "react";
+import {getUserInfo} from "../../Redux/Actions/userActions";
 
 function Header() {
   const data = useSelector((state) => state);
-  const dispatch = useDispatch();
   const userId = localStorage.getItem("userID");
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (userId) {
+      dispatch(getUserInfo());
+    }
+    // eslint-disable-next-line
+  }, []);
 
   const searchHandler = () => {
     // if the reducer does not have all search data run the all data
@@ -33,18 +42,16 @@ function Header() {
   };
 
   const loadData = () => {
+    dispatch(navVisibility());
     if (userId) {
-      if (data.user.labels.length > 0) {
-        dispatch(navVisibility());
-      } else {
-        console.log("test");
-        dispatch(navSelectorUserDispatch(data.user.all[0].labels));
-      }
+      console.log("hit")
+      dispatch(navSelectorUserDispatch(data.user.all[0]?.labels));
     } else {
+      console.log("miss")
       if (data.nav && data.nav.length > 0) {
         return;
       } else {
-        dispatch(navSelectorDispatch("label", data.user.labels));
+        dispatch(navSelectorDispatch("label", data.nav.labels));
       }
     }
   };

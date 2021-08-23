@@ -44,7 +44,7 @@ function UserLabelSearch(props) {
 
             <div
               key={i}
-              className="navButtons"
+              className="navButtonsUserLabelSearch"
               // onClick={() => {
               //   dispatchHandler(asset.id, asset, asset.type);
               // }}
@@ -53,6 +53,7 @@ function UserLabelSearch(props) {
                 src={asset.cover_image}
                 alt={asset.title}
                 key={`nav item ${i} image`}
+                className='labelSearchImg'
               />
               <div>
                 <p key={`nav item ${i} name`}>{asset.title}</p>

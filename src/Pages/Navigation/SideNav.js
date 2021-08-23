@@ -23,7 +23,7 @@ function SideNavLabels() {
     dispatch(assetSelector([asset]));
     dispatch(loadReleases(id, type));
   };
-  // UNCCOMENT WHEN USER LABEL FUNCTIONALITY IS READY TO GO
+
   const searchHandler = () => {
     // if the reducer does not have all search data run the all data
     //fetcher, otherwise this will have been run when the user logged in.
@@ -62,7 +62,7 @@ function SideNavLabels() {
       </div>
       {/* TODO LOOP OVER USERS LABELS FROM DB INSTEAD OF REDUCER LABELS*/}
 
-      {data.user.labels?.map((asset, i) => (
+      {data.nav.labels?.map((asset, i) => (
         <Link to={`/${asset.type}/${asset.name}`} key={`link ${asset.name}`}>
           <div
             key={i}
