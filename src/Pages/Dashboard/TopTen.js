@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {loadReleasesSearch} from "../../Redux/Actions/ReleasesAction";
 import {getUserInfo} from "../../Redux/Actions/userActions";
 import {useHistory} from "react-router-dom";
+import { releaseInfoAction } from "../../Redux/Actions/ReleaseInfoAction";
 
 function TopTen(props) {
   const dispatch = useDispatch();
@@ -40,7 +41,7 @@ function TopTen(props) {
       </div>
       <div className="topTenImage" >
         {topTenData?.map((data, i) => (
-          <div className="topTenImageHolder" key={i}>
+          <div className="topTenImageHolder" key={i} onClick={() => dispatch(releaseInfoAction())}>
             <img src={data} alt={i} />
             <p>{i + 1}</p>
           </div>

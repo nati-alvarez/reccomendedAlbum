@@ -33,7 +33,7 @@ function Header() {
     // if the reducer does not have all search data run the all data
     //fetcher, otherwise this will have been run when the user logged in.
     if (data.releases.search && data.releases.search.length > 0) {
-      dispatch(navVisibility(true));
+      dispatch(navVisibility());
     } else {
       dispatch(loadReleasesSearch());
     }

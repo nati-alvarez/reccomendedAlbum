@@ -14,7 +14,7 @@ export const getUserInfo = () => async (dispatch) => {
   const userId = localStorage.getItem("userID");
   const allData = [];
   await axios
-    .get(`http://localhost:3001/user/${userId}`)
+    .get(`https://rlca-backend.herokuapp.com/user/${userId}`)
     .then(function (response) {
       allData.push(response.data);
     })
@@ -36,7 +36,7 @@ export const topTenAction = (data) => async (dispatch) => {
   const userId = localStorage.getItem("userID");
   let topTen = [data];
   await axios
-    .get(`http://localhost:3001/user/${userId}`)
+    .get(`https://rlca-backend.herokuapp.com/user/${userId}`)
     .then(function (response) {
       topTen.push(response.data.topTen);
     })
@@ -72,7 +72,7 @@ export const addLabel = (id) => async (dispatch) => {
   const userId = localStorage.getItem("userID");
   let labels = [];
   await axios
-    .patch(`http://localhost:3001/user/${userId}`, {
+    .patch(`https://rlca-backend.herokuapp.com/user/${userId}`, {
       labels: id,
     })
     .then(function (response) {

@@ -82,7 +82,7 @@ export const loadReleasesSearch = () => async (dispatch) => {
     },
   });
 
-  const dummyLabelCodes = [1149832, 157803, 23127, 389319, 153824, 88949];
+  const dummyLabelCodes = [1149832, 157803, 23127, 389319, 153824];
   //first for loop pulls up info on each label
   const allData = [];
   for (let i = 0; i < dummyLabelCodes.length; i++) {

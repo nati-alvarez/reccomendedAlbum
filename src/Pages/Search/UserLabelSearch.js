@@ -12,7 +12,7 @@ function UserLabelSearch(props) {
   const inputHandler = (e) => {
     console.log(e);
     axios
-      .get(`http://localhost:3001/search`, {
+      .get(`https://rlca-backend.herokuapp.com/search`, {
         params: {
           discogsAccessparams: `${e}&?label`,
         },

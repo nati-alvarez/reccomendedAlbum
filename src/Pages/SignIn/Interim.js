@@ -6,11 +6,11 @@ const Interim = (props) => {
   useEffect(() => {
     axios
       // .get("https://rlca-backend.herokuapp.com/identity")
-      .get("http://localhost:3001/identity")
+      .get("https://rlca-backend.herokuapp.com/identity")
       .then(function (response) {
         axios
           // .post("https://rlca-backend.herokuapp.com/user/", {
-          .post("http://localhost:3001/user/", {
+          .post("https://rlca-backend.herokuapp.com/user/", {
             idNum: response.data.id,
             name: response.data.username,
           })

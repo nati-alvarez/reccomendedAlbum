@@ -9,16 +9,23 @@ import {loadReleasesSearch} from "../../Redux/Actions/ReleasesAction";
 import {showBio} from "../../Redux/Actions/ReleaseInfoAction";
 
 const Search = ({topTen}) => {
+  const user = localStorage.getItem("userID");
   const dispatch = useDispatch();
   const [searchInput, setSearchInput] = useState();
   const releaseInfo = useSelector((state) => state.releases.search);
+  const data = useSelector((state) => state);
   useEffect(() => {
     // if the reducer does not have all search data run the all data
     //fetcher, otherwise this will have been run when the user logged in.
     if (releaseInfo && releaseInfo.length > 0) {
       dispatch(navVisibility());
     } else {
-      dispatch(loadReleasesSearch());
+      if (user) {
+        dispatch(loadReleasesSearch(data.user.all[0].labels));
+      } else {
+        dispatch(loadReleasesSearch());
+      }
+      
     }
 
     dispatch(showBio());
@@ -91,7 +98,7 @@ const SearchRelease = ({name, artist, image, catno, id, topTen}) => {
 
     axios
       // .patch("https://rlca-backend.herokuapp.com/user/", {
-      .patch(`http://localhost:3001/user/${userId}`, {
+      .patch(`https://rlca-backend.herokuapp.com/user/${userId}`, {
         topTen: itemImg,
       })
       .then(function (response) {
