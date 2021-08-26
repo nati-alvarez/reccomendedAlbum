@@ -17,7 +17,8 @@ const Interim = (props) => {
           .then(function () {
             localStorage.setItem("userID", response.data.id);
             localStorage.setItem("username", response.data.username);
-            window.location = "http://localhost:3000/dashboard";
+            window.location =
+              "https://sonic-architecture-v1.netlify.app/dashboard";
           })
           .catch(function (error) {
             console.log(error);
