@@ -6,8 +6,9 @@ const Interim = (props) => {
   useEffect(() => {
     axios
       // .get("https://rlca-backend.herokuapp.com/identity")
-      .get("http://localhost:3001/identity")
+      .get("http://localhost:3001/identity", {withCredentials: true})
       .then(function (response) {
+        console.log("hit identity");
         console.log(response);
         axios
           // .post("https://rlca-backend.herokuapp.com/user/", {

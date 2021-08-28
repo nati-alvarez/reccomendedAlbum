@@ -33,10 +33,7 @@ function ReleaseInfo() {
   useEffect(() => {
     if (userId) {
       for (let i = 0; i < data.user.all[0].topTen.length; i++) {
-        console.log(i);
-        if (releaseInfo.img === data.user.all[0].topTen[1]) {
-          console.log(releaseInfo.img);
-          console.log(data.user.all[0].topTen[1]);
+        if (releaseInfo.img === data.user.all[0].topTen[i]) {
           setInTopTen(true);
         }
       }
@@ -44,11 +41,12 @@ function ReleaseInfo() {
     // eslint-disable-next-line
   }, []);
 
-  function topTenHandler(itemId) {
+  function topTenHandler(itemId, inTopTen) {
     axios
       // .patch("https://rlca-backend.herokuapp.com/user/${userId}", {
       .patch(`http://localhost:3001/user/${userId}`, {
         topTen: itemId,
+        inTopTen: inTopTen
       })
       .then(function (response) {
         console.log(response);
@@ -59,6 +57,7 @@ function ReleaseInfo() {
     setTopTenDisabled(true);
     dispatch(topTenAction(itemId));
     dispatch(getUserInfo());
+    setInTopTen(true);
   }
 
   function inLibraryHandler(itemId, add) {
@@ -128,7 +127,7 @@ function ReleaseInfo() {
         {inTopTen ? (
           <button
             style={userId ? {display: "auto"} : {display: "none"}}
-            onClick={() => topTenHandler(releaseInfo.img, true)}
+            onClick={() => topTenHandler(releaseInfo.img, false)}
             disabled={topTenDisabled}
           >
             -Top Ten
