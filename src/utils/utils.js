@@ -17,7 +17,7 @@ export const DataDiviner = async (url) => {
 //to their top ten on their dashboard.
 
 export const topTenHandler = async (coverArt, userId) => {
-  await axios.patch(`https://rlca-backend.herokuapp.com/user/${userId}`, {topTen: coverArt})
+  await axios.patch(`http://localhost:3001/user/${userId}`, {topTen: coverArt})
   .then(function (response) {
     return response.data
   })

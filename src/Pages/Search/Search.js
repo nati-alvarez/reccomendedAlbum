@@ -97,8 +97,8 @@ const SearchRelease = ({name, artist, image, catno, id, topTen}) => {
     const userId = localStorage.getItem("userID");
 
     axios
-      // .patch("https://rlca-backend.herokuapp.com/user/", {
-      .patch(`https://rlca-backend.herokuapp.com/user/${userId}`, {
+      // .patch(`https://rlca-backend.herokuapp.com/user/${userId}`, {
+        .patch(`http://localhost:3001/callback/user/${userId}`, {
         topTen: itemImg,
       })
       .then(function (response) {

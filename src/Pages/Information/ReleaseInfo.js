@@ -31,8 +31,8 @@ function ReleaseInfo() {
 
   function topTenHandler(itemId) {
     axios
-      // .patch("https://rlca-backend.herokuapp.com/user/", {
-      .patch(`https://rlca-backend.herokuapp.com/user/${userId}`, {
+      // .patch("https://rlca-backend.herokuapp.com/user/${userId}", {
+      .patch(`http://localhost:3001/user/${userId}`, {
         topTen: itemId,
       })
       .then(function (response) {
@@ -49,7 +49,7 @@ function ReleaseInfo() {
   function inLibraryHandler(itemId, add) {
     axios
       // .patch("https://rlca-backend.herokuapp.com/user/", {
-      .patch(`https://rlca-backend.herokuapp.com/user/${userId}`, {
+      .patch(`http://localhost:3001/user/${userId}`, {
         inLibrary: itemId,
         add: add,
       })
