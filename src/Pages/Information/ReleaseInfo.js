@@ -1,5 +1,5 @@
 import axios from "axios";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {showBio} from "../../Redux/Actions/ReleaseInfoAction";
 import {getUserInfo, topTenAction} from "../../Redux/Actions/userActions";
@@ -9,10 +9,11 @@ function ReleaseInfo() {
   const [topTenDisabled, setTopTenDisabled] = useState(false);
   const [inLibraryDisabled, setInLibraryDisabled] = useState(false);
   const [removeDisabled, setremoveDisabled] = useState(false);
-
+  const [inTopTen, setInTopTen] = useState(false);
   window.scrollTo(0, 0);
   const dispatch = useDispatch();
   const releaseInfo = useSelector((state) => state.individualRelease);
+  const data = useSelector((state) => state);
   const userId = localStorage.getItem("userID");
   //This function converts the returned youtube 'watch' uris into youtube 'embed' uris
   // which is neccessary to host them.
@@ -28,6 +29,20 @@ function ReleaseInfo() {
       videoLinks.push(youtube_parser(url.uri));
     });
   }
+  // this useEffect checks to see if this title is in the users top ten already
+  useEffect(() => {
+    if (userId) {
+      for (let i = 0; i < data.user.all[0].topTen.length; i++) {
+        console.log(i);
+        if (releaseInfo.img === data.user.all[0].topTen[1]) {
+          console.log(releaseInfo.img);
+          console.log(data.user.all[0].topTen[1]);
+          setInTopTen(true);
+        }
+      }
+    }
+    // eslint-disable-next-line
+  }, []);
 
   function topTenHandler(itemId) {
     axios
@@ -72,9 +87,12 @@ function ReleaseInfo() {
       <h2>{releaseInfo.artists}</h2>
       <h2>{releaseInfo.title}</h2>
       <p>{releaseInfo.released}</p>
-      <label className="inLibrary">
+      <label
+        className="inLibrary"
+        style={userId ? {display: "auto"} : {display: "none"}}
+      >
         <button
-          onClick={(() => inLibraryHandler(releaseInfo.id, true))}
+          onClick={() => inLibraryHandler(releaseInfo.id, true)}
           disabled={inLibraryDisabled}
         >
           Add to Library
@@ -107,12 +125,23 @@ function ReleaseInfo() {
         ))}
       </div>
       <div className="releaseInfoButtonContainer">
-        <button
-          onClick={() => topTenHandler(releaseInfo.img, true)}
-          disabled={topTenDisabled}
-        >
-          +Top Ten
-        </button>
+        {inTopTen ? (
+          <button
+            style={userId ? {display: "auto"} : {display: "none"}}
+            onClick={() => topTenHandler(releaseInfo.img, true)}
+            disabled={topTenDisabled}
+          >
+            -Top Ten
+          </button>
+        ) : (
+          <button
+            style={userId ? {display: "auto"} : {display: "none"}}
+            onClick={() => topTenHandler(releaseInfo.img, true)}
+            disabled={topTenDisabled}
+          >
+            +Top Ten
+          </button>
+        )}
         <button
           onClick={() => {
             dispatch(showBio());

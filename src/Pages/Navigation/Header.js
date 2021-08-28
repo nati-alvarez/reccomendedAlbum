@@ -42,6 +42,7 @@ function Header() {
   };
 
   const loadData = () => {
+    // dispatch(showBio());
     dispatch(navVisibility());
     if (userId) {
       console.log("hit");

@@ -11,6 +11,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowLeft, faPlus} from "@fortawesome/free-solid-svg-icons";
 import LoadingImage from "../../assets/loading.jpeg";
 import {useHistory} from "react-router-dom";
+import { showBio } from "../../Redux/Actions/ReleaseInfoAction";
 //THIS IS THE NAVIGATION COMPONENT THAT SITS ON THE LEFT HAND SIDE OF THE SCREEN. IT IS POPULATED
 //BY DATA PULLED IN FROM THE API OR THE USERS DB (IF THEY ARE SIGNED IN).
 
@@ -20,6 +21,7 @@ function SideNavLabels() {
   const data = useSelector((state) => state);
   const userId = localStorage.getItem("userID");
   const dispatchHandler = (id, asset, type) => {
+    dispatch(showBio());
     dispatch(assetSelector([asset]));
     dispatch(loadReleases(id, type));
   };
@@ -60,8 +62,6 @@ function SideNavLabels() {
       <div className="navButtonsPlusLabels navButtons" onClick={searchHandler}>
         <FontAwesomeIcon icon={faPlus} />
       </div>
-      {/* TODO LOOP OVER USERS LABELS FROM DB INSTEAD OF REDUCER LABELS*/}
-
       {data.nav.labels?.map((asset, i) => (
         <Link to={`/${asset.type}/${asset.name}`} key={`link ${asset.name}`}>
           <div

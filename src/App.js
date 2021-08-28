@@ -24,7 +24,6 @@ function App() {
           <Switch>
             <Route exact path={"/"} component={Guide} />
             <Route path={["/:type/:info"]} component={Info} />
-
             <Route path="/login" component={Login} />
             <Route path="/authorizing" component={Interim} />
             <Route path="/search" component={Search} />
