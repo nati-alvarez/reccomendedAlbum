@@ -56,10 +56,18 @@ input {
 .searchResult {
   padding: 40px;
 }
-
+.userSearchResults {
+  display: row;
+  
+}
 .navButtonsUserLabelSearch {
   @include flexColumn;
-  justify-content: center;
+  width: 40%;
+  // justify-content: center;
+}
+.labelSearchBottom {
+  
+  @include flexColumn;
 }
 .labelSearchImg {
   width: 20%;

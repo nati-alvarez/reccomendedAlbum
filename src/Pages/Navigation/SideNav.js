@@ -30,7 +30,6 @@ function SideNavLabels() {
     // if the reducer does not have all search data run the all data
     //fetcher, otherwise this will have been run when the user logged in.
     if (userId) {
-      console.log("hit");
       if (data.releases.search.length > 0) {
         history.push("/searchLabels");
         dispatch(navVisibility());
