@@ -8,6 +8,7 @@ const Interim = (props) => {
       // .get("https://rlca-backend.herokuapp.com/identity")
       .get("http://localhost:3001/identity")
       .then(function (response) {
+        console.log(response);
         axios
           // .post("https://rlca-backend.herokuapp.com/user/", {
           .post("http://localhost:3001/user/", {
@@ -17,8 +18,7 @@ const Interim = (props) => {
           .then(function () {
             localStorage.setItem("userID", response.data.id);
             localStorage.setItem("username", response.data.username);
-            window.location =
-              "https://sonic-architecture-v1.netlify.app/dashboard";
+            window.location = "http://localhost:3000/dashboard";
           })
           .catch(function (error) {
             console.log(error);
