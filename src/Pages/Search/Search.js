@@ -25,13 +25,12 @@ const Search = ({topTen}) => {
       } else {
         dispatch(loadReleasesSearch());
       }
-      
     }
 
     dispatch(showBio());
     // eslint-disable-next-line
   }, []);
-  
+
   const inputHandler = (e) => {
     setSearchInput(e);
   };
@@ -98,7 +97,7 @@ const SearchRelease = ({name, artist, image, catno, id, topTen}) => {
 
     axios
       // .patch(`https://rlca-backend.herokuapp.com/user/${userId}`, {
-        .patch(`http://localhost:3001/callback/user/${userId}`, {
+      .patch(`http://localhost:3001/user/${userId}`, {
         topTen: itemImg,
       })
       .then(function (response) {
