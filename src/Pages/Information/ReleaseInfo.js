@@ -71,8 +71,7 @@ function ReleaseInfo() {
 
   function inLibraryHandler(itemId, add) {
     axios
-      .patch(`${API_BASE_URL}/user/`, {
-      // .patch(`http://localhost:3001/user/${userId}`, {
+      .patch(`${API_BASE_URL}/user/${userId}`, {
         inLibrary: itemId,
         add: add,
       })

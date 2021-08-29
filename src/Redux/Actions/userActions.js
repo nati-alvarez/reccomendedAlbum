@@ -75,7 +75,6 @@ export const addLabel = (id, add) => async (dispatch) => {
   let all = [];
   await axios
     .patch(`${API_BASE_URL}/user/${userId}`, {
-    // .patch(`http://localhost:3001/user/${userId}`, {
       labels: id,
       add: add,
     })

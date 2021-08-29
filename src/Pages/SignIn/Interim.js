@@ -7,21 +7,16 @@ const Interim = (props) => {
   useEffect(() => {
     axios
       .get(`${API_BASE_URL}/identity`, {withCredentials: true})
-      // .get("http://localhost:3001/identity", {withCredentials: true})
       .then(function (response) {
-        console.log("hit identity");
-        console.log(response);
         axios
           .post(`${API_BASE_URL}/user/`, {
-            // .post("http://localhost:3001/user/", {
             idNum: response.data.id,
             name: response.data.username,
           })
           .then(function () {
             localStorage.setItem("userID", response.data.id);
             localStorage.setItem("username", response.data.username);
-            // window.location = `${client_url}/dashboard`;
-            // window.location = "http://localhost:3000/dashboard";
+            window.location = `${client_url}/dashboard`;
           })
           .catch(function (error) {
             console.log(error);
