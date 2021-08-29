@@ -2,7 +2,7 @@
 // once the user logs in these actions are executed.
 
 import axios from "axios";
-import {labelReleasesAuth} from "../../API/APIcall";
+
 
 export const getUserInfo = () => async (dispatch) => {
   dispatch({
@@ -15,8 +15,8 @@ export const getUserInfo = () => async (dispatch) => {
   const userId = localStorage.getItem("userID");
   const allData = [];
   await axios
-    // .get(`https://rlca-backend.herokuapp.com/user/${userId}`)
-    .get(`http://localhost:3001/user/${userId}`)
+    .get(`https://rlca-backend.herokuapp.com/user/${userId}`)
+    // .get(`http://localhost:3001/user/${userId}`)
     .then(function (response) {
       allData.push(response.data);
     })
@@ -38,8 +38,8 @@ export const topTenAction = (data) => async (dispatch) => {
   const userId = localStorage.getItem("userID");
   let topTen = [data];
   await axios
-    // .get(`https://rlca-backend.herokuapp.com/user/${userId}`)
-    .get(`http://localhost:3001/user/${userId}`)
+    .get(`https://rlca-backend.herokuapp.com/user/${userId}`)
+    // .get(`http://localhost:3001/user/${userId}`)
     .then(function (response) {
       topTen.push(response.data.topTen);
     })
@@ -74,8 +74,8 @@ export const addLabel = (id, add) => async (dispatch) => {
   let labels = [];
   let all = [];
   await axios
-    // .patch(`https://rlca-backend.herokuapp.com/user/${userId}`, {
-    .patch(`http://localhost:3001/user/${userId}`, {
+    .patch(`https://rlca-backend.herokuapp.com/user/${userId}`, {
+    // .patch(`http://localhost:3001/user/${userId}`, {
       labels: id,
       add: add,
     })
@@ -99,9 +99,11 @@ export const addLabel = (id, add) => async (dispatch) => {
 
 export const searchLabels = (data) => async (dispatch) => {
   const allReleaseData = [];
+  const latestReleaseData = [];
   for (let i = 0; i < data.length; i++) {
     const response = await axios.get(
-      "http://localhost:3001/usersLabelsSearch",
+      "https://rlca-backend.herokuapp.com/usersLabelsSearch",
+      // "http://localhost:3001/usersLabelsSearch",
       {
         withCredentials: true,
         params: {
@@ -109,15 +111,16 @@ export const searchLabels = (data) => async (dispatch) => {
         },
       }
     );
-    console.log(response);
+    
     allReleaseData.push(response.data.releases);
+    latestReleaseData.push(response.data.releases)
   }
 
-  console.log(allReleaseData);
+  
   const allData = [];
 
   let releasesData = [].concat.apply([], allReleaseData);
-  console.log(releasesData);
+  
   const releasesByTitle = {};
   const releases = [];
 
@@ -159,6 +162,7 @@ export const searchLabels = (data) => async (dispatch) => {
     type: "SEARCH_SUCCESS",
     payload: {
       all: merged,
+      labels: latestReleaseData,
       loading: false,
     },
   });

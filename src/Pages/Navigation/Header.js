@@ -12,8 +12,8 @@ import {faMusic} from "@fortawesome/free-solid-svg-icons";
 import {faDoorOpen} from "@fortawesome/free-solid-svg-icons";
 import {faDragon} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
-import {loadReleasesSearch} from "../../Redux/Actions/ReleasesAction";
-import {showBio} from "../../Redux/Actions/ReleaseInfoAction";
+// import {loadReleasesSearch} from "../../Redux/Actions/ReleasesAction";
+// import {showBio} from "../../Redux/Actions/ReleaseInfoAction";
 import {useEffect} from "react";
 import {getUserInfo} from "../../Redux/Actions/userActions";
 

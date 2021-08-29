@@ -5,6 +5,9 @@ const base_url = "https://api.discogs.com/";
 //and also the page number this function can also be called on the button the user
 //clicks when they want to see more titles by passing in the same label id but a different page#
 
+// const API_BASE_URL = process.env.NODE_ENV === "production"? "localhost:3000/,,,": "herokupurl"
+
+
 // NOT SIGNED IN
 
 export const label = (labelId) =>
@@ -40,7 +43,7 @@ export const labelAuth = (labelId) =>
 export const artistAuth = (artistId) =>
   `${base_url}artists/${artistId}?key=${process.env.REACT_APP_DISCOGS_API_KEY}&secret=${process.env.REACT_APP_DISCOGS_API_SECRET}`;
 
-export const labelReleasesAuth = () => `http://localhost:3001/searchUsersLabels`;
+// export const labelReleasesAuth = () => `http://localhost:3001/searchUsersLabels`;
 
 
 export const artistReleasesAuth = (artistId, pageNumber) =>

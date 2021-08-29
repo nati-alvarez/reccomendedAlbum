@@ -2,8 +2,8 @@ import DiscogsLogo from "../../assets/discogsLogo.png";
 
 function Login(props) {
   function authorize() {
-    // window.location = "https://rlca-backend.herokuapp.com/authorize";
-    window.location = "http://localhost:3001/authorize";
+    window.location = "https://rlca-backend.herokuapp.com/authorize";
+    // window.location = "http://localhost:3001/authorize";
   }
 
   return (
