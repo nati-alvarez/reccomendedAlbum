@@ -26,7 +26,6 @@ const Search = ({topTen}) => {
         dispatch(loadReleasesSearch());
       }
     }
-
     dispatch(showBio());
     // eslint-disable-next-line
   }, []);

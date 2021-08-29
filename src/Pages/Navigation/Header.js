@@ -35,7 +35,11 @@ function Header() {
     if (data.releases.search && data.releases.search.length > 0) {
       dispatch(navVisibility());
     } else {
-      dispatch(loadReleasesSearch());
+      if (userId) {
+        dispatch(loadReleasesSearch(data.user.all[0].labels));
+      } else {
+        dispatch(loadReleasesSearch());
+      }
     }
 
     dispatch(showBio());
