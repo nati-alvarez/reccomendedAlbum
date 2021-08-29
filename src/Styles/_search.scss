@@ -57,16 +57,15 @@ input {
   padding: 40px;
 }
 .userSearchResults {
-  display: row;
-  
+  display: flex;
+  flex-wrap: wrap;
 }
 .navButtonsUserLabelSearch {
   @include flexColumn;
-  width: 40%;
-  // justify-content: center;
+  width: 50%;
+  padding: 5%;
 }
 .labelSearchBottom {
-  
   @include flexColumn;
 }
 .labelSearchImg {

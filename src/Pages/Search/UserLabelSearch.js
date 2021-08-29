@@ -1,14 +1,14 @@
+import {faPlus} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import {useState} from "react";
-
 import {useDispatch} from "react-redux";
-// import LoadingImage from "../../assets/loading.jpeg";
 import {addLabel} from "../../Redux/Actions/userActions";
 
 function UserLabelSearch(props) {
   const dispatch = useDispatch();
   const [searchResults, setSearchResults] = useState([]);
-  //   const releaseInfo = useSelector((state) => state.releases.search);
+
   const [inputValue, setInputValue] = useState();
   const inputHandler = (e) => {
     axios
@@ -22,16 +22,15 @@ function UserLabelSearch(props) {
       .then(function (response) {
         const results = [];
         for (let i = 0; i < response.data.results.length; i++) {
-          const current = response.data.results[i].cover_image
-          
-          if (current.substr(current.length - 3,3) === "gif") {
-          
+          const current = response.data.results[i].cover_image;
+
+          if (current.substr(current.length - 3, 3) === "gif") {
           } else {
             results.push(response.data.results[i]);
           }
         }
         const firstTen = results.slice(0, 10);
-        
+
         setSearchResults(firstTen);
       })
       .catch(function (error) {
@@ -68,7 +67,12 @@ function UserLabelSearch(props) {
             />
             <div className="labelSearchBottom">
               <p key={`nav item ${i} name`}>{asset.title}</p>
-              <button onClick={() => dispatch(addLabel(asset.id))}>ADD</button>
+              <div
+                className="navButtonsPlusLabels navButtons"
+                onClick={() => dispatch(addLabel(asset.id))}
+              >
+                <FontAwesomeIcon icon={faPlus} />
+              </div>
             </div>
           </div>
         ))}

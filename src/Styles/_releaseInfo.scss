@@ -61,16 +61,24 @@
     width: 400px;
   }
 }
-
-.inLibrary {
-  padding: 20px;
-  display: flex;
-  align-items: baseline;
-  p {
-    margin-right: 10px;
-  }
+.topButtonsCont {
+ display: flex;
+ gap: 20px; 
 }
-
+.inLibrary {
+  width: 150px;
+  @include flexColumn;
+  background-color: aliceblue;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+}
+.buttonContainerAddRemove {
+  display: flex;
+}
+.addRemove {
+  @include flexColumn;
+  padding: 0px 20px 20px 20px;
+}
 .videoPlayer {
   @include flexColumn;
   gap: 20px;
