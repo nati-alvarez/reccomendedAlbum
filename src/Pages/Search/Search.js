@@ -6,7 +6,7 @@ import axios from "axios";
 import {topTenAction} from "../../Redux/Actions/userActions";
 import {navVisibility} from "../../Redux/Actions/navSelectorAction";
 import {loadReleasesSearch} from "../../Redux/Actions/ReleasesAction";
-import {showBio} from "../../Redux/Actions/ReleaseInfoAction";
+
 
 const Search = ({topTen}) => {
   const user = localStorage.getItem("userID");
@@ -18,7 +18,9 @@ const Search = ({topTen}) => {
     // if the reducer does not have all search data run the all data
     //fetcher, otherwise this will have been run when the user logged in.
     if (releaseInfo && releaseInfo.length > 0) {
-      dispatch(navVisibility());
+      if (data.nav.show) {
+        dispatch(navVisibility());  
+      }
     } else {
       if (user) {
         dispatch(loadReleasesSearch(data.user.all[0].labels));
@@ -26,7 +28,7 @@ const Search = ({topTen}) => {
         dispatch(loadReleasesSearch());
       }
     }
-    dispatch(showBio());
+
     // eslint-disable-next-line
   }, []);
 

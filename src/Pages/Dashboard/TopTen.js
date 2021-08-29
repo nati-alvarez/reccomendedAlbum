@@ -29,7 +29,7 @@ function TopTen(props) {
     if (data.releases.search.length > 0) {
       history.push("/search");
     } else {
-      dispatch(loadReleasesSearch());
+      dispatch(loadReleasesSearch(data.user.all[0].labels));
     }
     history.push("/search");
   };
