@@ -16,6 +16,18 @@
 //     // 1200px
 // }
 
+.noLabelMessage {
+  width: 100%;
+  height: 50vh;
+  @include flexColumn;
+  justify-content: center;
+  text-align: center;
+  @include breakpoint(desktop) {
+    //     // 1200px
+    font-size: 2rem;
+  }
+}
+
 .searchContainer {
   @include flexColumn;
   justify-content: center;
@@ -58,7 +70,6 @@ input {
 }
 .userSearchResults {
   @include flexColumn;
-  
 }
 .navButtonsUserLabelSearch {
   @include flexColumn;
@@ -68,6 +79,5 @@ input {
   @include flexColumn;
 }
 .labelSearchImg {
-  
   width: 50%;
 }

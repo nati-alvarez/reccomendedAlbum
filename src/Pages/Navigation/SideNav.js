@@ -5,13 +5,12 @@ import {navVisibility} from "../../Redux/Actions/navSelectorAction";
 import {assetSelector} from "../../Redux/Actions/assetSelectorAction";
 import {
   loadReleases,
-  loadReleasesSearch,
 } from "../../Redux/Actions/ReleasesAction";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowLeft, faPlus} from "@fortawesome/free-solid-svg-icons";
 import LoadingImage from "../../assets/loading.jpeg";
 import {useHistory} from "react-router-dom";
-import { showBio } from "../../Redux/Actions/ReleaseInfoAction";
+import {showBio} from "../../Redux/Actions/ReleaseInfoAction";
 //THIS IS THE NAVIGATION COMPONENT THAT SITS ON THE LEFT HAND SIDE OF THE SCREEN. IT IS POPULATED
 //BY DATA PULLED IN FROM THE API OR THE USERS DB (IF THEY ARE SIGNED IN).
 
@@ -27,27 +26,8 @@ function SideNavLabels() {
   };
 
   const searchHandler = () => {
-    // if the reducer does not have all search data run the all data
-    //fetcher, otherwise this will have been run when the user logged in.
-    if (userId) {
-      if (data.releases.search.length > 0) {
-        history.push("/searchLabels");
-        dispatch(navVisibility());
-      } else {
-        dispatch(loadReleasesSearch());
-        dispatch(navVisibility());
-        history.push("/searchLabels");
-      }
-    } else {
-      if (data.releases.search.length > 0) {
-        history.push("/search");
-        dispatch(navVisibility());
-      } else {
-        dispatch(loadReleasesSearch());
-        dispatch(navVisibility());
-        history.push("/search");
-      }
-    }
+    dispatch(navVisibility());
+    history.push("/searchLabels");
   };
 
   return userId ? (

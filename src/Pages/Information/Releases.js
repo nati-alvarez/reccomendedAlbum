@@ -47,7 +47,11 @@ function Releases() {
       <div className="footerContainer">
         <div className={`${data.releases.all ? "loadMore" : "hideTop"}`}>
           <button onClick={() => setLoadAmmount((prev) => prev + 20)}>
-            <p>Load More Titles</p>
+            {loadAmmount < data.releases.all.length ? (
+              <p>Load More Titles</p>
+            ) : (
+              <p>End of titles</p>
+            )}
           </button>
           <button>
             <a href="#top">Top</a>

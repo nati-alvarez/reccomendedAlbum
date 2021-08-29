@@ -16,8 +16,9 @@ function Index(props) {
 
   return (
     <div className="dashBoardContainer">
-      <TopTen />
       <ProfileSection />
+      <TopTen />
+      
       {/* <LatestReleases/> */}
     </div>
   );

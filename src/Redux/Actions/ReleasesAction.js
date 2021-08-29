@@ -76,7 +76,7 @@ export const loadReleases = (id, type) => async (dispatch) => {
 
 export const loadReleasesSearch = (userLabels) => async (dispatch) => {
   const userId = localStorage.getItem("userID");
-
+console.log(userLabels)
   dispatch({
     type: "FETCH_RELEASES",
     payload: {

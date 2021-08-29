@@ -47,7 +47,11 @@ const Search = ({topTen}) => {
     setSearchInput(e);
   };
 
-  return releaseInfo.length > 0 ? (
+  return data.user.all[0].labels < 1 ? (
+    <div className="noLabelMessage">
+      <h1>You need to add a label before you can search for a release.</h1>
+    </div>
+  ) : releaseInfo.length > 0 ? (
     <div className="searchContainer">
       <input
         type="text"

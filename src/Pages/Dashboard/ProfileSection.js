@@ -5,7 +5,7 @@ import {getUserInfo} from "../../Redux/Actions/userActions";
 const ProfileSection = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.user.all[0]);
-console.log()
+  console.log();
   useEffect(() => {
     dispatch(getUserInfo());
     // eslint-disable-next-line
@@ -16,11 +16,34 @@ console.log()
       <div>{/* <img src={userInfo.avatar} alt="avatar" /> */}</div>
       <div className="userInfo">
         <p>Name: {data.name}</p>
-        <p>ID: {data.idNum}</p>
-        <label>
-          <p>Sonic Deducer</p>
-          <input type="checkbox" />
-        </label>
+
+        <p>
+          You follow{" "}
+          {data.labels.length < 1 ? (
+            <>no labels, add some by clicking the label button above</>
+          ) : data.labels.length === 1 ? (
+            <> {data.labels.length} label</>
+          ) : data.labels.length > 1 ? (
+            <> {data.labels.length} labels</>
+          ) : (
+            <></>
+          )}
+        </p>
+        <p>
+          You have
+          {data.inLibrary.length < 1 ? (
+            <>
+              no titles in your library, add some by clicking the search button
+              above
+            </>
+          ) : data.inLibrary.length === 1 ? (
+            <> {data.inLibrary.length} title</>
+          ) : data.inLibrary.length > 1 ? (
+            <> {data.inLibrary.length} titles in your library</>
+          ) : (
+            <></>
+          )}
+        </p>
       </div>
     </div>
   ) : (

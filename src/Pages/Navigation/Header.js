@@ -12,10 +12,11 @@ import {faMusic} from "@fortawesome/free-solid-svg-icons";
 import {faDoorOpen} from "@fortawesome/free-solid-svg-icons";
 import {faDragon} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
-// import {loadReleasesSearch} from "../../Redux/Actions/ReleasesAction";
-// import {showBio} from "../../Redux/Actions/ReleaseInfoAction";
+
+
 import {useEffect} from "react";
 import {getUserInfo} from "../../Redux/Actions/userActions";
+import { showBio } from "../../Redux/Actions/ReleaseInfoAction";
 
 function Header() {
   const data = useSelector((state) => state);
@@ -29,23 +30,6 @@ function Header() {
     // eslint-disable-next-line
   }, []);
 
-  const searchHandler = () => {
-    // if the reducer does not have all search data run the all data
-    //fetcher, otherwise this will have been run when the user logged in.
-    // if (data.releases.search && data.releases.search.length > 0) {
-    //   dispatch(navVisibility());
-    // } else {
-    //   if (userId) {
-    //     dispatch(loadReleasesSearch(data.user.all[0].labels));
-    //   } else {
-    //     dispatch(loadReleasesSearch());
-    //   }
-    // }
-
-    // dispatch(showBio());
-  };
-
-
   const loadData = () => {
     dispatch(navVisibility());
     if (userId) {
@@ -58,8 +42,6 @@ function Header() {
       }
     }
   };
-
-  
 
   return (
     <div className="headerContainer">
@@ -75,7 +57,7 @@ function Header() {
         </Link>
 
         <Link to={"/search"}>
-          <span onClick={searchHandler}>
+          <span onClick={() => dispatch(showBio())}>
             <FontAwesomeIcon className="fai" icon={faMusic}></FontAwesomeIcon>
             <p>Search</p>
           </span>
