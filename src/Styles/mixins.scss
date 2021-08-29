@@ -29,13 +29,17 @@
       }
       @include breakpoint(desktop) {
         // 1200px
-        width: 50%;
+        width: 70%;
       }
     }
     p {
       font-family: "Hina Mincho", serif;
       padding: 0px 20px;
       text-align: center;
+      @include breakpoint(desktop) {
+        // 1200px
+       font-size: 20px;
+      }
     }
   }
 
