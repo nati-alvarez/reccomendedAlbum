@@ -13,7 +13,6 @@ function UserLabelSearch(props) {
   const inputHandler = (e) => {
     axios
       .get(`${API_BASE_URL}/search`, {
-      // .get(`http://localhost:3001/search`, {
         withCredentials: true,
         params: {
           discogsAccessparams: `${e}&?label`,

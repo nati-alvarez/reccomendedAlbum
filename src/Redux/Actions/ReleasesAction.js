@@ -12,10 +12,10 @@ export const loadReleases = (id, type) => async (dispatch) => {
     },
   });
 
-  const pageNumber = await axios.get(labelReleases(id, 1));
+  // const pageNumber = await axios.get(labelReleases(id, 1));
 
   let allData = [];
-  for (let i = 1; i <= pageNumber.data.pagination.pages; i++) {
+  for (let i = 1; i <= 10; i++) {
     let data = await axios.get(labelReleases(id, i));
 
     allData.push(data.data.releases);
