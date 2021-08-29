@@ -1,8 +1,8 @@
 import DiscogsLogo from "../../assets/discogsLogo.png";
-
+import {API_BASE_URL} from "../../API/APIcall"
 function Login(props) {
   function authorize() {
-    window.location = "https://rlca-backend.herokuapp.com/authorize";
+    window.location = `${API_BASE_URL}/authorize`;
     // window.location = "http://localhost:3001/authorize";
   }
 

@@ -6,6 +6,7 @@ import {useSelector, useDispatch} from "react-redux";
 import {showBio} from "../../Redux/Actions/ReleaseInfoAction";
 import {getUserInfo, topTenAction} from "../../Redux/Actions/userActions";
 // import { topTenHandler } from "../../utils/utils";
+import {API_BASE_URL} from "../../API/APIcall"
 
 function ReleaseInfo() {
   const [topTenDisabled, setTopTenDisabled] = useState(false);
@@ -51,7 +52,7 @@ function ReleaseInfo() {
 
   function topTenHandler(itemId, inTopTen) {
     axios
-      .patch(`https://rlca-backend.herokuapp.com/user/${userId}`, {
+      .patch(`${API_BASE_URL}/user/${userId}`, {
       // .patch(`http://localhost:3001/user/${userId}`, {
         topTen: itemId,
         inTopTen: inTopTen,
@@ -70,7 +71,7 @@ function ReleaseInfo() {
 
   function inLibraryHandler(itemId, add) {
     axios
-      .patch("https://rlca-backend.herokuapp.com/user/", {
+      .patch(`${API_BASE_URL}/user/`, {
       // .patch(`http://localhost:3001/user/${userId}`, {
         inLibrary: itemId,
         add: add,

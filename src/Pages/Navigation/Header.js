@@ -45,6 +45,7 @@ function Header() {
     // dispatch(showBio());
   };
 
+
   const loadData = () => {
     dispatch(navVisibility());
     if (userId) {
@@ -58,6 +59,7 @@ function Header() {
     }
   };
 
+  
 
   return (
     <div className="headerContainer">

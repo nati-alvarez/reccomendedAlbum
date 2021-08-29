@@ -4,7 +4,7 @@ import axios from "axios";
 import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {addLabel} from "../../Redux/Actions/userActions";
-
+import {API_BASE_URL} from "../../API/APIcall"
 function UserLabelSearch(props) {
   const dispatch = useDispatch();
   const [searchResults, setSearchResults] = useState([]);
@@ -12,7 +12,7 @@ function UserLabelSearch(props) {
   const [inputValue, setInputValue] = useState();
   const inputHandler = (e) => {
     axios
-      .get(`https://rlca-backend.herokuapp.com/search`, {
+      .get(`${API_BASE_URL}/search`, {
       // .get(`http://localhost:3001/search`, {
         withCredentials: true,
         params: {

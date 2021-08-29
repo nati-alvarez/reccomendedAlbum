@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import {API_BASE_URL} from "../API/APIcall"
 
 //Data diviner is the first step in the journey piping in data from the 
 //Discogs API. 
@@ -18,7 +18,7 @@ export const DataDiviner = async (url) => {
 
 export const topTenHandler = async (coverArt, userId) => {
   // await axios.patch(`http://localhost:3001/user/${userId}`, {topTen: coverArt})
-  await axios.patch(`https://rlca-backend.herokuapp.com/user/${userId}`, {topTen: coverArt})
+  await axios.patch(`${API_BASE_URL}/user/${userId}`, {topTen: coverArt})
   .then(function (response) {
     return response.data
   })

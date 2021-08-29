@@ -2,7 +2,7 @@
 // once the user logs in these actions are executed.
 
 import axios from "axios";
-
+import {API_BASE_URL} from "../../API/APIcall"
 
 export const getUserInfo = () => async (dispatch) => {
   dispatch({
@@ -15,7 +15,7 @@ export const getUserInfo = () => async (dispatch) => {
   const userId = localStorage.getItem("userID");
   const allData = [];
   await axios
-    .get(`https://rlca-backend.herokuapp.com/user/${userId}`)
+    .get(`${API_BASE_URL}/user/${userId}`)
     // .get(`http://localhost:3001/user/${userId}`)
     .then(function (response) {
       allData.push(response.data);
@@ -38,7 +38,7 @@ export const topTenAction = (data) => async (dispatch) => {
   const userId = localStorage.getItem("userID");
   let topTen = [data];
   await axios
-    .get(`https://rlca-backend.herokuapp.com/user/${userId}`)
+    .get(`${API_BASE_URL}/user/${userId}`)
     // .get(`http://localhost:3001/user/${userId}`)
     .then(function (response) {
       topTen.push(response.data.topTen);
@@ -74,7 +74,7 @@ export const addLabel = (id, add) => async (dispatch) => {
   let labels = [];
   let all = [];
   await axios
-    .patch(`https://rlca-backend.herokuapp.com/user/${userId}`, {
+    .patch(`${API_BASE_URL}/user/${userId}`, {
     // .patch(`http://localhost:3001/user/${userId}`, {
       labels: id,
       add: add,
@@ -102,7 +102,7 @@ export const searchLabels = (data) => async (dispatch) => {
   const latestReleaseData = [];
   for (let i = 0; i < data.length; i++) {
     const response = await axios.get(
-      "https://rlca-backend.herokuapp.com/usersLabelsSearch",
+      `${API_BASE_URL}/usersLabelsSearch`,
       // "http://localhost:3001/usersLabelsSearch",
       {
         withCredentials: true,

@@ -6,7 +6,7 @@ import axios from "axios";
 import {searchLabels, topTenAction} from "../../Redux/Actions/userActions";
 import {navVisibility} from "../../Redux/Actions/navSelectorAction";
 import {loadReleasesSearch} from "../../Redux/Actions/ReleasesAction";
-
+import {API_BASE_URL} from "../../API/APIcall"
 
 const Search = ({topTen}) => {
   const user = localStorage.getItem("userID");
@@ -108,7 +108,7 @@ const SearchRelease = ({name, artist, image, catno, id, topTen}) => {
     const userId = localStorage.getItem("userID");
 
     axios
-      .patch(`https://rlca-backend.herokuapp.com/user/${userId}`, {
+      .patch(`${API_BASE_URL}/user/${userId}`, {
       // .patch(`http://localhost:3001/user/${userId}`, {
         topTen: itemImg,
       })

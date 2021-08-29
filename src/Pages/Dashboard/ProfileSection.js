@@ -5,7 +5,7 @@ import {getUserInfo} from "../../Redux/Actions/userActions";
 const ProfileSection = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.user.all[0]);
-
+console.log()
   useEffect(() => {
     dispatch(getUserInfo());
     // eslint-disable-next-line
