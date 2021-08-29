@@ -3,7 +3,7 @@ import {useDispatch} from "react-redux";
 import {getUserInfo} from "../../Redux/Actions/userActions";
 import ProfileSection from "./ProfileSection";
 // import ListenNext from "./ListenNext";
-// import NextShipment from "./NextShipment";
+import LatestReleases from "./LatestReleases";
 import TopTen from "./TopTen";
 
 function Index(props) {
@@ -17,12 +17,8 @@ function Index(props) {
   return (
     <div className="dashBoardContainer">
       <TopTen />
-
       <ProfileSection />
-      {/* <Admin /> */}
-      {/* <ListenNext/>
-      
-      <NextShipment/> */}
+      <LatestReleases/>
     </div>
   );
 }

@@ -87,11 +87,13 @@ export const loadReleasesSearch = (userLabels) => async (dispatch) => {
   const labelCodes = userId
     ? userLabels
     : [1149832, 157803, 23127, 389319, 153824];
-  //first for loop pulls up info on each label
+  //first for loop pulls up  pagination info on each label
   const allData = [];
+  const latest = [];
   for (let i = 0; i < labelCodes.length; i++) {
     const pageNumber = await axios.get(labelReleases(labelCodes[i], 1));
-
+    console.log(pageNumber);
+    latest.push(pageNumber.data);
     let allReleaseData = [];
     //second for loop gets the releases for each label
     for (let j = 1; j <= pageNumber.data.pagination.pages; j++) {
@@ -139,7 +141,7 @@ export const loadReleasesSearch = (userLabels) => async (dispatch) => {
     type: "SEARCH_SUCCESS",
     payload: {
       all: merged,
-
+      latest: latest,
       loading: false,
     },
   });

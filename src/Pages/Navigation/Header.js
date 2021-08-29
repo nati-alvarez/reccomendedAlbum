@@ -32,17 +32,17 @@ function Header() {
   const searchHandler = () => {
     // if the reducer does not have all search data run the all data
     //fetcher, otherwise this will have been run when the user logged in.
-    if (data.releases.search && data.releases.search.length > 0) {
-      dispatch(navVisibility());
-    } else {
-      if (userId) {
-        dispatch(loadReleasesSearch(data.user.all[0].labels));
-      } else {
-        dispatch(loadReleasesSearch());
-      }
-    }
+    // if (data.releases.search && data.releases.search.length > 0) {
+    //   dispatch(navVisibility());
+    // } else {
+    //   if (userId) {
+    //     dispatch(loadReleasesSearch(data.user.all[0].labels));
+    //   } else {
+    //     dispatch(loadReleasesSearch());
+    //   }
+    // }
 
-    dispatch(showBio());
+    // dispatch(showBio());
   };
 
   const loadData = () => {

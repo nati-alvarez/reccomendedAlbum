@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {releaseInfoAction} from "../../Redux/Actions/ReleaseInfoAction";
 import LoadingImage from "../../assets/loading.jpeg";
 import axios from "axios";
-import {topTenAction} from "../../Redux/Actions/userActions";
+import {searchLabels, topTenAction} from "../../Redux/Actions/userActions";
 import {navVisibility} from "../../Redux/Actions/navSelectorAction";
 import {loadReleasesSearch} from "../../Redux/Actions/ReleasesAction";
 
@@ -14,21 +14,32 @@ const Search = ({topTen}) => {
   const [searchInput, setSearchInput] = useState();
   const releaseInfo = useSelector((state) => state.releases.search);
   const data = useSelector((state) => state);
+
+
   useEffect(() => {
     // if the reducer does not have all search data run the all data
     //fetcher, otherwise this will have been run when the user logged in.
-    if (releaseInfo && releaseInfo.length > 0) {
-      if (data.nav.show) {
-        dispatch(navVisibility());  
-      }
-    } else {
+    // if (releaseInfo && releaseInfo.length > 0) {
+    //   if (data.nav.show) {
+    //     dispatch(navVisibility());  
+    //   }
+    // } else {
+    //   if (user) {
+    //     dispatch(loadReleasesSearch(data.user.all[0].labels));
+    //   } else {
+    //     dispatch(loadReleasesSearch());
+    //   }
+    // }
+    if (data.nav.show) {
+      dispatch(navVisibility());  
+    }
       if (user) {
-        dispatch(loadReleasesSearch(data.user.all[0].labels));
+        console.log("hit")
+        dispatch(searchLabels(data.user.all[0].labels));
       } else {
+        console.log(user)
         dispatch(loadReleasesSearch());
       }
-    }
-
     // eslint-disable-next-line
   }, []);
 

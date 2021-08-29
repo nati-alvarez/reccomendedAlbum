@@ -2,6 +2,7 @@
 // once the user logs in these actions are executed.
 
 import axios from "axios";
+import {labelReleasesAuth} from "../../API/APIcall";
 
 export const getUserInfo = () => async (dispatch) => {
   dispatch({
@@ -63,9 +64,6 @@ export const topTenAction = (data) => async (dispatch) => {
 };
 
 export const addLabel = (id, add) => async (dispatch) => {
-  console.log("hit");
-  console.log(id);
-  console.log(add);
   dispatch({
     type: "ADD_LABEL",
     payload: {
@@ -89,17 +87,6 @@ export const addLabel = (id, add) => async (dispatch) => {
       console.log(error);
     });
 
-  const allData = [];
-  await axios
-    // .get(`https://rlca-backend.herokuapp.com/user/${userId}`)
-    .get(`http://localhost:3001/user/${userId}`)
-    .then(function (response) {
-      allData.push(response.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-
   dispatch({
     type: "ADD_LABEL_SUCCESS",
     payload: {
@@ -109,3 +96,77 @@ export const addLabel = (id, add) => async (dispatch) => {
     },
   });
 };
+
+export const searchLabels = (data) => async (dispatch) => {
+  const allReleaseData = [];
+  for (let i = 0; i < data.length; i++) {
+    const response = await axios.get(
+      "http://localhost:3001/usersLabelsSearch",
+      {
+        withCredentials: true,
+        params: {
+          discogsAccessParams: data[i],
+        },
+      }
+    );
+    console.log(response);
+    allReleaseData.push(response.data.releases);
+  }
+
+  console.log(allReleaseData);
+  const allData = [];
+
+  let releasesData = [].concat.apply([], allReleaseData);
+  console.log(releasesData);
+  const releasesByTitle = {};
+  const releases = [];
+
+  releasesData.forEach((release) => {
+    if (!release.format.includes("File") && release.thumb) {
+      if (!releasesByTitle[release.title]) {
+        releasesByTitle[release.title] = release;
+      } else {
+        if (releasesByTitle[release.title].format.includes("W/Lbl")) {
+          releasesByTitle[release.title] = release;
+        }
+        if (releasesByTitle[release.title].format.includes("Promo")) {
+          releasesByTitle[release.title] = release;
+        }
+        if (releasesByTitle[release.title].format.includes("TP")) {
+          releasesByTitle[release.title] = release;
+        }
+        if (releasesByTitle[release.title].format.includes("Pap")) {
+          releasesByTitle[release.title] = release;
+        }
+      }
+    }
+  });
+
+  for (let title in releasesByTitle) {
+    releases.push(releasesByTitle[title]);
+  }
+  //here we flatten the arrays, this allows search functionality
+  // if the user wants to search all labels then they cannot be in seperate
+  // arrays (organized by label), they have to be in one big array.
+
+  allData.push(releases);
+
+  let merged = [].concat.apply([], allData);
+
+  
+
+  dispatch({
+    type: "SEARCH_SUCCESS",
+    payload: {
+      all: merged,
+      loading: false,
+    },
+  });
+};
+
+// , {
+//   withCredentials: true,
+//   params: {
+//     discogsAccessparams: `${e}&?label`,
+//   },
+// }

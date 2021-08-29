@@ -22,15 +22,18 @@ function UserLabelSearch(props) {
       .then(function (response) {
         const results = [];
         for (let i = 0; i < response.data.results.length; i++) {
-          const current = response.data.results[i].cover_image;
-
-          if (current.substr(current.length - 3, 3) === "gif") {
+          const current = response.data.results[i];
+          if (
+            current.type !== "label" ||
+            current.cover_image.substr(current.cover_image.length - 3, 3) ===
+              "gif"
+          ) {
+            continue;
           } else {
             results.push(response.data.results[i]);
           }
         }
         const firstTen = results.slice(0, 10);
-
         setSearchResults(firstTen);
       })
       .catch(function (error) {
