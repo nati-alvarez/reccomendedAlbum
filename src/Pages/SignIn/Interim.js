@@ -6,7 +6,7 @@ const Interim = (props) => {
   console.log(API_BASE_URL);
   useEffect(() => {
     axios
-      .get(`${API_BASE_URL}/identity`)
+      .get(`${API_BASE_URL}/identity`, {withCredentials: true})
       // .get("http://localhost:3001/identity", {withCredentials: true})
       .then(function (response) {
         console.log("hit identity");
@@ -20,7 +20,7 @@ const Interim = (props) => {
           .then(function () {
             localStorage.setItem("userID", response.data.id);
             localStorage.setItem("username", response.data.username);
-            window.location = `${client_url}/dashboard`;
+            // window.location = `${client_url}/dashboard`;
             // window.location = "http://localhost:3000/dashboard";
           })
           .catch(function (error) {
