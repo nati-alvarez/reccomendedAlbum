@@ -6,7 +6,7 @@ const Interim = (props) => {
   console.log(API_BASE_URL);
   useEffect(() => {
     axios
-      .get(`${API_BASE_URL}/identity`, {withCredentials: true})
+      .get(`${API_BASE_URL}/identity`)
       // .get("http://localhost:3001/identity", {withCredentials: true})
       .then(function (response) {
         console.log("hit identity");
