@@ -4,7 +4,7 @@
 import React, {useState} from "react";
 import {useHistory} from "react-router-dom";
 import {useAuth} from "../../Auth/AuthProvider";
-import {Alert} from "react-bootstrap";
+// import {Alert} from "react-bootstrap";
 
 function Admin(props) {
   const {logout} = useAuth();
@@ -24,7 +24,7 @@ function Admin(props) {
 
   return (
     <div className="adminContainer">
-      {error && <Alert variant="danger">{error}</Alert>}
+      {/* {error && <Alert variant="danger">{error}</Alert>} */}
 
       <button onClick={handleLogout}>Log out</button>
     </div>
