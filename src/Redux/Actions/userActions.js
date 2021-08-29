@@ -62,9 +62,10 @@ export const topTenAction = (data) => async (dispatch) => {
   });
 };
 
-export const addLabel = (id) => async (dispatch) => {
-  
-  
+export const addLabel = (id, add) => async (dispatch) => {
+  console.log("hit");
+  console.log(id);
+  console.log(add);
   dispatch({
     type: "ADD_LABEL",
     payload: {
@@ -73,25 +74,38 @@ export const addLabel = (id) => async (dispatch) => {
   });
   const userId = localStorage.getItem("userID");
   let labels = [];
+  let all = [];
   await axios
     // .patch(`https://rlca-backend.herokuapp.com/user/${userId}`, {
-      .patch(`http://localhost:3001/user/${userId}`, {
+    .patch(`http://localhost:3001/user/${userId}`, {
       labels: id,
+      add: add,
     })
     .then(function (response) {
       labels.push(response.data.labels);
+      all.push(response.data);
     })
     .catch(function (error) {
       console.log(error);
     });
 
-
+  const allData = [];
+  await axios
+    // .get(`https://rlca-backend.herokuapp.com/user/${userId}`)
+    .get(`http://localhost:3001/user/${userId}`)
+    .then(function (response) {
+      allData.push(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 
   dispatch({
     type: "ADD_LABEL_SUCCESS",
     payload: {
       labels: labels,
       loading: false,
+      all: all,
     },
   });
 };

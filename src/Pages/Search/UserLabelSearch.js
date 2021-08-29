@@ -69,7 +69,7 @@ function UserLabelSearch(props) {
               <p key={`nav item ${i} name`}>{asset.title}</p>
               <div
                 className="navButtonsPlusLabels navButtons"
-                onClick={() => dispatch(addLabel(asset.id))}
+                onClick={() => dispatch(addLabel(asset.id, true))}
               >
                 <FontAwesomeIcon icon={faPlus} />
               </div>

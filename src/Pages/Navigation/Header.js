@@ -42,13 +42,10 @@ function Header() {
   };
 
   const loadData = () => {
-    // dispatch(showBio());
     dispatch(navVisibility());
     if (userId) {
-      console.log("hit");
-      dispatch(navSelectorUserDispatch(data.user.all[0]?.labels));
+      dispatch(navSelectorUserDispatch(data.user.all[0].labels));
     } else {
-      console.log("miss");
       if (data.nav && data.nav.length > 0) {
         return;
       } else {

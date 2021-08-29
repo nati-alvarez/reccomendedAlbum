@@ -35,7 +35,6 @@ const userReducer = (state = initState, action) => {
     case "ADD_TO_TOP_TEN_SUCCESS":
       return {...state, show: false, topTen: action.payload.data};
 
-
     default:
       return {...state};
   }

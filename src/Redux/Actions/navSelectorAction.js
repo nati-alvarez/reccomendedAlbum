@@ -12,7 +12,6 @@ import genreImg from "../../assets/genre.png";
 import {DataDiviner} from "../../utils/utils";
 
 export const navSelectorUserDispatch = (userLabelCodes) => async (dispatch) => {
-  console.log(userLabelCodes)
   dispatch({
     type: "NAV_SELECTOR_USER",
     payload: {
@@ -29,7 +28,6 @@ export const navSelectorUserDispatch = (userLabelCodes) => async (dispatch) => {
   const labelData = [];
 
   for (let i = 0; i < userLabelCodes.length; i++) {
-    console.log(userLabelCodes[i]);
     let data = await DataDiviner(label(userLabelCodes[i]));
     labelData.push({
       name: data[0].name,

@@ -21,6 +21,8 @@ const navReducer = (state = initialState, action) => {
       };
     case "NAV_VISIBLE":
       return {...state, show: !state.show};
+    case "ADD_LABEL_SUCCESS":
+      return {...state, labels: action.payload.labels};
     case "ID":
       return {...state, id: action.payload.id};
     case "ASSET_SELECTOR_SUCCESS":

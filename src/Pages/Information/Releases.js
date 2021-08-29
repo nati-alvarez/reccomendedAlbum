@@ -16,10 +16,12 @@ function Releases() {
   }, []);
 
   const inLibraryHandler = (id) => {
-    if (data.user.all[0]?.inLibrary?.filter((e) => e === id).length > 0) {
-      return true;
-    } else {
-      return false;
+    if (data.user.all) {
+      if (data.user?.all[0]?.inLibrary?.filter((e) => e === id).length > 0) {
+        return true;
+      } else {
+        return false;
+      }
     }
   };
 
