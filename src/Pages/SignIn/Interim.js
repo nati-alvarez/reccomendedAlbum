@@ -7,7 +7,7 @@ const Interim = (props) => {
   console.log(API_BASE_URL);
   useEffect(() => {
     axios
-      .get(`https://rlca-backend.herokuapp.com/identity`, {withCredentials: true})
+      .get(`${API_BASE_URL}/identity`, {withCredentials: true})
       .then(function (response) {
         axios
           .post(`${API_BASE_URL}/user/`, {
