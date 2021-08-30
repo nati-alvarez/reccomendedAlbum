@@ -19,27 +19,27 @@ const ProfileSection = () => {
 
         <p>
           You follow{" "}
-          {data.labels.length < 1 ? (
+          {data.labels?.length < 1 ? (
             <>no labels, add some by clicking the label button above</>
-          ) : data.labels.length === 1 ? (
-            <> {data.labels.length} label</>
-          ) : data.labels.length > 1 ? (
-            <> {data.labels.length} labels</>
+          ) : data.labels?.length === 1 ? (
+            <> {data.labels?.length} label</>
+          ) : data.labels?.length > 1 ? (
+            <> {data.labels?.length} labels</>
           ) : (
             <></>
           )}
         </p>
         <p>
           You have
-          {data.inLibrary.length < 1 ? (
+          {data.inLibrary?.length < 1 ? (
             <>
               no titles in your library, add some by clicking the search button
               above
             </>
-          ) : data.inLibrary.length === 1 ? (
-            <> {data.inLibrary.length} title</>
-          ) : data.inLibrary.length > 1 ? (
-            <> {data.inLibrary.length} titles in your library</>
+          ) : data.inLibrary?.length === 1 ? (
+            <> {data.inLibrary?.length} title</>
+          ) : data.inLibrary?.length > 1 ? (
+            <> {data.inLibrary?.length} titles in your library</>
           ) : (
             <></>
           )}
