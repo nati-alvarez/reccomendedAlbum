@@ -32,7 +32,7 @@ const releasesReducer = (state = initState, action) => {
       return {
         ...state,
 
-        search: action.payload.all,
+        all: action.payload.all,
       };
     default:
       return {...state};

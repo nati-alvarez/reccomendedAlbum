@@ -158,7 +158,7 @@ export const searchLabels = (data) => async (dispatch) => {
   
 
   dispatch({
-    type: "SEARCH_SUCCESS",
+    type: "SEARCH_LABELS_SUCCESS",
     payload: {
       all: merged,
       labels: latestReleaseData,

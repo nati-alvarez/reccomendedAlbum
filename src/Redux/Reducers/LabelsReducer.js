@@ -5,7 +5,7 @@ const initState = {
   
   const labelsReducer = (state = initState, action) => {
     switch (action.type) {
-      case "SEARCH_SUCCESS":
+      case "SEARCH_LABELS_SUCCESS":
         return {...state, labels: action.payload.labels, all: action.payload.all};
      
       default:
