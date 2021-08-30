@@ -1,5 +1,3 @@
-// SEARCH_SUCCESS
-
 const initState = {
     labels: [],
     all: []
