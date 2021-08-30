@@ -24,6 +24,7 @@ const Search = ({topTen}) => {
     }
       if (user) {
         dispatch(searchLabels(data.user.all[0].labels));
+        console.log(`hit in search with labels ${data.user.all[0].labels}`)
       } else {
         dispatch(loadReleasesSearch());
       }

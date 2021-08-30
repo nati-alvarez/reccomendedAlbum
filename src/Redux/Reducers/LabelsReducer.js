@@ -1,13 +1,14 @@
 // SEARCH_SUCCESS
 
 const initState = {
-    labels: []
+    labels: [],
+    all: []
   };
   
   const labelsReducer = (state = initState, action) => {
     switch (action.type) {
       case "SEARCH_SUCCESS":
-        return {...state, labels: action.payload.labels};
+        return {...state, labels: action.payload.labels, all: action.payload.all};
      
       default:
         return {...state};
