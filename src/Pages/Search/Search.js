@@ -6,7 +6,7 @@ import axios from "axios";
 import {topTenAction} from "../../Redux/Actions/userActions";
 import {navVisibility} from "../../Redux/Actions/navSelectorAction";
 import {loadReleasesSearch} from "../../Redux/Actions/ReleasesAction";
-import {API_BASE_URL} from "../../API/APIcall"
+import {API_BASE_URL} from "../../API/APIcall";
 
 const Search = ({topTen}) => {
   const user = localStorage.getItem("userID");
@@ -15,19 +15,22 @@ const Search = ({topTen}) => {
   const releaseInfo = useSelector((state) => state.releases.search);
   const data = useSelector((state) => state);
 
-
   useEffect(() => {
     // if the reducer does not have all search data run the all data
     //fetcher, otherwise this will have been run when the user logged in.
     if (data.nav.show) {
-      dispatch(navVisibility());  
+      dispatch(navVisibility());
     }
-      if (user) {
-        dispatch(loadReleasesSearch(data.user.all[0].labels));
-        console.log(`hit in search with labels ${data.user.all[0].labels}`)
+    if (user) {
+      if (data.user?.all[0]?.labels < 1) {
+        return;
       } else {
-        dispatch(loadReleasesSearch());
+        dispatch(loadReleasesSearch(data.user.all[0].labels));
       }
+      
+    } else {
+      dispatch(loadReleasesSearch());
+    }
     // eslint-disable-next-line
   }, []);
 
@@ -101,7 +104,7 @@ const SearchRelease = ({name, artist, image, catno, id, topTen}) => {
 
     axios
       .patch(`${API_BASE_URL}/user/${userId}`, {
-      // .patch(`http://localhost:3001/user/${userId}`, {
+        // .patch(`http://localhost:3001/user/${userId}`, {
         topTen: itemImg,
       })
       .then(function (response) {
