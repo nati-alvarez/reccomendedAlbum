@@ -13,11 +13,14 @@ export const loadReleases = (id, type) => async (dispatch) => {
   });
 
   let pageNumber = await axios.get(labelReleases(id, 1));
-  if (pageNumber.data.pagination.pages > 10) {
-    pageNumber = 10;
+  let pagination = pageNumber.data.pagination.pages;
+  if (pagination > 10) {
+    pagination = 10;
   }
+  console.log(pageNumber.data.pagination.pages)
+  console.log(pagination)
   let allData = [];
-  for (let i = 1; i <= pageNumber; i++) {
+  for (let i = 1; i <= pagination; i++) {
     let data = await axios.get(labelReleases(id, i));
 
     allData.push(data.data.releases);

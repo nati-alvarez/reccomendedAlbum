@@ -102,7 +102,6 @@ export const searchLabels = (data) => async (dispatch) => {
   for (let i = 0; i < data.length; i++) {
     const response = await axios.get(
       `${API_BASE_URL}/usersLabelsSearch`,
-      // "http://localhost:3001/usersLabelsSearch",
       {
         withCredentials: true,
         params: {
