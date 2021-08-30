@@ -19,25 +19,12 @@ const Search = ({topTen}) => {
   useEffect(() => {
     // if the reducer does not have all search data run the all data
     //fetcher, otherwise this will have been run when the user logged in.
-    // if (releaseInfo && releaseInfo.length > 0) {
-    //   if (data.nav.show) {
-    //     dispatch(navVisibility());  
-    //   }
-    // } else {
-    //   if (user) {
-    //     dispatch(loadReleasesSearch(data.user.all[0].labels));
-    //   } else {
-    //     dispatch(loadReleasesSearch());
-    //   }
-    // }
     if (data.nav.show) {
       dispatch(navVisibility());  
     }
       if (user) {
-        console.log("hit")
         dispatch(searchLabels(data.user.all[0].labels));
       } else {
-        console.log(user)
         dispatch(loadReleasesSearch());
       }
     // eslint-disable-next-line

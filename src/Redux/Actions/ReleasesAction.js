@@ -12,10 +12,12 @@ export const loadReleases = (id, type) => async (dispatch) => {
     },
   });
 
-  // const pageNumber = await axios.get(labelReleases(id, 1));
-
+  let pageNumber = await axios.get(labelReleases(id, 1));
+  if (pageNumber > 10) {
+    pageNumber = 10;
+  }
   let allData = [];
-  for (let i = 1; i <= 10; i++) {
+  for (let i = 1; i <= pageNumber; i++) {
     let data = await axios.get(labelReleases(id, i));
 
     allData.push(data.data.releases);
@@ -76,7 +78,7 @@ export const loadReleases = (id, type) => async (dispatch) => {
 
 export const loadReleasesSearch = (userLabels) => async (dispatch) => {
   const userId = localStorage.getItem("userID");
-console.log(userLabels)
+  console.log(userLabels);
   dispatch({
     type: "FETCH_RELEASES",
     payload: {
