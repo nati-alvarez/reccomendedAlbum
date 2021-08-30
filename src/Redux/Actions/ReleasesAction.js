@@ -13,7 +13,7 @@ export const loadReleases = (id, type) => async (dispatch) => {
   });
 
   let pageNumber = await axios.get(labelReleases(id, 1));
-  if (pageNumber > 10) {
+  if (pageNumber.data.pagination.pages > 10) {
     pageNumber = 10;
   }
   let allData = [];
