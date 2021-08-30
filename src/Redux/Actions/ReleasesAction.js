@@ -17,8 +17,8 @@ export const loadReleases = (id, type) => async (dispatch) => {
   if (pagination > 10) {
     pagination = 10;
   }
-  console.log(pageNumber.data.pagination.pages);
-  console.log(pagination);
+  console.log(pageNumber.data.pagination.pages)
+  console.log(pagination)
   let allData = [];
   for (let i = 1; i <= pagination; i++) {
     let data = await axios.get(labelReleases(id, i));
@@ -81,7 +81,7 @@ export const loadReleases = (id, type) => async (dispatch) => {
 
 export const loadReleasesSearch = (userLabels) => async (dispatch) => {
   const userId = localStorage.getItem("userID");
-  console.log(`hit in action with labels ${userLabels}`);
+  console.log(`hit in action with labels ${userLabels}`)
   dispatch({
     type: "FETCH_RELEASES",
     payload: {
@@ -94,7 +94,7 @@ export const loadReleasesSearch = (userLabels) => async (dispatch) => {
     : [1149832, 157803, 23127, 389319, 153824];
   //first for loop pulls up  pagination info on each label
   const allData = [];
-
+  
   for (let i = 0; i < labelCodes.length; i++) {
     const pageNumber = await axios.get(labelReleases(labelCodes[i], 1));
     let pagination = pageNumber.data.pagination.pages;
@@ -108,7 +108,7 @@ export const loadReleasesSearch = (userLabels) => async (dispatch) => {
       allReleaseData.push(data.data.releases);
     }
     let releasesData = [].concat.apply([], allReleaseData);
-    console.log(`hit inside data retrieval action with labels ${releasesData}`);
+    
     const releasesByTitle = {};
     const releases = [];
 
