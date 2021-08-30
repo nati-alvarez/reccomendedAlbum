@@ -31,8 +31,6 @@ const releasesReducer = (state = initState, action) => {
     case "ADD_LABEL_SUCCESS":
       return {
         ...state,
-
-        all: action.payload.all,
       };
     default:
       return {...state};

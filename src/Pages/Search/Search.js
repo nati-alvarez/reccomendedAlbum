@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {releaseInfoAction} from "../../Redux/Actions/ReleaseInfoAction";
 import LoadingImage from "../../assets/loading.jpeg";
 import axios from "axios";
-import {searchLabels, topTenAction} from "../../Redux/Actions/userActions";
+import {topTenAction} from "../../Redux/Actions/userActions";
 import {navVisibility} from "../../Redux/Actions/navSelectorAction";
 import {loadReleasesSearch} from "../../Redux/Actions/ReleasesAction";
 import {API_BASE_URL} from "../../API/APIcall"
@@ -23,7 +23,7 @@ const Search = ({topTen}) => {
       dispatch(navVisibility());  
     }
       if (user) {
-        dispatch(searchLabels(data.user.all[0].labels));
+        dispatch(loadReleasesSearch(data.user.all[0].labels));
         console.log(`hit in search with labels ${data.user.all[0].labels}`)
       } else {
         dispatch(loadReleasesSearch());
