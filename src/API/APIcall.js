@@ -5,8 +5,8 @@ const base_url = "https://api.discogs.com/";
 //and also the page number this function can also be called on the button the user
 //clicks when they want to see more titles by passing in the same label id but a different page#
 
-export const API_BASE_URL = process.env.NODE_ENV === "production" ? "https://rlca-backend.herokuapp.com" : "http://localhost:3001"
-export const client_url = process.env.NODE_ENV === "production" ? "https://sonic-architecture-v1.netlify.app" : "http://localhost:3000"
+export const API_BASE_URL = process.env.REACT_APP_API_URL
+export const client_url = process.env.REACT_APP_CLIENT_URL
 
 // NOT SIGNED IN
 
